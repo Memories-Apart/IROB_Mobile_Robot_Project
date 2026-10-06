@@ -19,6 +19,7 @@ from geometry_msgs.msg import PoseStamped
 from geometry_msgs.msg import Twist, TwistStamped
 from ament_index_python.packages import get_package_share_directory
 from irobot_create_msgs.action import Undock
+from irobot_create_msgs.msg import DockStatus
 from std_msgs.msg import Empty
 
 from control_msgs.action import FollowJointTrajectory
@@ -26,6 +27,7 @@ from trajectory_msgs.msg import JointTrajectoryPoint
 from builtin_interfaces.msg import Duration
 
 from nav2_msgs.action import NavigateToPose
+from nav2_msgs.srv import ClearEntireCostmap
 from action_msgs.msg import GoalStatus
 import py_trees
 
@@ -222,6 +224,7 @@ class MissionNode(Node):
 
         self._attach_pub = self.create_publisher(Empty, '/vacuum_gripper/attach', 10)
         self._detach_pub = self.create_publisher(Empty, '/vacuum_gripper/detach', 10)
+        self._cmd_vel_pub = self.create_publisher(Twist, '/cmd_vel', 10)
         self._undock_client = ActionClient(self, Undock, '/undock')
         self._nav_client = ActionClient(self, NavigateToPose, '/navigate_to_pose')
         self._arm_client = ActionClient(
@@ -230,6 +233,16 @@ class MissionNode(Node):
             '/lite6_traj_controller/follow_joint_trajectory'
         )
 
+        self._clear_local_costmap_client = self.create_client(
+            ClearEntireCostmap, '/local_costmap/clear_entirely_local_costmap')
+        self._clear_global_costmap_client = self.create_client(
+            ClearEntireCostmap, '/global_costmap/clear_entirely_global_costmap')
+
+        # Subscribe to /dock_status to detect when Create 3 is off the dock
+        self._is_docked = True
+        self._dock_status_sub = self.create_subscription(
+            DockStatus, '/dock_status', self._dock_status_cb, 10)
+
         # TODO E2: Add the NavigateToPose client and the state needed by BT leaves.
         #          Track pending requests, accepted goals, results, and timeouts.
         #          Keep current observations separate from task-stage completion.
@@ -237,10 +250,14 @@ class MissionNode(Node):
         self._undock_send_future = None
         self._undock_goal_handle = None
         self._undock_result_future = None
+        self._undock_start_time = None
+        self._undock_cancelling = False
 
         self._nav_goal_handle = None
         self._nav_result_future = None
         self._nav_send_future = None
+        self._nav_retry_count = 0
+        self._max_nav_retries = 3
 
         self._vacuum_start_time = None
         self._vacuum_enable = None
@@ -267,19 +284,34 @@ class MissionNode(Node):
         self.lift_arm_angles = [0.0, 0.87, 1.57, 0.0, -1.57, 0.5]
         self.place_arm_angles = [0.0, 0.87, 1.57, 0.0, -1.57, 0.0]
 
+    def _dock_status_cb(self, msg: DockStatus):
+        self._is_docked = msg.is_docked
+
+    def clear_all_costmaps(self):
+        """Clear local and global costmaps to remove residual dock obstacles / ghosts."""
+        self.get_logger().info("Clearing local and global costmaps...")
+        req = ClearEntireCostmap.Request()
+        if self._clear_local_costmap_client.service_is_ready():
+            self._clear_local_costmap_client.call_async(req)
+        if self._clear_global_costmap_client.service_is_ready():
+            self._clear_global_costmap_client.call_async(req)
+
+
 
     def undock_robot(self):
-        # TODO E3: Implement a non-blocking undock operation for the BT.
-        #          Send once per activation; keep checking the same request.
-        #          The leaf reports RUNNING while pending, SUCCESS only after
-        #          confirmed success, and FAILURE on rejection/error/timeout.
-        #          Handle cancellation if the leaf is interrupted, including a
-        #          pending goal that gets accepted after cancellation was requested.
+        # E3: Non-blocking undock operation.
+        # Create 3's undock behavior backs out 0.4m then rotates 180 degrees.
+        # Due to arm physics on the base, rotation error can hover at ~0.03 rad (above 0.02 rad tolerance),
+        # causing the action server to hang for 30s sim time (several real minutes).
+        # We detect when the robot is physically off the dock via /dock_status and tf,
+        # and if so, cancel the undock goal early so Create 3 cleans up immediately.
         if self._undock_send_future is None:
             if not self._undock_client.server_is_ready():
                 self.get_logger().warn("Undock action server not ready yet.")
                 return py_trees.common.Status.RUNNING
             goal = Undock.Goal()
+            self._undock_start_time = self.get_clock().now()
+            self._undock_cancelling = False
             self._undock_send_future = self._undock_client.send_goal_async(goal)
             return py_trees.common.Status.RUNNING
 
@@ -292,23 +324,39 @@ class MissionNode(Node):
             if not self._undock_goal_handle.accepted:
                 self.get_logger().error("Undock goal was rejected!")
                 return py_trees.common.Status.FAILURE
+
             if self._undock_result_future is None:
                 self._undock_result_future = self._undock_goal_handle.get_result_async()
-                return py_trees.common.Status.RUNNING
+
+            # Check if the robot has already left the dock
+            elapsed = (self.get_clock().now() - self._undock_start_time).nanoseconds * 1e-9
+            if elapsed > 4.0 and not self._is_docked and not self._undock_cancelling:
+                self.get_logger().info(
+                    f"Robot is already off the dock ({elapsed:.1f}s elapsed, is_docked={self._is_docked}). "
+                    "Cancelling undock goal to bypass rotation tolerance hang..."
+                )
+                self._undock_cancelling = True
+                self._undock_goal_handle.cancel_goal_async()
+
             if not self._undock_result_future.done():
                 return py_trees.common.Status.RUNNING
 
             result = self._undock_result_future.result()
-            if result.status == GoalStatus.STATUS_SUCCEEDED and not result.result.is_docked:
+            # If succeeded normally OR cancelled after confirming undocked
+            if (result.status == GoalStatus.STATUS_SUCCEEDED and not result.result.is_docked) or \
+               (self._undock_cancelling and not self._is_docked):
                 self.get_logger().info("Undock succeeded. Waiting 1.0s for motion controller to settle...")
-                # Allow motion_control to finish releasing the behavior lock
                 settle_start = self.get_clock().now()
                 while (self.get_clock().now() - settle_start).nanoseconds < 1e9:
                     rclpy.spin_once(self, timeout_sec=0.1)
+                
+                # Clear costmaps to wipe residual dock obstacles
+                self.clear_all_costmaps()
+                
                 self._undocked = True
                 return py_trees.common.Status.SUCCESS
             else:
-                self.get_logger().error("Undock failed or robot is still docked.")
+                self.get_logger().error(f"Undock finished with status {result.status}, is_docked={self._is_docked}.")
                 return py_trees.common.Status.FAILURE
         except Exception as e:
             self.get_logger().error(f"Exception during undock operation: {e}")
@@ -316,17 +364,17 @@ class MissionNode(Node):
 
 
     def go_to_pose(self, pose_stamped):
-        # TODO E4: Implement NavigateToPose as a non-blocking BT operation.
-        #          Send once per activation, not once per tick; preserve the goal
-        #          handle and check the final status, not just goal acceptance.
-        #          Map progress to RUNNING/SUCCESS/FAILURE in the leaf; manage
-        #          cancellation and ignore stale results from previous goals.
-        #          Reuse this operation for source/target poses in E, C, and A.
+        # E4: Implement NavigateToPose as a non-blocking BT operation.
         if self._nav_send_future is None:
             if not self._nav_client.server_is_ready():
                 return py_trees.common.Status.RUNNING
+            # Clear costmap before sending navigation to remove any stale obstacles near robot
+            self.clear_all_costmaps()
             pose_stamped.header.stamp = self.get_clock().now().to_msg()
-            self.get_logger().info(f"Navigating to x: {pose_stamped.pose.position.x}, y: {pose_stamped.pose.position.y}")
+            self.get_logger().info(
+                f"Navigating to x: {pose_stamped.pose.position.x:.2f}, "
+                f"y: {pose_stamped.pose.position.y:.2f} (retry: {self._nav_retry_count})"
+            )
             goal = NavigateToPose.Goal()
             goal.pose = pose_stamped
             self._nav_send_future = self._nav_client.send_goal_async(goal)
@@ -350,10 +398,25 @@ class MissionNode(Node):
             result = self._nav_result_future.result()
             if result.status == GoalStatus.STATUS_SUCCEEDED:
                 self.get_logger().info("Navigation succeeded.")
+                self._nav_retry_count = 0
                 return py_trees.common.Status.SUCCESS
             else:
-                self.get_logger().error(f"Navigation failed with status: {result.status}")
-                return py_trees.common.Status.FAILURE
+                self.get_logger().warn(f"Navigation failed with status: {result.status}")
+                if self._nav_retry_count < self._max_nav_retries:
+                    self._nav_retry_count += 1
+                    self.get_logger().info(
+                        f"Retrying navigation ({self._nav_retry_count}/{self._max_nav_retries})..."
+                    )
+                    # Clear costmaps and reset nav state
+                    self.clear_all_costmaps()
+                    self._nav_send_future = None
+                    self._nav_goal_handle = None
+                    self._nav_result_future = None
+                    return py_trees.common.Status.RUNNING
+                else:
+                    self.get_logger().error(f"Navigation failed after {self._max_nav_retries} retries.")
+                    self._nav_retry_count = 0
+                    return py_trees.common.Status.FAILURE
         except Exception as e:
             self.get_logger().error(f"Exception during navigation operation: {e}")
             return py_trees.common.Status.FAILURE
