@@ -264,8 +264,10 @@ class MissionNode(Node):
         self._vacuum_enable = None
         self._vacuum_wait_secs = 1.5
 
-        self._arm_safe = True
-        self.safe_arm_angles = [0.0, 0.87, 1.57, 0.0, -1.57, 0.0]
+        # Official Q&A 7 stow pose: [0, 0, 0, 0, -pi, 0] ensures balanced center of gravity
+        # so wheels do not slip during undock rotation.
+        self.safe_arm_angles = [0.0, 0.0, 0.0, 0.0, -math.pi, 0.0]
+        self._arm_safe = False
         self._safe_move_started = False
         self._arm_send_future = None
         self._arm_goal_handle = None
@@ -297,22 +299,19 @@ class MissionNode(Node):
         if self._clear_global_costmap_client.service_is_ready():
             self._clear_global_costmap_client.call_async(req)
 
-
-
     def undock_robot(self):
         # E3: Non-blocking undock operation.
-        # Create 3's undock behavior backs out 0.4m then rotates 180 degrees.
-        # Due to arm physics on the base, rotation error can hover at ~0.03 rad (above 0.02 rad tolerance),
-        # causing the action server to hang for 30s sim time (several real minutes).
-        # We detect when the robot is physically off the dock via /dock_status and tf,
-        # and if so, cancel the undock goal early so Create 3 cleans up immediately.
+        # Following Assignment Q&A 7:
+        # 1) Detach gripper at beginning to ensure no magnetic lock holds the robot
+        # 2) Let Undock action run cleanly with stowed arm
         if self._undock_send_future is None:
             if not self._undock_client.server_is_ready():
                 self.get_logger().warn("Undock action server not ready yet.")
                 return py_trees.common.Status.RUNNING
+            # Q&A 7: detach gripper before undocking
+            self._detach_pub.publish(Empty())
             goal = Undock.Goal()
             self._undock_start_time = self.get_clock().now()
-            self._undock_cancelling = False
             self._undock_send_future = self._undock_client.send_goal_async(goal)
             return py_trees.common.Status.RUNNING
 
@@ -329,58 +328,27 @@ class MissionNode(Node):
             if self._undock_result_future is None:
                 self._undock_result_future = self._undock_goal_handle.get_result_async()
 
-            # Check if the robot has already left the dock
-            elapsed = (self.get_clock().now() - self._undock_start_time).nanoseconds * 1e-9
-            if elapsed > 4.0 and not self._is_docked and not self._undock_cancelling:
-                self.get_logger().info(
-                    f"Robot is already off the dock ({elapsed:.1f}s elapsed, is_docked={self._is_docked}). "
-                    "Cancelling undock goal to bypass rotation tolerance hang..."
-                )
-                self._undock_cancelling = True
-                self._undock_goal_handle.cancel_goal_async()
-
             if not self._undock_result_future.done():
                 return py_trees.common.Status.RUNNING
 
             result = self._undock_result_future.result()
-            # If succeeded normally OR cancelled after confirming undocked
-            if (result.status == GoalStatus.STATUS_SUCCEEDED and not result.result.is_docked) or \
-               (self._undock_cancelling and not self._is_docked):
-                self.get_logger().info("Undock confirmed. Waiting 1.0s for motion controller to settle...")
-                settle_start = self.get_clock().now()
-                while (self.get_clock().now() - settle_start).nanoseconds < 1e9:
-                    rclpy.spin_once(self, timeout_sec=0.1)
-
-                # Nudge forward smoothly to clear dock footprint completely
-                self.get_logger().info("Nudging forward away from dock into open corridor...")
-                nudge_cmd = Twist()
-                nudge_cmd.linear.x = 0.2
-                nudge_start = self.get_clock().now()
-                while (self.get_clock().now() - nudge_start).nanoseconds < 1.5e9:
-                    self._cmd_vel_pub.publish(nudge_cmd)
-                    rclpy.spin_once(self, timeout_sec=0.05)
-                # Stop robot
-                self._cmd_vel_pub.publish(Twist())
-                
-                # Clear costmaps to wipe residual dock obstacles
+            if result.status == GoalStatus.STATUS_SUCCEEDED and not result.result.is_docked:
+                self.get_logger().info("Undock completed successfully.")
                 self.clear_all_costmaps()
-                
                 self._undocked = True
                 return py_trees.common.Status.SUCCESS
             else:
-                self.get_logger().error(f"Undock finished with status {result.status}, is_docked={self._is_docked}.")
+                self.get_logger().error(f"Undock finished with status {result.status}, is_docked={result.result.is_docked}.")
                 return py_trees.common.Status.FAILURE
         except Exception as e:
             self.get_logger().error(f"Exception during undock operation: {e}")
             return py_trees.common.Status.FAILURE
-
 
     def go_to_pose(self, pose_stamped):
         # E4: Implement NavigateToPose as a non-blocking BT operation.
         if self._nav_send_future is None:
             if not self._nav_client.server_is_ready():
                 return py_trees.common.Status.RUNNING
-            # Clear costmap before sending navigation to remove any stale obstacles near robot
             self.clear_all_costmaps()
             pose_stamped.header.stamp = self.get_clock().now().to_msg()
             self.get_logger().info(
@@ -419,7 +387,10 @@ class MissionNode(Node):
                     self.get_logger().info(
                         f"Retrying navigation ({self._nav_retry_count}/{self._max_nav_retries})..."
                     )
-                    # Clear costmaps and reset nav state
+                    # Brief settle before retry to allow bt_navigator to clean up
+                    settle_start = self.get_clock().now()
+                    while (self.get_clock().now() - settle_start).nanoseconds < 1e9:
+                        rclpy.spin_once(self, timeout_sec=0.1)
                     self.clear_all_costmaps()
                     self._nav_send_future = None
                     self._nav_goal_handle = None
