@@ -1,0 +1,15 @@
+# Run in Terminal 2 on the lab PC after loading the project environment.
+# Extract relevant messages from the newest saved launch log.
+# This overwrites launch_errors.txt only; it does not change log.txt.
+
+cd ~/IROB_Mobile_Robot_Project
+latest_log=$(ls -t study_notes/logs/e_launch_*.log | head -n 1)
+
+grep -n -i -C 8 -E \
+'undock|already running|reject|wait_for_sim|ERROR|FATAL' \
+"$latest_log" > study_notes/launch_errors.txt
+
+wc -l "$latest_log" study_notes/launch_errors.txt
+
+# If the launch log has zero lines, it contains no saved terminal output.
+# If only launch_errors.txt has zero lines, there were no matching lines.

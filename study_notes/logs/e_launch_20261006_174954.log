@@ -1,0 +1,920 @@
+[INFO] [launch]: All log files can be found below /home/y/u/yunqiao/.ros/log/2026-10-06-17-49-54-880255-white-05.eecs.kth.se-16497
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [gazebo-1]: process started with pid [16527]
+[INFO] [parameter_bridge-2]: process started with pid [16529]
+[INFO] [robot_state_publisher-3]: process started with pid [16531]
+[INFO] [robot_state_publisher-4]: process started with pid [16534]
+[INFO] [static_transform_publisher-5]: process started with pid [16536]
+[INFO] [create-6]: process started with pid [16538]
+[INFO] [create-7]: process started with pid [16540]
+[INFO] [parameter_bridge-8]: process started with pid [16542]
+[INFO] [parameter_bridge-9]: process started with pid [16544]
+[INFO] [parameter_bridge-10]: process started with pid [16546]
+[INFO] [parameter_bridge-11]: process started with pid [16548]
+[INFO] [parameter_bridge-12]: process started with pid [16550]
+[INFO] [parameter_bridge-13]: process started with pid [16552]
+[INFO] [parameter_bridge-14]: process started with pid [16554]
+[INFO] [parameter_bridge-15]: process started with pid [16556]
+[INFO] [parameter_bridge-16]: process started with pid [16558]
+[INFO] [parameter_bridge-17]: process started with pid [16560]
+[INFO] [parameter_bridge-18]: process started with pid [16562]
+[INFO] [parameter_bridge-19]: process started with pid [16564]
+[INFO] [parameter_bridge-20]: process started with pid [16567]
+[INFO] [parameter_bridge-21]: process started with pid [16569]
+[INFO] [parameter_bridge-22]: process started with pid [16571]
+[INFO] [parameter_bridge-23]: process started with pid [16573]
+[INFO] [parameter_bridge-24]: process started with pid [16575]
+[INFO] [parameter_bridge-25]: process started with pid [16577]
+[INFO] [parameter_bridge-26]: process started with pid [16579]
+[INFO] [parameter_bridge-27]: process started with pid [16581]
+[INFO] [parameter_bridge-28]: process started with pid [16583]
+[INFO] [turtlebot4_node-29]: process started with pid [16585]
+[INFO] [turtlebot4_gz_hmi_node-30]: process started with pid [16587]
+[INFO] [spawner-31]: process started with pid [16589]
+[INFO] [hazards_vector_publisher-32]: process started with pid [16591]
+[INFO] [ir_intensity_vector_publisher-33]: process started with pid [16593]
+[INFO] [motion_control-34]: process started with pid [16595]
+[INFO] [wheel_status_publisher-35]: process started with pid [16597]
+[INFO] [mock_publisher-36]: process started with pid [16599]
+[INFO] [robot_state-37]: process started with pid [16601]
+[INFO] [kidnap_estimator_publisher-38]: process started with pid [16603]
+[INFO] [ui_mgr-39]: process started with pid [16605]
+[INFO] [pose_republisher_node-40]: process started with pid [16607]
+[INFO] [sensors_node-41]: process started with pid [16609]
+[INFO] [interface_buttons_node-42]: process started with pid [16611]
+[INFO] [static_transform_publisher-43]: process started with pid [16613]
+[INFO] [static_transform_publisher-44]: process started with pid [16615]
+[INFO] [parameter_bridge-45]: process started with pid [16617]
+[INFO] [parameter_bridge-46]: process started with pid [16619]
+[INFO] [wait_for_ready-47]: process started with pid [16621]
+[INFO] [wait_for_ready-48]: process started with pid [16623]
+[INFO] [controller_server-49]: process started with pid [16625]
+[INFO] [smoother_server-50]: process started with pid [16627]
+[INFO] [planner_server-51]: process started with pid [16629]
+[INFO] [route_server-52]: process started with pid [16631]
+[INFO] [behavior_server-53]: process started with pid [16633]
+[INFO] [bt_navigator-54]: process started with pid [16635]
+[INFO] [waypoint_follower-55]: process started with pid [16637]
+[INFO] [velocity_smoother-56]: process started with pid [16639]
+[INFO] [collision_monitor-57]: process started with pid [16641]
+[INFO] [opennav_docking-58]: process started with pid [16643]
+[INFO] [lifecycle_manager-59]: process started with pid [16645]
+[INFO] [map_server-60]: process started with pid [16647]
+[INFO] [lifecycle_manager-61]: process started with pid [16649]
+[static_transform_publisher-5] [WARN] [1791301799.353608299] []: Old-style arguments are deprecated; see --help for new-style arguments
+[static_transform_publisher-5] [INFO] [1791301799.610311097] [tf_odom_std_dock_link_publisher]: Spinning until stopped - publishing transform
+[static_transform_publisher-5] translation: ('0.157000', '0.000000', '0.000000')
+[static_transform_publisher-5] rotation: ('0.000000', '0.000000', '1.000000', '0.000000')
+[static_transform_publisher-5] from 'odom' to 'std_dock_link'
+[hazards_vector_publisher-32] [INFO] [1791301799.798890839] [hazards_vector_publisher]: Advertised topic: hazard_detection
+[hazards_vector_publisher-32] [INFO] [1791301799.799155348] [hazards_vector_publisher]: Subscription to topic: _internal/bumper/event
+[hazards_vector_publisher-32] [INFO] [1791301799.799317903] [hazards_vector_publisher]: Subscription to topic: _internal/cliff_front_left/event
+[hazards_vector_publisher-32] [INFO] [1791301799.799475185] [hazards_vector_publisher]: Subscription to topic: _internal/cliff_front_right/event
+[hazards_vector_publisher-32] [INFO] [1791301799.800986925] [hazards_vector_publisher]: Subscription to topic: _internal/cliff_side_left/event
+[hazards_vector_publisher-32] [INFO] [1791301799.801343454] [hazards_vector_publisher]: Subscription to topic: _internal/cliff_side_right/event
+[hazards_vector_publisher-32] [INFO] [1791301799.801567111] [hazards_vector_publisher]: Subscription to topic: _internal/wheel_drop/left_wheel/event
+[hazards_vector_publisher-32] [INFO] [1791301799.801934118] [hazards_vector_publisher]: Subscription to topic: _internal/wheel_drop/right_wheel/event
+[hazards_vector_publisher-32] [INFO] [1791301799.802140031] [hazards_vector_publisher]: Subscription to topic: _internal/backup_limit
+[wheel_status_publisher-35] [INFO] [1791301799.875653494] [wheel_status_publisher]: Advertised topic: wheel_vels
+[wheel_status_publisher-35] [INFO] [1791301799.875969278] [wheel_status_publisher]: Advertised topic: wheel_ticks
+[mock_publisher-36] [INFO] [1791301799.922136878] [mock_publisher]: Advertised mocked topic: slip_status
+[kidnap_estimator_publisher-38] [INFO] [1791301799.967305630] [kidnap_estimator_publisher]: Advertised topic: kidnap_status
+[kidnap_estimator_publisher-38] [INFO] [1791301799.967714518] [kidnap_estimator_publisher]: Subscription to topic: hazard_detection
+[ir_intensity_vector_publisher-33] [INFO] [1791301800.022261696] [ir_intensity_vector_publisher]: Advertised topic: ir_intensity
+[ir_intensity_vector_publisher-33] [INFO] [1791301800.023504986] [ir_intensity_vector_publisher]: Subscription to topic: _internal/ir_intensity_front_center_left
+[ir_intensity_vector_publisher-33] [INFO] [1791301800.024429563] [ir_intensity_vector_publisher]: Subscription to topic: _internal/ir_intensity_front_center_right
+[ir_intensity_vector_publisher-33] [INFO] [1791301800.024957205] [ir_intensity_vector_publisher]: Subscription to topic: _internal/ir_intensity_front_left
+[static_transform_publisher-44] [WARN] [1791301800.025973238] []: Old-style arguments are deprecated; see --help for new-style arguments
+[ir_intensity_vector_publisher-33] [INFO] [1791301800.027599653] [ir_intensity_vector_publisher]: Subscription to topic: _internal/ir_intensity_front_right
+[ir_intensity_vector_publisher-33] [INFO] [1791301800.027938821] [ir_intensity_vector_publisher]: Subscription to topic: _internal/ir_intensity_left
+[ir_intensity_vector_publisher-33] [INFO] [1791301800.028146447] [ir_intensity_vector_publisher]: Subscription to topic: _internal/ir_intensity_right
+[ir_intensity_vector_publisher-33] [INFO] [1791301800.028340792] [ir_intensity_vector_publisher]: Subscription to topic: _internal/ir_intensity_side_left
+[robot_state-37] [INFO] [1791301800.038280094] [robot_state]: Advertised topic: battery_state
+[robot_state-37] [INFO] [1791301800.087374019] [robot_state]: Subscription to topic: dock_status
+[robot_state-37] [INFO] [1791301800.088585690] [robot_state]: Advertised topic: stop_status
+[robot_state-37] [INFO] [1791301800.091007333] [robot_state]: Subscription to topic: odom
+[robot_state_publisher-4] [WARN] [1791301800.108929816] [kdl_parser]: The root link std_dock_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia.  As a workaround, you can add an extra dummy link to your URDF.
+[robot_state_publisher-4] [INFO] [1791301800.108987610] [dock_state_publisher]: Robot initialized
+[static_transform_publisher-43] [WARN] [1791301800.129239944] []: Old-style arguments are deprecated; see --help for new-style arguments
+[ui_mgr-39] [INFO] [1791301800.131239509] [ui_mgr]: Subscription to topic: cmd_lightring
+[ui_mgr-39] [INFO] [1791301800.131702120] [ui_mgr]: Subscription to topic: cmd_audio
+[robot_state_publisher-3] [WARN] [1791301800.167840639] [kdl_parser]: The root link base_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia.  As a workaround, you can add an extra dummy link to your URDF.
+[robot_state_publisher-3] [INFO] [1791301800.168002299] [robot_state_publisher]: Robot initialized
+[static_transform_publisher-44] [INFO] [1791301800.198162501] [camera_stf]: Spinning until stopped - publishing transform
+[static_transform_publisher-44] translation: ('0.000000', '0.000000', '0.000000')
+[static_transform_publisher-44] rotation: ('0.499952', '-0.500000', '0.500000', '0.500048')
+[static_transform_publisher-44] from 'oakd_rgb_camera_optical_frame' to 'turtlebot4/oakd_rgb_camera_frame/rgbd_camera'
+[motion_control-34] [INFO] [1791301800.214082671] [motion_control]: Enabling REFLEX_BUMP
+[motion_control-34] [INFO] [1791301800.215428750] [motion_control]: Enabling REFLEX_CLIFF
+[motion_control-34] [INFO] [1791301800.218039977] [motion_control]: Enabling REFLEX_STUCK
+[motion_control-34] [INFO] [1791301800.218775182] [motion_control]: Enabling REFLEX_WHEEL_DROP
+[static_transform_publisher-43] [INFO] [1791301800.313435278] [rplidar_stf]: Spinning until stopped - publishing transform
+[static_transform_publisher-43] translation: ('0.000000', '0.000000', '0.000000')
+[static_transform_publisher-43] rotation: ('0.000000', '0.000000', '0.000000', '1.000000')
+[static_transform_publisher-43] from 'rplidar_link' to 'turtlebot4/rplidar_link/rplidar'
+[lifecycle_manager-61] [INFO] [1791301800.709591424] [lifecycle_manager_map]: Creating
+[velocity_smoother-56] [INFO] [1791301800.731120721] [velocity_smoother]: 
+[velocity_smoother-56] 	velocity_smoother lifecycle node launched. 
+[velocity_smoother-56] 	Waiting on external lifecycle transitions to activate
+[velocity_smoother-56] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[lifecycle_manager-61] [INFO] [1791301800.745798025] [lifecycle_manager_map]: [34m[1mCreating and initializing lifecycle service clients[0m[0m
+[controller_server-49] [INFO] [1791301800.816033361] [controller_server]: 
+[controller_server-49] 	controller_server lifecycle node launched. 
+[controller_server-49] 	Waiting on external lifecycle transitions to activate
+[controller_server-49] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[waypoint_follower-55] [INFO] [1791301800.864508050] [waypoint_follower]: 
+[waypoint_follower-55] 	waypoint_follower lifecycle node launched. 
+[waypoint_follower-55] 	Waiting on external lifecycle transitions to activate
+[waypoint_follower-55] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[turtlebot4_node-29] [INFO] [1791301800.969035396] [turtlebot4_node]: Init Turtlebot4 Node Main
+[behavior_server-53] [INFO] [1791301801.014970561] [behavior_server]: 
+[behavior_server-53] 	behavior_server lifecycle node launched. 
+[behavior_server-53] 	Waiting on external lifecycle transitions to activate
+[behavior_server-53] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[waypoint_follower-55] [INFO] [1791301801.046447879] [waypoint_follower]: Creating
+[create-7] [INFO] [1791301801.239181791] [ros_gz_sim]: Requesting list of world names.
+[parameter_bridge-9] [INFO] [1791301801.339336492] [pose_bridge]: Creating GZ->ROS Bridge: [/model/turtlebot4/pose (gz.msgs.Pose_V) -> /model/turtlebot4/pose (tf2_msgs/msg/TFMessage)] (Lazy 0)
+[parameter_bridge-12] [INFO] [1791301801.341418578] [cliff_front_left_bridge]: Creating GZ->ROS Bridge: [/world/warehouse/model/turtlebot4/link/base_link/sensor/cliff_front_left/scan (gz.msgs.LaserScan) -> /world/warehouse/model/turtlebot4/link/base_link/sensor/cliff_front_left/scan (sensor_msgs/msg/LaserScan)] (Lazy 0)
+[parameter_bridge-9] [INFO] [1791301801.352280022] [pose_bridge]: Creating GZ->ROS Bridge: [/model/standard_dock/pose (gz.msgs.Pose_V) -> /model/standard_dock/pose (tf2_msgs/msg/TFMessage)] (Lazy 0)
+[turtlebot4_node-29] [INFO] [1791301801.440923903] [turtlebot4_node]: Buttons Init
+[lifecycle_manager-59] [INFO] [1791301801.448061566] [lifecycle_manager_navigation]: Creating
+[turtlebot4_node-29] [INFO] [1791301801.456785825] [turtlebot4_node]: Init Display
+[parameter_bridge-14] [INFO] [1791301801.459762848] [cliff_side_left_bridge]: Creating GZ->ROS Bridge: [/world/warehouse/model/turtlebot4/link/base_link/sensor/cliff_side_left/scan (gz.msgs.LaserScan) -> /world/warehouse/model/turtlebot4/link/base_link/sensor/cliff_side_left/scan (sensor_msgs/msg/LaserScan)] (Lazy 0)
+[lifecycle_manager-59] [INFO] [1791301801.462136989] [lifecycle_manager_navigation]: [34m[1mCreating and initializing lifecycle service clients[0m[0m
+[turtlebot4_node-29] [INFO] [1791301801.464690810] [turtlebot4_node]: Leds Init
+[turtlebot4_node-29] [INFO] [1791301801.474161208] [turtlebot4_node]: Turtlebot4 standard running.
+[controller_server-49] [INFO] [1791301801.484793811] [controller_server]: Creating controller server
+[controller_server-49] [INFO] [1791301801.497253706] [local_costmap.local_costmap]: 
+[controller_server-49] 	local_costmap lifecycle node launched. 
+[controller_server-49] 	Waiting on external lifecycle transitions to activate
+[controller_server-49] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[controller_server-49] [INFO] [1791301801.503390505] [local_costmap.local_costmap]: Creating Costmap
+[opennav_docking-58] [INFO] [1791301801.528137800] [docking_server]: 
+[opennav_docking-58] 	docking_server lifecycle node launched. 
+[opennav_docking-58] 	Waiting on external lifecycle transitions to activate
+[opennav_docking-58] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[opennav_docking-58] [INFO] [1791301801.528186099] [docking_server]: Creating docking_server
+[collision_monitor-57] [INFO] [1791301801.539086125] [collision_monitor]: 
+[collision_monitor-57] 	collision_monitor lifecycle node launched. 
+[collision_monitor-57] 	Waiting on external lifecycle transitions to activate
+[collision_monitor-57] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[planner_server-51] [INFO] [1791301801.539122541] [planner_server]: 
+[planner_server-51] 	planner_server lifecycle node launched. 
+[planner_server-51] 	Waiting on external lifecycle transitions to activate
+[planner_server-51] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[smoother_server-50] [INFO] [1791301801.543011336] [smoother_server]: 
+[smoother_server-50] 	smoother_server lifecycle node launched. 
+[smoother_server-50] 	Waiting on external lifecycle transitions to activate
+[smoother_server-50] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[planner_server-51] [INFO] [1791301801.555554952] [planner_server]: Creating
+[smoother_server-50] [INFO] [1791301801.560155748] [smoother_server]: Creating smoother server
+[planner_server-51] [INFO] [1791301801.568796174] [global_costmap.global_costmap]: 
+[planner_server-51] 	global_costmap lifecycle node launched. 
+[planner_server-51] 	Waiting on external lifecycle transitions to activate
+[planner_server-51] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[planner_server-51] [INFO] [1791301801.570707259] [global_costmap.global_costmap]: Creating Costmap
+[gazebo-1] Warning: Ignoring XDG_SESSION_TYPE=wayland on Gnome. Use QT_QPA_PLATFORM=wayland to run on Wayland anyway.
+[parameter_bridge-16] [INFO] [1791301801.831507376] [ir_intensity_front_center_left_bridge]: Creating GZ->ROS Bridge: [/world/warehouse/model/turtlebot4/link/ir_intensity_front_center_left/sensor/ir_intensity_front_center_left/scan (gz.msgs.LaserScan) -> /world/warehouse/model/turtlebot4/link/ir_intensity_front_center_left/sensor/ir_intensity_front_center_left/scan (sensor_msgs/msg/LaserScan)] (Lazy 0)
+[parameter_bridge-24] [INFO] [1791301801.835568669] [hmi_display_msg_bridge]: Creating ROS->GZ Bridge: [/hmi/display/raw (std_msgs/msg/String) -> /hmi/display/raw (gz.msgs.StringMsg)] (Lazy 0)
+[parameter_bridge-2] [INFO] [1791301801.848192965] [clock_bridge]: Creating GZ->ROS Bridge: [/clock (gz.msgs.Clock) -> /clock (rosgraph_msgs/msg/Clock)] (Lazy 0)
+[create-6] [INFO] [1791301801.851973138] [ros_gz_sim]: Requesting list of world names.
+[parameter_bridge-8] [INFO] [1791301801.861232508] [cmd_vel_bridge]: Creating GZ->ROS Bridge: [/cmd_vel (gz.msgs.Twist) -> /cmd_vel (geometry_msgs/msg/TwistStamped)] (Lazy 0)
+[parameter_bridge-8] [INFO] [1791301801.864573845] [cmd_vel_bridge]: Creating ROS->GZ Bridge: [/model/turtlebot4/cmd_vel (geometry_msgs/msg/TwistStamped) -> /model/turtlebot4/cmd_vel (gz.msgs.Twist)] (Lazy 0)
+[parameter_bridge-10] [INFO] [1791301801.872350461] [odom_base_tf_bridge]: Creating GZ->ROS Bridge: [/model/turtlebot4/tf (gz.msgs.Pose_V) -> /model/turtlebot4/tf (tf2_msgs/msg/TFMessage)] (Lazy 0)
+[bt_navigator-54] [INFO] [1791301801.878944602] [bt_navigator]: 
+[bt_navigator-54] 	bt_navigator lifecycle node launched. 
+[bt_navigator-54] 	Waiting on external lifecycle transitions to activate
+[bt_navigator-54] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[route_server-52] [INFO] [1791301801.885507097] [route_server]: 
+[route_server-52] 	route_server lifecycle node launched. 
+[route_server-52] 	Waiting on external lifecycle transitions to activate
+[route_server-52] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[map_server-60] [INFO] [1791301801.885710910] [map_server]: 
+[map_server-60] 	map_server lifecycle node launched. 
+[map_server-60] 	Waiting on external lifecycle transitions to activate
+[map_server-60] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[map_server-60] [INFO] [1791301801.885748292] [map_server]: Creating
+[bt_navigator-54] [INFO] [1791301801.885740787] [bt_navigator]: Creating
+[parameter_bridge-17] [INFO] [1791301802.046491866] [ir_intensity_front_center_right_bridge]: Creating GZ->ROS Bridge: [/world/warehouse/model/turtlebot4/link/ir_intensity_front_center_right/sensor/ir_intensity_front_center_right/scan (gz.msgs.LaserScan) -> /world/warehouse/model/turtlebot4/link/ir_intensity_front_center_right/sensor/ir_intensity_front_center_right/scan (sensor_msgs/msg/LaserScan)] (Lazy 0)
+[parameter_bridge-24] [INFO] [1791301802.154037038] [hmi_display_msg_bridge]: Creating ROS->GZ Bridge: [/hmi/display/selected (std_msgs/msg/Int32) -> /hmi/display/selected (gz.msgs.Int32)] (Lazy 0)
+[parameter_bridge-20] [INFO] [1791301802.182948469] [ir_intensity_left_bridge]: Creating GZ->ROS Bridge: [/world/warehouse/model/turtlebot4/link/ir_intensity_left/sensor/ir_intensity_left/scan (gz.msgs.LaserScan) -> /world/warehouse/model/turtlebot4/link/ir_intensity_left/sensor/ir_intensity_left/scan (sensor_msgs/msg/LaserScan)] (Lazy 0)
+[parameter_bridge-45] [INFO] [1791301802.191683581] [ros_gz_bridge]: Creating ROS->GZ Bridge: [/vacuum_gripper/attach (std_msgs/msg/Empty) -> /vacuum_gripper/attach (gz.msgs.Empty)] (Lazy 0)
+[parameter_bridge-45] [INFO] [1791301802.202888833] [ros_gz_bridge]: Creating ROS->GZ Bridge: [/vacuum_gripper/detach (std_msgs/msg/Empty) -> /vacuum_gripper/detach (gz.msgs.Empty)] (Lazy 0)
+[parameter_bridge-18] [INFO] [1791301802.206054582] [ir_intensity_front_left_bridge]: Creating GZ->ROS Bridge: [/world/warehouse/model/turtlebot4/link/ir_intensity_front_left/sensor/ir_intensity_front_left/scan (gz.msgs.LaserScan) -> /world/warehouse/model/turtlebot4/link/ir_intensity_front_left/sensor/ir_intensity_front_left/scan (sensor_msgs/msg/LaserScan)] (Lazy 0)
+[parameter_bridge-11] [INFO] [1791301802.220774328] [bumper_contact_bridge]: Creating GZ->ROS Bridge: [/bumper_contact (gz.msgs.Contacts) -> /bumper_contact (ros_gz_interfaces/msg/Contacts)] (Lazy 0)
+[parameter_bridge-22] [INFO] [1791301802.224941441] [ir_intensity_side_left_bridge]: Creating GZ->ROS Bridge: [/world/warehouse/model/turtlebot4/link/ir_intensity_side_left/sensor/ir_intensity_side_left/scan (gz.msgs.LaserScan) -> /world/warehouse/model/turtlebot4/link/ir_intensity_side_left/sensor/ir_intensity_side_left/scan (sensor_msgs/msg/LaserScan)] (Lazy 0)
+[parameter_bridge-28] [INFO] [1791301802.232643088] [camera_bridge]: Creating GZ->ROS Bridge: [/world/warehouse/model/turtlebot4/link/oakd_rgb_camera_frame/sensor/rgbd_camera/image (gz.msgs.Image) -> /world/warehouse/model/turtlebot4/link/oakd_rgb_camera_frame/sensor/rgbd_camera/image (sensor_msgs/msg/Image)] (Lazy 0)
+[parameter_bridge-28] [INFO] [1791301802.239634920] [camera_bridge]: Creating GZ->ROS Bridge: [/world/warehouse/model/turtlebot4/link/oakd_rgb_camera_frame/sensor/rgbd_camera/depth_image (gz.msgs.Image) -> /world/warehouse/model/turtlebot4/link/oakd_rgb_camera_frame/sensor/rgbd_camera/depth_image (sensor_msgs/msg/Image)] (Lazy 0)
+[parameter_bridge-28] [INFO] [1791301802.241876097] [camera_bridge]: Creating GZ->ROS Bridge: [/world/warehouse/model/turtlebot4/link/oakd_rgb_camera_frame/sensor/rgbd_camera/points (gz.msgs.PointCloudPacked) -> /world/warehouse/model/turtlebot4/link/oakd_rgb_camera_frame/sensor/rgbd_camera/points (sensor_msgs/msg/PointCloud2)] (Lazy 0)
+[parameter_bridge-28] [INFO] [1791301802.244286702] [camera_bridge]: Creating GZ->ROS Bridge: [/world/warehouse/model/turtlebot4/link/oakd_rgb_camera_frame/sensor/rgbd_camera/camera_info (gz.msgs.CameraInfo) -> /world/warehouse/model/turtlebot4/link/oakd_rgb_camera_frame/sensor/rgbd_camera/camera_info (sensor_msgs/msg/CameraInfo)] (Lazy 0)
+[parameter_bridge-23] [INFO] [1791301802.269360765] [buttons_msg_bridge]: Creating GZ->ROS Bridge: [/create3_buttons (gz.msgs.Int32) -> /create3_buttons (std_msgs/msg/Int32)] (Lazy 0)
+[parameter_bridge-13] [INFO] [1791301802.289206688] [cliff_front_right_bridge]: Creating GZ->ROS Bridge: [/world/warehouse/model/turtlebot4/link/base_link/sensor/cliff_front_right/scan (gz.msgs.LaserScan) -> /world/warehouse/model/turtlebot4/link/base_link/sensor/cliff_front_right/scan (sensor_msgs/msg/LaserScan)] (Lazy 0)
+[parameter_bridge-26] [INFO] [1791301802.299367990] [hmi_led_msg_bridge]: Creating ROS->GZ Bridge: [/hmi/led/power (std_msgs/msg/Int32) -> /hmi/led/power (gz.msgs.Int32)] (Lazy 0)
+[parameter_bridge-19] [INFO] [1791301802.302679057] [ir_intensity_front_right_bridge]: Creating GZ->ROS Bridge: [/world/warehouse/model/turtlebot4/link/ir_intensity_front_right/sensor/ir_intensity_front_right/scan (gz.msgs.LaserScan) -> /world/warehouse/model/turtlebot4/link/ir_intensity_front_right/sensor/ir_intensity_front_right/scan (sensor_msgs/msg/LaserScan)] (Lazy 0)
+[parameter_bridge-15] [INFO] [1791301802.303306112] [cliff_side_right_bridge]: Creating GZ->ROS Bridge: [/world/warehouse/model/turtlebot4/link/base_link/sensor/cliff_side_right/scan (gz.msgs.LaserScan) -> /world/warehouse/model/turtlebot4/link/base_link/sensor/cliff_side_right/scan (sensor_msgs/msg/LaserScan)] (Lazy 0)
+[parameter_bridge-21] [INFO] [1791301802.316176817] [ir_intensity_right_bridge]: Creating GZ->ROS Bridge: [/world/warehouse/model/turtlebot4/link/ir_intensity_right/sensor/ir_intensity_right/scan (gz.msgs.LaserScan) -> /world/warehouse/model/turtlebot4/link/ir_intensity_right/sensor/ir_intensity_right/scan (sensor_msgs/msg/LaserScan)] (Lazy 0)
+[parameter_bridge-26] [INFO] [1791301802.322407042] [hmi_led_msg_bridge]: Creating ROS->GZ Bridge: [/hmi/led/motors (std_msgs/msg/Int32) -> /hmi/led/motors (gz.msgs.Int32)] (Lazy 0)
+[parameter_bridge-26] [INFO] [1791301802.335231350] [hmi_led_msg_bridge]: Creating ROS->GZ Bridge: [/hmi/led/comms (std_msgs/msg/Int32) -> /hmi/led/comms (gz.msgs.Int32)] (Lazy 0)
+[parameter_bridge-26] [INFO] [1791301802.338083774] [hmi_led_msg_bridge]: Creating ROS->GZ Bridge: [/hmi/led/wifi (std_msgs/msg/Int32) -> /hmi/led/wifi (gz.msgs.Int32)] (Lazy 0)
+[parameter_bridge-26] [INFO] [1791301802.340188817] [hmi_led_msg_bridge]: Creating ROS->GZ Bridge: [/hmi/led/battery (std_msgs/msg/Int32) -> /hmi/led/battery (gz.msgs.Int32)] (Lazy 0)
+[parameter_bridge-26] [INFO] [1791301802.340917522] [hmi_led_msg_bridge]: Creating ROS->GZ Bridge: [/hmi/led/user1 (std_msgs/msg/Int32) -> /hmi/led/user1 (gz.msgs.Int32)] (Lazy 0)
+[parameter_bridge-26] [INFO] [1791301802.342486927] [hmi_led_msg_bridge]: Creating ROS->GZ Bridge: [/hmi/led/user2 (std_msgs/msg/Int32) -> /hmi/led/user2 (gz.msgs.Int32)] (Lazy 0)
+[parameter_bridge-25] [INFO] [1791301802.392491215] [hmi_buttons_msg_bridge]: Creating GZ->ROS Bridge: [/hmi/buttons (gz.msgs.Int32) -> /hmi/buttons (std_msgs/msg/Int32)] (Lazy 0)
+[lifecycle_manager-61] [INFO] [1791301802.394946358] [lifecycle_manager_map]: [34m[1mStarting managed nodes bringup...[0m[0m
+[lifecycle_manager-61] [INFO] [1791301802.395160696] [lifecycle_manager_map]: [34m[1mConfiguring map_server[0m[0m
+[map_server-60] [INFO] [1791301802.398969545] [map_server]: Configuring
+[map_server-60] [INFO] [1791301802.399038452] [map_io]: Loading yaml file: /home/y/u/yunqiao/IROB_Mobile_Robot_Project/install/warehouse_inventory_robot/share/warehouse_inventory_robot/maps/warehouse.yaml
+[map_server-60] [INFO] [1791301802.399319223] [map_io]: resolution: 0.03
+[map_server-60] [INFO] [1791301802.399329938] [map_io]: origin[0]: -15.1
+[map_server-60] [INFO] [1791301802.399333401] [map_io]: origin[1]: -25
+[map_server-60] [INFO] [1791301802.399337023] [map_io]: origin[2]: 0
+[map_server-60] [INFO] [1791301802.399340486] [map_io]: free_thresh: 0.1
+[map_server-60] [INFO] [1791301802.399343718] [map_io]: occupied_thresh: 0.65
+[map_server-60] [INFO] [1791301802.399346891] [map_io]: mode: trinary
+[map_server-60] [INFO] [1791301802.399350453] [map_io]: negate: 0
+[map_server-60] [INFO] [1791301802.399530070] [map_io]: Loading image_file: /home/y/u/yunqiao/IROB_Mobile_Robot_Project/install/warehouse_inventory_robot/share/warehouse_inventory_robot/maps/warehouse.pgm
+[wait_for_ready-47] [INFO] [1791301802.432993156] [wait_for_rviz]: [rviz] waiting for nodes=[] services=[] answering=[] topics=['/clock', '/scan'] (timeout 300s)
+[map_server-60] [INFO] [1791301802.439877489] [map_io]: Read map /home/y/u/yunqiao/IROB_Mobile_Robot_Project/install/warehouse_inventory_robot/share/warehouse_inventory_robot/maps/warehouse.pgm: 1006 X 1674 map @ 0.03 m/cell
+[lifecycle_manager-61] [INFO] [1791301802.485178015] [lifecycle_manager_map]: [34m[1mActivating map_server[0m[0m
+[map_server-60] [INFO] [1791301802.485372945] [map_server]: Activating
+[map_server-60] [INFO] [1791301802.486876382] [map_server]: Creating bond (map_server) to lifecycle manager.
+[wait_for_ready-48] [INFO] [1791301802.506534183] [wait_for_sim]: [sim] waiting for nodes=['controller_manager'] services=['/controller_manager/set_parameters'] answering=['/controller_manager/list_controllers'] topics=['/scan'] (timeout 300s)
+[gazebo-1] [1;36m[Dbg] [gz.cc:166] [0m[1;36mSubscribing to [[0m[1;36m/gazebo/starting_world[0m[1;36m].[0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [gz.cc:168] [0m[1;36mWaiting for a world to be set from the GUI...[0m[1;36m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mReceived world [[0m[1;32mwarehouse.sdf[0m[1;32m] from the GUI.[0m[1;32m[0m
+[gazebo-1] [1;36m[Dbg] [gz.cc:172] [0m[1;36mUnsubscribing from [[0m[1;36m/gazebo/starting_world[0m[1;36m].[0m[1;36m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mGazebo Sim Server v[0m[1;32m8.10.0[0m[1;32m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mLoading SDF world file[[0m[1;32m/home/y/u/yunqiao/IROB_Mobile_Robot_Project/install/turtlebot4_gz_bringup/share/turtlebot4_gz_bringup/worlds/warehouse.sdf[0m[1;32m].[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mServing entity system service on [[0m[1;32m/[0m[1;32mentity/system/add[0m[1;32m][0m[1;32m[0m
+[gazebo-1] [1;36m[Dbg] [Physics.cc:899] [0m[1;36mLoaded [[0m[1;36mgz::physics::dartsim::Plugin[0m[1;36m] from library [[0m[1;36m/afs/kth.se/misc/info/kurser/DD2410/ht26/pixi/IROB/.pixi/envs/default/lib/gz-physics-7/engine-plugins/libgz-physics-dartsim-plugin.so[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [SystemManager.cc:80] [0m[1;36mLoaded system [[0m[1;36mgz::sim::systems::Physics[0m[1;36m] for entity [[0m[1;36m1[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mCreate[0m[1;32m service on [[0m[1;32m/world/warehouse/create_multiple[0m[1;32m] (async)[0m[1;32m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mCreate[0m[1;32m service on [[0m[1;32m/world/warehouse/create_multiple/blocking[0m[1;32m] (blocking)[0m[1;32m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mRemove[0m[1;32m service on [[0m[1;32m/world/warehouse/remove[0m[1;32m] (async)[0m[1;32m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mRemove[0m[1;32m service on [[0m[1;32m/world/warehouse/remove/blocking[0m[1;32m] (blocking)[0m[1;32m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mPose[0m[1;32m service on [[0m[1;32m/world/warehouse/set_pose[0m[1;32m] (async)[0m[1;32m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mPose[0m[1;32m service on [[0m[1;32m/world/warehouse/set_pose/blocking[0m[1;32m] (blocking)[0m[1;32m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mPose[0m[1;32m service on [[0m[1;32m/world/warehouse/set_pose_vector[0m[1;32m] (async)[0m[1;32m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mPose[0m[1;32m service on [[0m[1;32m/world/warehouse/set_pose_vector/blocking[0m[1;32m] (blocking)[0m[1;32m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mLight configuration[0m[1;32m service on [[0m[1;32m/world/warehouse/light_config[0m[1;32m] (async)[0m[1;32m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mLight configuration[0m[1;32m service on [[0m[1;32m/world/warehouse/light_config/blocking[0m[1;32m] (blocking)[0m[1;32m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mPhysics[0m[1;32m service on [[0m[1;32m/world/warehouse/set_physics[0m[1;32m] (async)[0m[1;32m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mPhysics[0m[1;32m service on [[0m[1;32m/world/warehouse/set_physics/blocking[0m[1;32m] (blocking)[0m[1;32m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mSphericalCoordinates[0m[1;32m service on [[0m[1;32m/world/warehouse/set_spherical_coordinates[0m[1;32m] (async)[0m[1;32m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mSphericalCoordinates[0m[1;32m service on [[0m[1;32m/world/warehouse/set_spherical_coordinates/blocking[0m[1;32m] (blocking)[0m[1;32m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mEnable collision[0m[1;32m service on [[0m[1;32m/world/warehouse/enable_collision[0m[1;32m] (async)[0m[1;32m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mEnable collision[0m[1;32m service on [[0m[1;32m/world/warehouse/enable_collision/blocking[0m[1;32m] (blocking)[0m[1;32m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mDisable collision[0m[1;32m service on [[0m[1;32m/world/warehouse/disable_collision[0m[1;32m] (async)[0m[1;32m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mDisable collision[0m[1;32m service on [[0m[1;32m/world/warehouse/disable_collision/blocking[0m[1;32m] (blocking)[0m[1;32m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mMaterial[0m[1;32m service on [[0m[1;32m/world/warehouse/visual_config[0m[1;32m] (async)[0m[1;32m[0m
+[spawner-31] [INFO] [1791301802.543812960] [spawner_joint_state_broadcaster]: waiting for service /controller_manager/list_controllers to become available...
+[create-7] [INFO] [1791301802.699105036] [ros_gz_sim]: Waiting messages on topic [standard_dock_description].
+[parameter_bridge-27] [INFO] [1791301802.702630444] [lidar_bridge]: Creating GZ->ROS Bridge: [/world/warehouse/model/turtlebot4/link/rplidar_link/sensor/rplidar/scan (gz.msgs.LaserScan) -> /world/warehouse/model/turtlebot4/link/rplidar_link/sensor/rplidar/scan (sensor_msgs/msg/LaserScan)] (Lazy 0)
+[lifecycle_manager-61] [INFO] [1791301802.729999957] [lifecycle_manager_map]: Server map_server connected with bond.
+[lifecycle_manager-61] [INFO] [1791301802.730075101] [lifecycle_manager_map]: [34m[1mManaged nodes are active[0m[0m
+[lifecycle_manager-61] [INFO] [1791301802.730087201] [lifecycle_manager_map]: [34m[1mCreating bond timer...[0m[0m
+[create-6] [INFO] [1791301802.854338722] [ros_gz_sim]: Waiting messages on topic [robot_description].
+[wait_for_ready-47] [WARN] [1791301802.956267608] [wait_for_rviz]: New publisher discovered on topic '/clock', offering incompatible QoS. No messages will be received from it. Last incompatible policy: DURABILITY
+[wait_for_ready-47] [WARN] [1791301802.994379489] [wait_for_rviz]: New publisher discovered on topic '/scan', offering incompatible QoS. No messages will be received from it. Last incompatible policy: DURABILITY
+[parameter_bridge-27] [WARN] [1791301803.025352265] [lidar_bridge]: New subscription discovered on topic '/scan', requesting incompatible QoS. No messages will be sent to it. Last incompatible policy: DURABILITY_QOS_POLICY
+[create-7] [INFO] [1791301803.039964694] [ros_gz_sim]: Entity creation successful.
+[parameter_bridge-27] [WARN] [1791301803.065468891] [lidar_bridge]: New subscription discovered on topic '/scan', requesting incompatible QoS. No messages will be sent to it. Last incompatible policy: DURABILITY_QOS_POLICY
+[wait_for_ready-48] [WARN] [1791301803.068103832] [wait_for_sim]: New publisher discovered on topic '/scan', offering incompatible QoS. No messages will be received from it. Last incompatible policy: DURABILITY
+[parameter_bridge-26] [INFO] [1791301803.074617323] [hmi_led_msg_bridge]: Passing message from ROS std_msgs/msg/Int32 to Gazebo gz.msgs.Int32 (showing msg only once per type)
+[gazebo-1] [1;32m[Msg] [0m[1;32mMaterial[0m[1;32m service on [[0m[1;32m/world/warehouse/visual_config/blocking[1;32m[Msg] [0m[1;32mGazebo Sim GUI    v[0m[1;32m8.10.0[0m[1;32m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mDetected Wayland. Setting Qt to use the xcb plugin: [0m[1;32m'QT_QPA_PLATFORM=xcb'.[0m[1;32m[0m
+[gazebo-1] [1;36m[Dbg] [Gui.cc:275] [0m[1;36mWaiting for subscribers to [[0m[1;36m/gazebo/starting_world[0m[1;36m]...[0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [Application.cc:96] [0m[1;36mInitializing application.[0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [Application.cc:170] [0m[1;36mQt using OpenGL graphics interface[0m[1;36m[0m
+[gazebo-1] [1;36m[GUI] [Dbg] [Application.cc:657] [0m[1;36mCreate main window[0m[1;36m[0m
+[gazebo-1] [1;36m[GUI] [Dbg] [PathManager.cc:68] [0m[1;36mRequesting resource paths through [[0m[1;36m/gazebo/resource_paths/get[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;36m[GUI] [Dbg] [Gui.cc:355] [0m[1;36mGUI requesting list of world names. The server may be busy [0m[1;36mdownloading resources. Please be patient.[0m[1;36m[0m
+[gazebo-1] [1;36m[GUI] [Dbg] [GuiRunner.cc:149] [0m[1;36mRequesting initial state from [[0m[1;36m/world/warehouse/state[0m[1;36m]...[0m[1;36m[0m
+[gazebo-1] [1;36m[GUI] [Dbg] [PathManager.cc:57] [0m[1;36mReceived resource paths.[0m[1;36m[0m
+[gazebo-1] [1;32m[GUI] [0m[1;32m[Msg] [0m[1;32mLoading config [[0m[1;32m/home/y/u/yunqiao/IROB_Mobile_Robot_Project/install/turtlebot4_gz_bringup/share/turtlebot4_gz_bringup/gui/standard/gui.config[0m[1;32m][0m[1;32m[0m
+[gazebo-1] [1;36m[GUI] [Dbg] [Application.cc:528] [0m[1;36mLoading plugin [[0m[1;36mMinimalScene[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;36m[GUI] [Dbg] [MinimalScene.cc:802] [0m[1;36mCreating gz-rendering interface for OpenGL[0m[1;36m[0m
+[gazebo-1] [1;36m[GUI] [Dbg] [MinimalScene.cc:802] [0m[1;36mCreating gz-rendering interface for OpenGL[0m[1;36m[0m
+[gazebo-1] [1;36m[GUI] [Dbg] [MinimalScene.cc:986] [0m[1;36mCreating render thread interface for OpenGL[0m[1;36m[0m
+[gazebo-1] [1;36m[GUI] [Dbg] [MinimalScene.cc:802] [0m[1;36mCreating gz-rendering interface for OpenGL[0m[1;36m[0m
+[gazebo-1] [1;36m[GUI] [Dbg] [MinimalScene.cc:986] [0m[1;36mCreating render thread interface for OpenGL[0m[1;36m[0m
+[gazebo-1] [1;32m[GUI] [0m[1;32m[Msg] [0m[1;32mAdded plugin [[0m[1;32m3D View[0m[1;32m] to main window[0m[1;32m[0m
+[gazebo-1] [1;32m[GUI] [0m[1;32m[Msg] [0m[1;32mLoaded plugin [[0m[1;32mMinimalScene[0m[1;32m] from path [[0m[1;32m/afs/kth.se/misc/info/kurser/DD2410/ht26/pixi/IROB/.pixi/envs/default/lib/gz-gui-8/plugins/libMinimalScene.so[0m[1;32m][0m[1;32m[0m
+[gazebo-1] [1;36m[GUI] [Dbg] [Application.cc:528] [0m[1;36mLoading plugin [[0m[1;36mGzSceneManager[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;32m[GUI] [0m[1;32m[Msg] [0m[1;32mAdded plugin [[0m[1;32mScene Manager[0m[1;32m] to main window[0m[1;32m[0m
+[gazebo-1] [1;32m[GUI] [0m[1;32m[Msg] [0m[1;32mLoaded plugin [[0m[1;32mGzSceneManager[0m[1;32m] from path [[0m[1;32m/afs/kth.se/misc/info/kurser/DD2410/ht26/pixi/IROB/.pixi/envs/default/lib/gz-sim-8/plugins/gui/libGzSceneManager.so[0m[1;32m][0m[1;32m[0m
+[gazebo-1] [1;36m[GUI] [Dbg] [Application.cc:528] [0m[1;36mLoading plugin [[0m[1;36mInteractiveViewControl[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;32m[GUI] [0m[1;32m[Msg] [0m[1;32mCamera view controller topic advertised on [[0m[1;32m/gui/camera/view_control[0m[1;32m][0m[1;32m[0m
+[gazebo-1] [1;32m[GUI] [0m[1;32m[Msg] [0m[1;32mCamera reference visual topic advertised on [[0m[1;32m/gui/camera/view_control/reference_visual[0m[1;32m][0m[1;32m[0m
+[gazebo-1] [1;32m[GUI] [0m[1;32m[Msg] [0m[1;32mCamera view control sensitivity advertised on [[0m[1;32m/gui/camera/view_control/sensitivity[0m[1;32m][0m[1;32m[0m
+[gazebo-1] [1;32m[GUI] [0m[1;32m[Msg] [0m[1;32mAdded plugin [[0m[1;32mInteractive view control[0m[1;32m] to main window[0m[1;32m[0m
+[gazebo-1] [1;32m[GUI] [0m[1;32m[Msg] [0m[1;32mLoaded plugin [[0m[1;32mInteractiveViewControl[0m[1;32m] from path [[0m[1;32m/afs/kth.se/misc/info/kurser/DD2410/ht26/pixi/IROB/.pixi/envs/default/lib/gz-gui-8/plugins/libInteractiveViewControl.so[0m[1;32m][0m[1;32m[0m
+[gazebo-1] [1;36m[GUI] [Dbg] [Application.cc:528] [0m[1;36mLoading plugin [[0m[1;36mWorldControl[0m[1;36m][0m[1;36m[0m
+[parameter_bridge-2] [WARN] [1791301803.175459867] [clock_bridge]: New subscription discovered on topic '/clock', requesting incompatible QoS. No messages will be sent to it. Last incompatible policy: DURABILITY_QOS_POLICY
+[INFO] [create-7]: process has finished cleanly [pid 16540]
+[gazebo-1] [1;33m[GUI] [Wrn] [Application.cc:908] [0m[1;33m[QT] file::/Turtlebot4Hmi/Turtlebot4Hmi.qml:102:7: Unable to assign [undefined] to QString[0m[1;33m[0m
+[create-6] [INFO] [1791301803.289099758] [ros_gz_sim]: Entity creation successful.
+[gazebo-1] [1;33m[GUI] [Wrn] [Application.cc:908] [0m[1;33m[QT] file::/WorldStats/WorldStats.qml:53:3: QML RowLayout: Binding loop detected for property "x"[0m[1;33m[0m
+[parameter_bridge-46] [INFO] [1791301803.432935527] [odom_gt_bridge]: Creating GZ->ROS Bridge: [/model/turtlebot4/odometry (gz.msgs.Odometry) -> /odom_gt (nav_msgs/msg/Odometry)] (Lazy 0)
+[parameter_bridge-46] [INFO] [1791301803.442967701] [odom_gt_bridge]: Creating GZ->ROS Bridge: [/model/turtlebot4/pose (gz.msgs.Pose_V) -> /tf (tf2_msgs/msg/TFMessage)] (Lazy 0)
+[INFO] [create-6]: process has finished cleanly [pid 16538]
+[parameter_bridge-24] [INFO] [1791301803.474647273] [hmi_display_msg_bridge]: Passing message from ROS std_msgs/msg/Int32 to Gazebo gz.msgs.Int32 (showing msg only once per type)
+[parameter_bridge-24] [INFO] [1791301803.474690248] [hmi_display_msg_bridge]: Passing message from ROS std_msgs/msg/String to Gazebo gz.msgs.StringMsg (showing msg only once per type)
+[gazebo-1] [1;32m[GUI] [0m[1;32m[Msg] [0m[1;32mUsing world control service [[0m[1;32m/world/warehouse/control[0m[1;32m][0m[1;32m[0m
+[gazebo-1] [1;32m[GUI] [0m[1;32m[Msg] [0m[1;32mListening to stats on [[0m[1;32m/world/warehouse/stats[0m[1;32m][0m[1;32m[0m
+[gazebo-1] [1;36m[GUI] [Dbg] [WorldControl.cc:237] [0m[1;36mUsing an event to share WorldControl msgs with the server[0m
+[gazebo-1] [1;32m[GUI] [0m[1;32m[Msg] [0m[1;32mAdded plugin [[0m[1;32mWorld control[0m[1;32m] to main window[0m[1;32m[0m
+[gazebo-1] [1;32m[GUI] [0m[1;32m[Msg] [0m[1;32mLoaded plugin [[0m[1;32mWorldControl[0m[1;32m] from path [[0m[1;32m/afs/kth.se/misc/info/kurser/DD2410/ht26/pixi/IROB/.pixi/envs/default/lib/gz-gui-8/plugins/libWorldControl.so[0m[1;32m][0m[1;32m[0m
+[gazebo-1] [1;36m[GUI] [Dbg] [Application.cc:528] [0m[1;36mLoading plugin [[0m[1;36mWorldStats[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;32m[GUI] [0m[1;32m[Msg] [0m[1;32mListening to stats on [[0m[1;32m/world/warehouse/stats[0m[1;32m][0m[1;32m[0m
+[gazebo-1] [1;32m[GUI] [0m[1;32m[Msg] [0m[1;32mAdded plugin [[0m[1;32mWorld stats[0m[1;32m] to main window[0m[1;32m[0m
+[gazebo-1] [1;32m[GUI] [0m[1;32m[Msg] [0m[1;32mLoaded plugin [[0m[1;32mWorldStats[0m[1;32m] from path [[0m[1;32m/afs/kth.se/misc/info/kurser/DD2410/ht26/pixi/IROB/.pixi/envs/default/lib/gz-gui-8/plugins/libWorldStats.so[0m[1;32m][0m[1;32m[0m
+[gazebo-1] [1;36m[GUI] [Dbg] [Application.cc:528] [0m[1;36mLoading plugin [[0m[1;36mTransformControl[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;32m[GUI] [0m[1;32m[Msg] [0m[1;32mAdded plugin [[0m[1;32mTransform control[0m[1;32m] to main window[0m[1;32m[0m
+[gazebo-1] [1;32m[GUI] [0m[1;32m[Msg] [0m[1;32mLoaded plugin [[0m[1;32mTransformControl[0m[1;32m] from path [[0m[1;32m/afs/kth.se/misc/info/kurser/DD2410/ht26/pixi/IROB/.pixi/envs/default/lib/gz-sim-8/plugins/gui/libTransformControl.so[0m[1;32m][0m[1;32m[0m
+[gazebo-1] [1;36m[GUI] [Dbg] [Application.cc:528] [0m[1;36mLoading plugin [[0m[1;36mShapes[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;32m[GUI] [0m[1;32m[Msg] [0m[1;32mAdded plugin [[0m[1;32mShapes[0m[1;32m] to main window[0m[1;32m[0m
+[gazebo-1] [1;32m[GUI] [0m[1;32m[Msg] [0m[1;32mLoaded plugin [[0m[1;32mShapes[0m[1;32m] from path [[0m[1;32m/afs/kth.se/misc/info/kurser/DD2410/ht26/pixi/IROB/.pixi/envs/default/lib/gz-sim-8/plugins/gui/libShapes.so[0m[1;32m][0m[1;32m[0m
+[gazebo-1] [1;36m[GUI] [Dbg] [Application.cc:528] [0m[1;36mLoading plugin [[0m[1;36mTurtlebot4Hmi[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;32m[GUI] [0m[1;32m[Msg] [0m[1;32mAdded plugin [[0m[1;32mTurtlebot4 HMI[0m[1;32m] to main window[0m[1;32m[0m
+[gazebo-1] [1;32m[GUI] [0m[1;32m[Msg] [0m[1;32mLoaded plugin [[0m[1;32mTurtlebot4Hmi[0m[1;32m] from path [[0m[1;32m/home/y/u/yunqiao/IROB_Mobile_Robot_Project/install/turtlebot4_gz_gui_plugins/share/turtlebot4_gz_gui_plugins/lib/libTurtlebot4Hmi.so[0m[1;32m][0m[1;32m[0m
+[gazebo-1] [1;36m[GUI] [Dbg] [Application.cc:528] [0m[1;36mLoading plugin [[0m[1;36mTeleop[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;32m[GUI] [0m[1;32m[Msg] [0m[1;32mA new topic has been entered: '[0m[1;32m/cmd_vel[0m[1;32m ' [0m[1;32m[0m
+[gazebo-1] [1;32m[GUI] [0m[1;32m[Msg] [0m[1;32mAdded plugin [[0m[1;32mTeleop[0m[1;32m] to main window[0m[1;32m[0m
+[gazebo-1] [1;32m[GUI] [0m[1;32m[Msg] [0m[1;32mLoaded plugin [[0m[1;32mTeleop[0m[1;32m] from path [[0m[1;32m/afs/kth.se/misc/info/kurser/DD2410/ht26/pixi/IROB/.pixi/envs/default/lib/gz-gui-8/plugins/libTeleop.so[0m[1;32m][0m[1;32m[0m
+[gazebo-1] [1;36m[GUI] [Dbg] [Application.cc:671] [0m[1;36mApplying config[0m[1;36m[0m
+[gazebo-1] [1;36m[GUI] [Dbg] [MinimalScene.cc:802] [0m[1;36mCreating gz-rendering interface for OpenGL[0m[1;36m[0m
+[gazebo-1] [1;36m[GUI] [Dbg] [MinimalScene.cc:986] [0m[1;36mCreating render thread interface for OpenGL[0m[1;36m[0m
+[gazebo-1] [1;32m[GUI] [0m[1;32m[Msg] [0m[1;32mLoading plugin [[0m[1;32mgz-rendering-ogre2[0m[1;32m][0m[1;32m[0m
+[gazebo-1] [1;36m[GUI] [Dbg] [MinimalScene.cc:749] [0m[1;36mCreate scene [[0m[1;36mscene[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;36m[GUI] [Dbg] [MinimalScene.cc:1037] [0m[1;36mCreating texture node render interface for OpenGL[0m[1;36m[0m
+[gazebo-1] [1;36m[GUI] [Dbg] [TransformControl.cc:453] [0m[1;36mTransformControl [0m[1;32m] (blocking)[0m[1;32m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mMaterial[0m[1;32m service on [[0m[1;32m/world/warehouse/wheel_slip[0m[1;32m] (async)[0m[1;32m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mMaterial[0m[1;32m service on [[0m[1;32m/world/warehouse/wheel_slip/blocking[0m[1;32m] (blocking)[0m[1;32m[0m
+[gazebo-1] [1;36m[Dbg] [SystemManager.cc:80] [0m[1;36mLoaded system [[0m[1;36mgz::sim::systems::UserCommands[0m[1;36m] for entity [[0m[1;36m1[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [SystemManager.cc:80] [0m[1;36mLoaded system [[0m[1;36mgz::sim::systems::SceneBroadcaster[0m[1;36m] for entity [[0m[1;36m1[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [SystemManager.cc:80] [0m[1;36mLoaded system [[0m[1;36mgz::sim::systems::Contact[0m[1;36m] for entity [[0m[1;36m1[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mLoaded level [[0m[1;32mdefault[0m[1;32m][0m[1;32m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mServing world controls on [[0m[1;32m/world/warehouse[0m[1;32m/control], [[0m[1;32m/world/warehouse[0m[1;32m/control/state] and [[0m[1;32m/world/warehouse[0m[1;32m/playback/control][0m[1;32m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mServing GUI information on [[0m[1;32m/world/warehouse[0m[1;32m/[0m[1;32mgui/info[0m[1;32m][0m[1;32m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mWorld [[0m[1;32mwarehouse[0m[1;32m] initialized with [[0m[1;32mdefault_physics[0m[1;32m] physics profile.[0m[1;32m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mServing world SDF generation service on [[0m[1;32m/world/warehouse[0m[1;32m/[0m[1;32mgenerate_world_sdf[0m[1;32m][0m[1;32m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mServing world names on [[0m[1;32m/gazebo/worlds[0m[1;32m][0m[1;32m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mResource path add service on [[0m[1;32m/gazebo/resource_paths/add[0m[1;32m].[0m[1;32m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mResource path get service on [[0m[1;32m/gazebo/resource_paths/get[0m[1;32m].[0m[1;32m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mResource path resolve service on [[0m[1;32m/gazebo/resource_paths/resolve[0m[1;32m].[0m[1;32m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mResource paths published on [[0m[1;32m/gazebo/resource_paths[0m[1;32m].[0m[1;32m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mServer control service on [[0m[1;32m/server_control[0m[1;32m].[0m[1;32m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mFound no publishers on /stats, adding root stats topic[0m[1;32m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mFound no publishers on /clock, adding root clock topic[0m[1;32m[0m
+[gazebo-1] [1;36m[Dbg] [SimulationRunner.cc:533] [0m[1;36mCreating PostUpdate worker threads: [0m[1;36m3[0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [SimulationRunner.cc:544] [0m[1;36mCreating postupdate worker thread ([0m[1;36m0[0m[1;36m)[0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [SimulationRunner.cc:544] [0m[1;36mCreating postupdate worker thread ([0m[1;36m1[0m[1;36m)[0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [SystemManager.cc:80] [0m[1;36mLoaded system [[0m[1;36mgz::sim::systems::PosePublisher[0m[1;36m] for entity [[0m[1;36m148[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [UserCommands.cc:1094] [0m[1;36mCreated entity [[0m[1;36m148[0m[1;36m] named [[0m[1;36mstandard_dock[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;33mWarning [Utils.cc:132][0m [/sdf/model[@name="tb4_lite6"]/joint[@name="wheel_drop_left_joint"]/physics/ode/provide_feedback:<urdf-string>:L0]: XML Element[provide_feedback], child of element[ode], not defined in SDF. Copying[provide_feedback] as children of [ode].
+[gazebo-1] [1;33mWarning [Utils.cc:132][0m [/sdf/model[@name="tb4_lite6"]/joint[@name="wheel_drop_right_joint"]/physics/ode/provide_feedback:<urdf-string>:L0]: XML Element[provide_feedback], child of element[ode], not defined in SDF. Copying[provide_feedback] as children of [ode].
+[gazebo-1] [1;33m[Wrn] [SdfEntityCreator.cc:933] [0m[1;33mGazebo does not support Ogre material scripts. See [0m[1;33mhttps://gazebosim.org/api/sim/8/migrationsdf.html#:~:text=Materials [0m[1;33mfor details.[0m[1;33m[0m
+[gazebo-1] [1;33m[Wrn] [SdfEntityCreator.cc:949] [0m[1;33mUsing an internal gazebo.material to parse [0m[1;33mGazebo/DarkGrey[0m[1;33m[0m
+[gazebo-1] [1;33m[Wrn] [SdfEntityCreator.cc:933] [0m[1;33mGazebo does not support Ogre material scripts. See [0m[1;33mhttps://gazebosim.org/api/sim/8/migrationsdf.html#:~:text=Materials [0m[1;33mfor details.[0m[1;33m[0m
+[gazebo-1] [1;33m[Wrn] [SdfEntityCreator.cc:949] [0m[1;33mUsing an internal gazebo.material to parse [0m[1;33mGazebo/DarkGrey[0m[1;33m[0m
+[gazebo-1] [1;33m[Wrn] [SdfEntityCreator.cc:933] [0m[1;33mGazebo does not support Ogre material scripts. See [0m[1;33mhttps://gazebosim.org/api/sim/8/migrationsdf.html#:~:text=Materials [0m[1;33mfor details.[0m[1;33m[0m
+[gazebo-1] [1;33m[Wrn] [SdfEntityCreator.cc:949] [0m[1;33mUsing an internal gazebo.material to parse [0m[1;33mGazebo/DarkGrey[0m[1;33m[0m
+[gazebo-1] [1;33m[Wrn] [SdfEntityCreator.cc:933] [0m[1;33mGazebo does not support Ogre material scripts. See [0m[1;33mhttps://gazebosim.org/api/sim/8/migrationsdf.html#:~:text=Materials [0m[1;33mfor details.[0m[1;33m[0m
+[gazebo-1] [1;33m[Wrn] [SdfEntityCreator.cc:949] [0m[1;33mUsing an internal gazebo.material to parse [0m[1;33mGazebo/DarkGrey[0m[1;33m[0m
+[lifecycle_manager-59] [INFO] [1791301803.822061887] [lifecycle_manager_navigation]: [34m[1mStarting managed nodes bringup...[0m[0m
+[lifecycle_manager-59] [INFO] [1791301803.822091276] [lifecycle_manager_navigation]: [34m[1mConfiguring controller_server[0m[0m
+[controller_server-49] [INFO] [1791301803.849957316] [controller_server]: Configuring controller interface
+[controller_server-49] [INFO] [1791301803.849992858] [controller_server]: getting progress checker plugins..
+[controller_server-49] [INFO] [1791301803.850294580] [controller_server]: getting goal checker plugins..
+[controller_server-49] [INFO] [1791301803.853294635] [controller_server]: Controller frequency set to 20.0000Hz
+[controller_server-49] [INFO] [1791301803.853374316] [local_costmap.local_costmap]: Configuring
+[controller_server-49] [INFO] [1791301803.886664541] [local_costmap.local_costmap]: Using plugin "static_layer"
+[controller_server-49] [INFO] [1791301803.891250034] [local_costmap.local_costmap]: Subscribing to the map topic (/map) with transient local durability
+[controller_server-49] [INFO] [1791301803.895072815] [local_costmap.local_costmap]: Initialized plugin "static_layer"
+[controller_server-49] [INFO] [1791301803.895113289] [local_costmap.local_costmap]: Using plugin "voxel_layer"
+[controller_server-49] [INFO] [1791301803.897759518] [local_costmap.local_costmap]: Subscribed to Topics: scan
+[gazebo-1] [INFO] [1791301803.897962893] [gz_ros_control]: [gz_ros2_control] Fixed joint ['bumper_joint'] (Entity='270') is skipped.
+[gazebo-1] [INFO] [1791301803.898015956] [gz_ros_control]: [gz_ros2_control] Fixed joint ['front_caster_joint'] (Entity='271') is skipped.
+[gazebo-1] [INFO] [1791301803.898024853] [gz_ros_control]: [gz_ros2_control] Fixed joint ['front_left_bottom_weight_block_joint'] (Entity='272') is skipped.
+[gazebo-1] [INFO] [1791301803.898030797] [gz_ros_control]: [gz_ros2_control] Fixed joint ['front_left_top_weight_block_joint'] (Entity='273') is skipped.
+[gazebo-1] [INFO] [1791301803.898036055] [gz_ros_control]: [gz_ros2_control] Fixed joint ['front_right_bottom_weight_block_joint'] (Entity='274') is skipped.
+[gazebo-1] [INFO] [1791301803.898041187] [gz_ros_control]: [gz_ros2_control] Fixed joint ['front_right_top_weight_block_joint'] (Entity='275') is skipped.
+[gazebo-1] [INFO] [1791301803.898046374] [gz_ros_control]: [gz_ros2_control] Fixed joint ['imu_joint'] (Entity='276') is skipped.
+[gazebo-1] [INFO] [1791301803.898050661] [gz_ros_control]: [gz_ros2_control] Fixed joint ['ir_intensity_front_center_left_joint'] (Entity='277') is skipped.
+[gazebo-1] [INFO] [1791301803.898055742] [gz_ros_control]: [gz_ros2_control] Fixed joint ['ir_intensity_front_center_right_joint'] (Entity='278') is skipped.
+[gazebo-1] [INFO] [1791301803.898060792] [gz_ros_control]: [gz_ros2_control] Fixed joint ['ir_intensity_front_left_joint'] (Entity='279') is skipped.
+[gazebo-1] [INFO] [1791301803.898064997] [gz_ros_control]: [gz_ros2_control] Fixed joint ['ir_intensity_front_right_joint'] (Entity='280') is skipped.
+[gazebo-1] [INFO] [1791301803.898070007] [gz_ros_control]: [gz_ros2_control] Fixed joint ['ir_intensity_left_joint'] (Entity='281') is skipped.
+[gazebo-1] [INFO] [1791301803.898074127] [gz_ros_control]: [gz_ros2_control] Fixed joint ['ir_intensity_right_joint'] (Entity='282') is skipped.
+[gazebo-1] [INFO] [1791301803.898078277] [gz_ros_control]: [gz_ros2_control] Fixed joint ['ir_intensity_side_left_joint'] (Entity='283') is skipped.
+[gazebo-1] [INFO] [1791301803.898082942] [gz_ros_control]: [gz_ros2_control] Fixed joint ['ir_omni_joint'] (Entity='284') is skipped.
+[gazebo-1] [INFO] [1791301803.898087304] [gz_ros_control]: [gz_ros2_control] Fixed joint ['mouse_joint'] (Entity='285') is skipped.
+[gazebo-1] [INFO] [1791301803.898094661] [gz_ros_control]: [gz_ros2_control] Fixed joint ['arm_vacuum_gripper_fix'] (Entity='292') is skipped.
+[gazebo-1] [INFO] [1791301803.898099377] [gz_ros_control]: [gz_ros2_control] Fixed joint ['front_left_tower_standoff_joint'] (Entity='293') is skipped.
+[gazebo-1] [INFO] [1791301803.898104427] [gz_ros_control]: [gz_ros2_control] Fixed joint ['front_right_tower_standoff_joint'] (Entity='294') is skipped.
+[gazebo-1] [INFO] [1791301803.898107729] [gz_ros_control]: [gz_ros2_control] Fixed joint ['oakd_camera_bracket_joint'] (Entity='295') is skipped.
+[gazebo-1] [INFO] [1791301803.898110541] [gz_ros_control]: [gz_ros2_control] Fixed joint ['oakd_joint'] (Entity='296') is skipped.
+[gazebo-1] [INFO] [1791301803.898114630] [gz_ros_control]: [gz_ros2_control] Fixed joint ['oakd_imu_joint'] (Entity='297') is skipped.
+[gazebo-1] [INFO] [1791301803.898118800] [gz_ros_control]: [gz_ros2_control] Fixed joint ['oakd_left_camera_joint'] (Entity='298') is skipped.
+[gazebo-1] [INFO] [1791301803.898123566] [gz_ros_control]: [gz_ros2_control] Fixed joint ['oakd_left_camera_optical_joint'] (Entity='299') is skipped.
+[gazebo-1] [INFO] [1791301803.898126458] [gz_ros_control]: [gz_ros2_control] Fixed joint ['oakd_rgb_camera_joint'] (Entity='300') is skipped.
+[gazebo-1] [INFO] [1791301803.898129248] [gz_ros_control]: [gz_ros2_control] Fixed joint ['oakd_rgb_camera_optical_joint'] (Entity='301') is skipped.
+[gazebo-1] [INFO] [1791301803.898132039] [gz_ros_control]: [gz_ros2_control] Fixed joint ['oakd_right_camera_joint'] (Entity='302') is skipped.
+[gazebo-1] [INFO] [1791301803.898134769] [gz_ros_control]: [gz_ros2_control] Fixed joint ['oakd_right_camera_optical_joint'] (Entity='303') is skipped.
+[gazebo-1] [INFO] [1791301803.898137265] [gz_ros_control]: [gz_ros2_control] Fixed joint ['rear_left_tower_standoff_joint'] (Entity='304') is skipped.
+[gazebo-1] [INFO] [1791301803.898139678] [gz_ros_control]: [gz_ros2_control] Fixed joint ['rear_right_tower_standoff_joint'] (Entity='305') is skipped.
+[gazebo-1] [INFO] [1791301803.898142256] [gz_ros_control]: [gz_ros2_control] Fixed joint ['rplidar_joint'] (Entity='306') is skipped.
+[gazebo-1] [INFO] [1791301803.898215784] [gz_ros_control]: [gz_ros2_control] Fixed joint ['tower_sensor_plate_joint'] (Entity='307') is skipped.
+[gazebo-1] [INFO] [1791301803.907702117] [gz_ros_control]: Loading controller_manager
+[controller_server-49] [INFO] [1791301803.917146221] [local_costmap.local_costmap]: Initialized plugin "voxel_layer"
+[controller_server-49] [INFO] [1791301803.917185434] [local_costmap.local_costmap]: Using plugin "inflation_layer"
+[controller_server-49] [INFO] [1791301803.917979707] [local_costmap.local_costmap]: Initialized plugin "inflation_layer"
+[gazebo-1] [INFO] [1791301803.959938307] [controller_manager]: Using ROS clock for triggering controller manager cycles.
+[gazebo-1] [INFO] [1791301803.971898301] [controller_manager]: Subscribing to '/robot_description' topic for robot description.
+[gazebo-1] [WARN] [1791301803.982628786] [gz_ros_control]: Waiting RM to load and initialize hardware...
+[controller_server-49] [INFO] [1791301804.056625734] [local_costmap.local_costmap]: StaticLayer: Resizing static layer to 1006 X 1674 at 0.030000 m/pix
+[controller_server-49] [INFO] [1791301804.056923176] [controller_server]: Created progress_checker : progress_checker of type nav2_controller::SimpleProgressChecker
+[controller_server-49] [INFO] [1791301804.060806612] [controller_server]: Controller Server has progress_checker  progress checkers available.
+[controller_server-49] [INFO] [1791301804.064144067] [controller_server]: Created goal checker : general_goal_checker of type nav2_controller::SimpleGoalChecker
+[controller_server-49] [INFO] [1791301804.069100115] [controller_server]: Controller Server has general_goal_checker  goal checkers available.
+[controller_server-49] [INFO] [1791301804.072913390] [controller_server]: Created controller : FollowPath of type nav2_mppi_controller::MPPIController
+[controller_server-49] [INFO] [1791301804.090266739] [controller_server]: Controller period is equal to model dt. Control sequence shifting is ON
+[controller_server-49] [INFO] [1791301804.096176386] [controller_server]: ConstraintCritic instantiated with 1 power and 4.000000 weight.
+[controller_server-49] [INFO] [1791301804.096222323] [controller_server]: Critic loaded : mppi::critics::ConstraintCritic
+[controller_server-49] [INFO] [1791301804.097197231] [controller_server]: InflationCostCritic instantiated with 1 power and 300.000000 / 0.015000 weights. Critic will collision check based on footprint cost.
+[controller_server-49] [INFO] [1791301804.097235670] [controller_server]: Critic loaded : mppi::critics::CostCritic
+[controller_server-49] [INFO] [1791301804.097563611] [controller_server]: GoalCritic instantiated with 1 power and 5.000000 weight.
+[controller_server-49] [INFO] [1791301804.097581648] [controller_server]: Critic loaded : mppi::critics::GoalCritic
+[controller_server-49] [INFO] [1791301804.100709812] [controller_server]: GoalAngleCritic instantiated with 1 power, 3.000000 weight, 0.500000 angular threshold and symmetric_yaw_tolerance disabled
+[controller_server-49] [INFO] [1791301804.100758329] [controller_server]: Critic loaded : mppi::critics::GoalAngleCritic
+[controller_server-49] [INFO] [1791301804.103728119] [controller_server]: ReferenceTrajectoryCritic instantiated with 1 power and 14.000000 weight
+[controller_server-49] [INFO] [1791301804.103771126] [controller_server]: Critic loaded : mppi::critics::PathAlignCritic
+[controller_server-49] [INFO] [1791301804.104294076] [controller_server]: Critic loaded : mppi::critics::PathFollowCritic
+[controller_server-49] [INFO] [1791301804.104930086] [controller_server]: PathAngleCritic instantiated with 1 power and 2.000000 weight. Mode set to: Forward Preference
+[controller_server-49] [INFO] [1791301804.104999583] [controller_server]: Critic loaded : mppi::critics::PathAngleCritic
+[controller_server-49] [INFO] [1791301804.105350590] [controller_server]: PreferForwardCritic instantiated with 1 power and 5.000000 weight.
+[controller_server-49] [INFO] [1791301804.105363841] [controller_server]: Critic loaded : mppi::critics::PreferForwardCritic
+[controller_server-49] [INFO] [1791301804.108687870] [controller_server]: Optimizer reset
+[controller_server-49] [INFO] [1791301804.117307423] [MPPIController]: Configured MPPI Controller: FollowPath
+[controller_server-49] [INFO] [1791301804.117340317] [controller_server]: Controller Server has FollowPath  controllers available.
+[lifecycle_manager-59] [INFO] [1791301804.156286471] [lifecycle_manager_navigation]: [34m[1mConfiguring smoother_server[0m[0m
+[smoother_server-50] [INFO] [1791301804.156535898] [smoother_server]: Configuring smoother server
+[smoother_server-50] [INFO] [1791301804.180246103] [smoother_server]: Created smoother : simple_smoother of type nav2_smoother::SimpleSmoother
+[smoother_server-50] [INFO] [1791301804.182849706] [smoother_server]: Smoother Server has simple_smoother  smoothers available.
+[lifecycle_manager-59] [INFO] [1791301804.193528358] [lifecycle_manager_navigation]: [34m[1mConfiguring planner_server[0m[0m
+[planner_server-51] [INFO] [1791301804.193807765] [planner_server]: Configuring
+[planner_server-51] [INFO] [1791301804.193830176] [global_costmap.global_costmap]: Configuring
+[planner_server-51] [INFO] [1791301804.208409031] [global_costmap.global_costmap]: Using plugin "static_layer"
+[planner_server-51] [INFO] [1791301804.212152228] [global_costmap.global_costmap]: Subscribing to the map topic (/map) with transient local durability
+[planner_server-51] [INFO] [1791301804.214978503] [global_costmap.global_costmap]: Initialized plugin "static_layer"
+[planner_server-51] [INFO] [1791301804.215021998] [global_costmap.global_costmap]: Using plugin "obstacle_layer"
+[planner_server-51] [INFO] [1791301804.216515377] [global_costmap.global_costmap]: Subscribed to Topics: scan
+[planner_server-51] [INFO] [1791301804.223625360] [global_costmap.global_costmap]: Initialized plugin "obstacle_layer"
+[planner_server-51] [INFO] [1791301804.223656907] [global_costmap.global_costmap]: Using plugin "inflation_layer"
+[planner_server-51] [INFO] [1791301804.224699378] [global_costmap.global_costmap]: Initialized plugin "inflation_layer"
+[planner_server-51] [INFO] [1791301804.265869682] [global_costmap.global_costmap]: StaticLayer: Resizing costmap to 1006 X 1674 at 0.030000 m/pix
+[planner_server-51] [INFO] [1791301804.266043664] [planner_server]: Created global planner plugin GridBased of type nav2_navfn_planner::NavfnPlanner
+[planner_server-51] [INFO] [1791301804.266059597] [planner_server]: Configuring plugin GridBased of type NavfnPlanner
+[planner_server-51] [INFO] [1791301804.268319038] [planner_server]: Planner Server has GridBased  planners available.
+[lifecycle_manager-59] [INFO] [1791301804.287878084] [lifecycle_manager_navigation]: [34m[1mConfiguring route_server[0m[0m
+[route_server-52] [INFO] [1791301804.288090145] [route_server]: Configuring
+[route_server-52] [INFO] [1791301804.342998092] [route_server]: Created GraphFileLoader GeoJsonGraphFileLoader of type nav2_route::GeoJsonGraphFileLoader
+[route_server-52] [INFO] [1791301804.343022856] [route_server]: Configuring geojson graph file loader
+[route_server-52] [INFO] [1791301804.343029015] [route_server]: No graph file provided to load yet.
+[route_server-52] [INFO] [1791301804.348409429] [route_server]: Created edge cost function plugin DistanceScorer of type nav2_route::DistanceScorer
+[route_server-52] [INFO] [1791301804.348437439] [route_server]: Configuring distance scorer.
+[route_server-52] [INFO] [1791301804.349309177] [route_server]: Created edge cost function plugin DynamicEdgesScorer of type nav2_route::DynamicEdgesScorer
+[route_server-52] [INFO] [1791301804.349342625] [route_server]: Configuring adjust edges scorer.
+[route_server-52] [INFO] [1791301804.361927658] [route_server]: Created route operation AdjustSpeedLimit of type nav2_route::AdjustSpeedLimit
+[route_server-52] [INFO] [1791301804.361959347] [route_server]: Configuring Adjust speed limit operation.
+[route_server-52] [INFO] [1791301804.365558270] [route_server]: Created route operation ReroutingService of type nav2_route::ReroutingService
+[route_server-52] [INFO] [1791301804.365600623] [route_server]: Configuring Rerouting service operation.
+[lifecycle_manager-59] [INFO] [1791301804.372357186] [lifecycle_manager_navigation]: [34m[1mConfiguring behavior_server[0m[0m
+[behavior_server-53] [INFO] [1791301804.372556821] [behavior_server]: Configuring
+[behavior_server-53] [INFO] [1791301804.381031596] [behavior_server]: Creating behavior plugin spin of type nav2_behaviors::Spin
+[behavior_server-53] [INFO] [1791301804.383432047] [behavior_server]: Creating behavior plugin backup of type nav2_behaviors::BackUp
+[behavior_server-53] [INFO] [1791301804.385104514] [behavior_server]: Creating behavior plugin drive_on_heading of type nav2_behaviors::DriveOnHeading
+[behavior_server-53] [INFO] [1791301804.386488303] [behavior_server]: Creating behavior plugin assisted_teleop of type nav2_behaviors::AssistedTeleop
+[behavior_server-53] [INFO] [1791301804.388226801] [behavior_server]: Creating behavior plugin wait of type nav2_behaviors::Wait
+[behavior_server-53] [INFO] [1791301804.398279805] [behavior_server]: Configuring spin
+[behavior_server-53] [INFO] [1791301804.413316743] [behavior_server]: Configuring backup
+[behavior_server-53] [INFO] [1791301804.433002613] [behavior_server]: Configuring drive_on_heading
+[behavior_server-53] [INFO] [1791301804.444910929] [behavior_server]: Configuring assisted_teleop
+[behavior_server-53] [INFO] [1791301804.459870173] [behavior_server]: Configuring wait
+[lifecycle_manager-59] [INFO] [1791301804.470053635] [lifecycle_manager_navigation]: [34m[1mConfiguring velocity_smoother[0m[0m
+[velocity_smoother-56] [INFO] [1791301804.470291571] [velocity_smoother]: Configuring velocity smoother
+[lifecycle_manager-59] [INFO] [1791301804.479567311] [lifecycle_manager_navigation]: [34m[1mConfiguring collision_monitor[0m[0m
+[collision_monitor-57] [INFO] [1791301804.479779699] [collision_monitor]: Configuring
+[collision_monitor-57] [INFO] [1791301804.488639634] [collision_monitor]: [scan]: Creating Scan
+[collision_monitor-57] [INFO] [1791301804.493783849] [collision_monitor]: [FootprintApproach]: Creating Polygon
+[collision_monitor-57] [INFO] [1791301804.494016242] [collision_monitor]: [FootprintApproach]: Polygon points are not defined. Using dynamic subscription instead.
+[collision_monitor-57] [INFO] [1791301804.495062888] [collision_monitor]: [FootprintApproach]: Making footprint subscriber on local_costmap/published_footprint topic
+[lifecycle_manager-59] [INFO] [1791301804.514243192] [lifecycle_manager_navigation]: [34m[1mConfiguring bt_navigator[0m[0m
+[bt_navigator-54] [INFO] [1791301804.514528928] [bt_navigator]: Configuring
+[bt_navigator-54] [INFO] [1791301804.524491989] [bt_navigator]: Creating navigator id navigate_to_pose of type nav2_bt_navigator::NavigateToPoseNavigator
+[bt_navigator-54] [INFO] [1791301804.626023320] [bt_navigator]: Creating navigator id navigate_through_poses of type nav2_bt_navigator::NavigateThroughPosesNavigator
+[lifecycle_manager-59] [INFO] [1791301804.678247166] [lifecycle_manager_navigation]: [34m[1mConfiguring waypoint_follower[0m[0m
+[waypoint_follower-55] [INFO] [1791301804.751862658] [waypoint_follower]: Configuring
+[waypoint_follower-55] [INFO] [1791301804.790246525] [waypoint_follower]: Created waypoint_task_executor : wait_at_waypoint of type nav2_waypoint_follower::WaitAtWaypoint
+[lifecycle_manager-59] [INFO] [1791301804.791584719] [lifecycle_manager_navigation]: [34m[1mConfiguring docking_server[0m[0m
+[opennav_docking-58] [INFO] [1791301804.792069986] [docking_server]: Configuring docking_server
+[opennav_docking-58] [INFO] [1791301804.792112650] [docking_server]: Controller frequency set to 50.0000Hz
+[opennav_docking-58] [INFO] [1791301804.835729340] [docking_server]: Created charging dock plugin simple_charging_dock of type opennav_docking::SimpleChargingDock
+[opennav_docking-58] [WARN] [1791301804.844938563] [docking_server]: Dock database filepath nor dock parameters set. Docking actions can only be executed specifying the dock pose via the action request. Or update the dock database via the reload_database service.
+[opennav_docking-58] [INFO] [1791301804.844978737] [docking_server]: Docking Server has 1 dock types and 0 dock instances available.
+[lifecycle_manager-59] [INFO] [1791301804.848250742] [lifecycle_manager_navigation]: [34m[1mActivating controller_server[0m[0m
+[controller_server-49] [INFO] [1791301804.848508835] [controller_server]: Activating
+[controller_server-49] [INFO] [1791301804.848532717] [local_costmap.local_costmap]: Activating
+[controller_server-49] [INFO] [1791301804.848537671] [local_costmap.local_costmap]: Checking transform
+[controller_server-49] [INFO] [1791301804.848557664] [local_costmap.local_costmap]: Timed out waiting for transform from base_link to odom to become available, tf error: Could not find a connection between 'odom' and 'base_link' because they are not part of the same tree.Tf has two or more unconnected trees.
+[gazebo-1] [WARN] [1791301804.967173680] [controller_manager]: Waiting for data on 'robot_description' topic to finish initialization
+[wait_for_ready-48] [INFO] [1791301805.114066458] [wait_for_sim]: ready: node controller_manager
+[wait_for_ready-48] [INFO] [1791301805.115938181] [wait_for_sim]: ready: service /controller_manager/set_parameters
+[controller_server-49] [INFO] [1791301805.348618259] [local_costmap.local_costmap]: Timed out waiting for transform from base_link to odom to become available, tf error: Could not find a connection between 'odom' and 'base_link' because they are not part of the same tree.Tf has two or more unconnected trees.
+[controller_server-49] [INFO] [1791301805.848642426] [local_costmap.local_costmap]: Timed out waiting for transform from base_link to odom to become available, tf error: Could not find a connection between 'odom' and 'base_link' because they are not part of the same tree.Tf has two or more unconnected trees.
+[gazebo-1] [WARN] [1791301805.967189401] [controller_manager]: Waiting for data on 'robot_description' topic to finish initialization
+[gazebo-1] [WARN] [1791301805.982724832] [gz_ros_control]: Waiting RM to load and initialize hardware...
+[controller_server-49] [INFO] [1791301806.348625504] [local_costmap.local_costmap]: Timed out waiting for transform from base_link to odom to become available, tf error: Could not find a connection between 'odom' and 'base_link' because they are not part of the same tree.Tf has two or more unconnected trees.
+[controller_server-49] [INFO] [1791301806.848644679] [local_costmap.local_costmap]: Timed out waiting for transform from base_link to odom to become available, tf error: Could not find a connection between 'odom' and 'base_link' because they are not part of the same tree.Tf has two or more unconnected trees.
+[gazebo-1] [WARN] [1791301806.967167251] [controller_manager]: Waiting for data on 'robot_description' topic to finish initialization
+[gazebo-1] [INFO] [1791301807.270609260] [controller_manager]: Received robot description from topic.
+[gazebo-1] [INFO] [1791301807.270668957] [controller_manager]: Enforcing command limits is disabled. Command limits from URDF will be ignored.
+[gazebo-1] [INFO] [1791301807.279227483] [gz_ros_control]: The position_proportional_gain has been set to: 0.1
+[gazebo-1] [INFO] [1791301807.279271991] [gz_ros_control]: Loading joint: left_wheel_joint
+[gazebo-1] [INFO] [1791301807.279276197] [gz_ros_control]: 	State:
+[gazebo-1] [INFO] [1791301807.279278861] [gz_ros_control]: 		 velocity
+[gazebo-1] [INFO] [1791301807.279282350] [gz_ros_control]: 		 position
+[gazebo-1] [INFO] [1791301807.279285826] [gz_ros_control]: 	Command:
+[gazebo-1] [INFO] [1791301807.279288566] [gz_ros_control]: 		 velocity
+[gazebo-1] [INFO] [1791301807.279361720] [gz_ros_control]: Loading sensor: imu
+[gazebo-1] [INFO] [1791301807.279367458] [gz_ros_control]: 	State:
+[gazebo-1] [WARN] [1791301807.279370799] [gz_ros_control]: IMU sensor 'imu' not found in hardware_info, skipping.
+[gazebo-1] [INFO] [1791301807.279437013] [controller_manager]: Initialize hardware 'left_wheel_controller' 
+[gazebo-1] [WARN] [1791301807.279445440] [controller_manager.hardware_component.system.left_wheel_controller]: Executor is not available during hardware component initialization for 'left_wheel_controller'. Skipping node creation!
+[gazebo-1] [INFO] [1791301807.279460240] [controller_manager]: Successful initialization of hardware 'left_wheel_controller'
+[gazebo-1] [INFO] [1791301807.279501758] [gz_ros_control]: The position_proportional_gain has been set to: 0.1
+[gazebo-1] [INFO] [1791301807.279511687] [gz_ros_control]: Loading joint: right_wheel_joint
+[gazebo-1] [INFO] [1791301807.279514528] [gz_ros_control]: 	State:
+[gazebo-1] [INFO] [1791301807.279519401] [gz_ros_control]: 		 velocity
+[gazebo-1] [INFO] [1791301807.279521796] [gz_ros_control]: 		 position
+[gazebo-1] [INFO] [1791301807.279524329] [gz_ros_control]: 	Command:
+[gazebo-1] [INFO] [1791301807.279526922] [gz_ros_control]: 		 velocity
+[gazebo-1] [INFO] [1791301807.279532297] [gz_ros_control]: Loading sensor: imu
+[gazebo-1] [INFO] [1791301807.279535070] [gz_ros_control]: 	State:
+[gazebo-1] [WARN] [1791301807.279537322] [gz_ros_control]: IMU sensor 'imu' not found in hardware_info, skipping.
+[gazebo-1] [INFO] [1791301807.279557433] [controller_manager]: Initialize hardware 'right_wheel_controller' 
+[gazebo-1] [WARN] [1791301807.279563045] [controller_manager.hardware_component.system.right_wheel_controller]: Executor is not available during hardware component initialization for 'right_wheel_controller'. Skipping node creation!
+[gazebo-1] [INFO] [1791301807.279573250] [controller_manager]: Successful initialization of hardware 'right_wheel_controller'
+[gazebo-1] [INFO] [1791301807.279604440] [gz_ros_control]: The position_proportional_gain has been set to: 0.1
+[gazebo-1] [INFO] [1791301807.279612196] [gz_ros_control]: Loading joint: arm_joint1
+[gazebo-1] [INFO] [1791301807.279614965] [gz_ros_control]: 	State:
+[gazebo-1] [INFO] [1791301807.279617295] [gz_ros_control]: 		 position
+[gazebo-1] [INFO] [1791301807.279620212] [gz_ros_control]: 		 velocity
+[gazebo-1] [INFO] [1791301807.279622699] [gz_ros_control]: 	Command:
+[gazebo-1] [INFO] [1791301807.279627309] [gz_ros_control]: 		 position
+[gazebo-1] [INFO] [1791301807.279631554] [gz_ros_control]: 		 velocity
+[gazebo-1] [INFO] [1791301807.279671735] [gz_ros_control]: Loading joint: arm_joint2
+[gazebo-1] [INFO] [1791301807.279676260] [gz_ros_control]: 	State:
+[gazebo-1] [INFO] [1791301807.279678514] [gz_ros_control]: 		 position
+[gazebo-1] [INFO] [1791301807.279681031] [gz_ros_control]: 		 velocity
+[gazebo-1] [INFO] [1791301807.279683114] [gz_ros_control]: 	Command:
+[gazebo-1] [INFO] [1791301807.279685225] [gz_ros_control]: 		 position
+[gazebo-1] [INFO] [1791301807.279691270] [gz_ros_control]: 		 velocity
+[gazebo-1] [INFO] [1791301807.279698375] [gz_ros_control]: Loading joint: arm_joint3
+[gazebo-1] [INFO] [1791301807.279701870] [gz_ros_control]: 	State:
+[gazebo-1] [INFO] [1791301807.279705243] [gz_ros_control]: 		 position
+[gazebo-1] [INFO] [1791301807.279708928] [gz_ros_control]: 		 velocity
+[gazebo-1] [INFO] [1791301807.279712028] [gz_ros_control]: 	Command:
+[gazebo-1] [INFO] [1791301807.279715083] [gz_ros_control]: 		 position
+[gazebo-1] [INFO] [1791301807.279721935] [gz_ros_control]: 		 velocity
+[gazebo-1] [INFO] [1791301807.279729986] [gz_ros_control]: Loading joint: arm_joint4
+[gazebo-1] [INFO] [1791301807.279736358] [gz_ros_control]: 	State:
+[gazebo-1] [INFO] [1791301807.279740411] [gz_ros_control]: 		 position
+[gazebo-1] [INFO] [1791301807.279744335] [gz_ros_control]: 		 velocity
+[gazebo-1] [INFO] [1791301807.279747841] [gz_ros_control]: 	Command:
+[gazebo-1] [INFO] [1791301807.279750067] [gz_ros_control]: 		 position
+[gazebo-1] [INFO] [1791301807.279753758] [gz_ros_control]: 		 velocity
+[gazebo-1] [INFO] [1791301807.279759210] [gz_ros_control]: Loading joint: arm_joint5
+[gazebo-1] [INFO] [1791301807.279761662] [gz_ros_control]: 	State:
+[gazebo-1] [INFO] [1791301807.279763609] [gz_ros_control]: 		 position
+[gazebo-1] [INFO] [1791301807.279766531] [gz_ros_control]: 		 velocity
+[gazebo-1] [INFO] [1791301807.279768576] [gz_ros_control]: 	Command:
+[gazebo-1] [INFO] [1791301807.279770570] [gz_ros_control]: 		 position
+[gazebo-1] [INFO] [1791301807.279774430] [gz_ros_control]: 		 velocity
+[gazebo-1] [INFO] [1791301807.279779224] [gz_ros_control]: Loading joint: arm_joint6
+[gazebo-1] [INFO] [1791301807.279781454] [gz_ros_control]: 	State:
+[gazebo-1] [INFO] [1791301807.279783362] [gz_ros_control]: 		 position
+[gazebo-1] [INFO] [1791301807.279785538] [gz_ros_control]: 		 velocity
+[gazebo-1] [INFO] [1791301807.279791608] [gz_ros_control]: 	Command:
+[gazebo-1] [INFO] [1791301807.279793596] [gz_ros_control]: 		 position
+[gazebo-1] [INFO] [1791301807.279796705] [gz_ros_control]: 		 velocity
+[gazebo-1] [INFO] [1791301807.279799887] [gz_ros_control]: Loading sensor: imu
+[gazebo-1] [INFO] [1791301807.279802215] [gz_ros_control]: 	State:
+[gazebo-1] [WARN] [1791301807.279804375] [gz_ros_control]: IMU sensor 'imu' not found in hardware_info, skipping.
+[gazebo-1] [INFO] [1791301807.279825240] [controller_manager]: Initialize hardware 'arm_gz_ros2_control/GazeboSimSystem' 
+[gazebo-1] [WARN] [1791301807.279834099] [controller_manager.hardware_component.system.arm_gz_ros2_control/GazeboSimSystem]: Executor is not available during hardware component initialization for 'arm_gz_ros2_control/GazeboSimSystem'. Skipping node creation!
+[gazebo-1] [INFO] [1791301807.279857526] [controller_manager]: Successful initialization of hardware 'arm_gz_ros2_control/GazeboSimSystem'
+[gazebo-1] [INFO] [1791301807.279923014] [controller_manager]: Activating component 'arm_gz_ros2_control/GazeboSimSystem'.
+[gazebo-1] [INFO] [1791301807.279927579] [resource_manager]: 'configure' hardware 'arm_gz_ros2_control/GazeboSimSystem' 
+[gazebo-1] [INFO] [1791301807.279929347] [gz_ros_control]: System Successfully configured!
+[gazebo-1] [INFO] [1791301807.279935922] [resource_manager]: Successful 'configure' of hardware 'arm_gz_ros2_control/GazeboSimSystem'
+[gazebo-1] [INFO] [1791301807.279939348] [resource_manager]: 'activate' hardware 'arm_gz_ros2_control/GazeboSimSystem' 
+[gazebo-1] [INFO] [1791301807.279942149] [resource_manager]: Successful 'activate' of hardware 'arm_gz_ros2_control/GazeboSimSystem'
+[gazebo-1] [INFO] [1791301807.279956341] [controller_manager]: Activating component 'right_wheel_controller'.
+[gazebo-1] [INFO] [1791301807.279958967] [resource_manager]: 'configure' hardware 'right_wheel_controller' 
+[gazebo-1] [INFO] [1791301807.279960241] [gz_ros_control]: System Successfully configured!
+[gazebo-1] [INFO] [1791301807.279963557] [resource_manager]: Successful 'configure' of hardware 'right_wheel_controller'
+[gazebo-1] [INFO] [1791301807.279965190] [resource_manager]: 'activate' hardware 'right_wheel_controller' 
+[gazebo-1] [INFO] [1791301807.279966845] [resource_manager]: Successful 'activate' of hardware 'right_wheel_controller'
+[gazebo-1] [INFO] [1791301807.279989482] [controller_manager]: Activating component 'left_wheel_controller'.
+[gazebo-1] [INFO] [1791301807.279992467] [resource_manager]: 'configure' hardware 'left_wheel_controller' 
+[gazebo-1] [INFO] [1791301807.279993845] [gz_ros_control]: System Successfully configured!
+[gazebo-1] [INFO] [1791301807.279995972] [resource_manager]: Successful 'configure' of hardware 'left_wheel_controller'
+[gazebo-1] [INFO] [1791301807.279997582] [resource_manager]: 'activate' hardware 'left_wheel_controller' 
+[gazebo-1] [INFO] [1791301807.279999223] [resource_manager]: Successful 'activate' of hardware 'left_wheel_controller'
+[gazebo-1] [WARN] [1791301807.280006595] [controller_manager]: Component 'arm_gz_ros2_control/GazeboSimSystem' does not have read or write statistics initialized, skipping registration.
+[gazebo-1] [WARN] [1791301807.280009468] [controller_manager]: Component 'right_wheel_controller' does not have read or write statistics initialized, skipping registration.
+[gazebo-1] [WARN] [1791301807.280011779] [controller_manager]: Component 'left_wheel_controller' does not have read or write statistics initialized, skipping registration.
+[gazebo-1] [INFO] [1791301807.280016906] [controller_manager]: Resource Manager has been successfully initialized. Starting Controller Manager services...
+[gazebo-1] [INFO] [1791301807.304891567] [controller_manager]: Loading controller : 'joint_state_broadcaster' of type 'joint_state_broadcaster/JointStateBroadcaster'
+[gazebo-1] [INFO] [1791301807.304942870] [controller_manager]: Loading controller 'joint_state_broadcaster'
+[gazebo-1] [WARN] [1791301807.315872135] [controller_manager]: The use of remapping arguments to the controller_manager node is deprecated. Please use the '--controller-ros-args' argument of the spawner to pass remapping arguments to the controller node.
+[gazebo-1] [INFO] [1791301807.315932364] [controller_manager]: Controller 'joint_state_broadcaster' node arguments: --ros-args --params-file /home/y/u/yunqiao/IROB_Mobile_Robot_Project/install/irobot_create_control/share/irobot_create_control/config/control.yaml --params-file /home/y/u/yunqiao/IROB_Mobile_Robot_Project/install/warehouse_inventory_robot/share/warehouse_inventory_robot/config/arm_controller_types.yaml --ros-args --remap ~/odom:=odom --remap /tf:=tf --remap /tf_static:=tf_static --remap /diagnostics:=diagnostics -p use_sim_time:=true --param use_sim_time:=true 
+[controller_server-49] [INFO] [1791301807.348645208] [local_costmap.local_costmap]: Timed out waiting for transform from base_link to odom to become available, tf error: Could not find a connection between 'odom' and 'base_link' because they are not part of the same tree.Tf has two or more unconnected trees.
+[spawner-31] [INFO] [1791301807.354811898] [spawner_joint_state_broadcaster]: Loaded joint_state_broadcaster
+[gazebo-1] [INFO] [1791301807.357687821] [controller_manager]: Configuring controller: 'joint_state_broadcaster'
+[gazebo-1] [INFO] [1791301807.357750723] [joint_state_broadcaster]: 'joints' or 'interfaces' parameter is empty. All available state interfaces will be published
+[gazebo-1] [INFO] [1791301807.376604958] [controller_manager]: Activating controllers: [ joint_state_broadcaster ]
+[controller_server-49] [INFO] [1791301807.848618444] [local_costmap.local_costmap]: Timed out waiting for transform from base_link to odom to become available, tf error: Could not find a connection between 'odom' and 'base_link' because they are not part of the same tree.Tf has two or more unconnected trees.
+[gazebo-1] [1;36m[Dbg] [SystemManager.cc:80] [0m[1;36mLoaded system [[0m[1;36mgz_ros2_control::GazeboSimROS2ControlPlugin[0m[1;36m] for entity [[0m[1;36m164[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [SystemManager.cc:80] [0m[1;36mLoaded system [[0m[1;36mgz::sim::systems::PosePublisher[0m[1;36m] for entity [[0m[1;36m164[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [SystemManager.cc:80] [0m[1;36mLoaded system [[0m[1;36mgz::sim::systems::Contact[0m[1;36m] for entity [[0m[1;36m164[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [Sensors.cc:697] [0m[1;36mConfiguring Sensors system[0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [Sensors.cc:557] [0m[1;36mSensorsPrivate::Run[0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [SystemManager.cc:80] [0m[1;36mLoaded system [[0m[1;36mgz::sim::systems::Sensors[0m[1;36m] for entity [[0m[1;36m164[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [Sensors.cc:532] [0m[1;36mSensorsPrivate::RenderThread started[0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [Sensors.cc:337] [0m[1;36mWaiting for init[0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [DetachableJoint.cc:137] [0m[1;36mDetach topic is: [0m[1;36m/vacuum_gripper/detach[0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [DetachableJoint.cc:143] [0m[1;36mDetachableJoint subscribing to messages on [0m[1;36m[[0m[1;36m/vacuum_gripper/detach[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [DetachableJoint.cc:160] [0m[1;36mAttach topic is: [0m[1;36m/vacuum_gripper/attach[0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [DetachableJoint.cc:195] [0m[1;36mOutput topic is: [0m[1;36m/vacuum_gripper/state[0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [SystemManager.cc:80] [0m[1;36mLoaded system [[0m[1;36mgz::sim::systems::DetachableJoint[0m[1;36m] for entity [[0m[1;36m164[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mOdometryPublisher publishing odometry on [[0m[1;32m/model/turtlebot4/odometry[0m[1;32m][0m[1;32m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mOdometryPublisher publishing odometry with covariance on [[0m[1;32m/model/turtlebot4/odometry_with_covariance[0m[1;32m][0m[1;32m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mOdometryPublisher publishing Pose_V (TF) on [[0m[1;32m/model/turtlebot4/pose[0m[1;32m][0m[1;32m[0m
+[gazebo-1] [1;36m[Dbg] [SystemManager.cc:80] [0m[1;36mLoaded system [[0m[1;36mgz::sim::systems::OdometryPublisher[0m[1;36m] for entity [[0m[1;36m164[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [UserCommands.cc:1094] [0m[1;36mCreated entity [[0m[1;36m164[0m[1;36m] named [[0m[1;36mturtlebot4[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mContact system publishing on [0m[1;32m/bumper_contact[0m[1;32m[0m
+[gazebo-1] [1;36m[Dbg] [SDFFeatures.cc:332] [0m[1;36mMesh construction from an SDF has not been implemented yet for [0m[1;36mdartsim. Use AttachMeshShapeFeature to use mesh shapes.[0m
+[gazebo-1] [1;36m[Dbg] [SDFFeatures.cc:864] [0m[1;36mThe geometry element of collision [[0m[1;36mwarehouse_collision[0m[1;36m] [0m[1;36mcouldn't be created[0m
+[gazebo-1] [1;36m[Dbg] [SDFFeatures.cc:332] [0m[1;36mMesh construction from an SDF has not been implemented yet for [0m[1;36mdartsim. Use AttachMeshShapeFeature to use mesh shapes.[0m
+[gazebo-1] [1;36m[Dbg] [SDFFeatures.cc:864] [0m[1;36mThe geometry element of collision [[0m[1;36mcollision[0m[1;36m] [0m[1;36mcouldn't be created[0m
+[gazebo-1] [1;36m[Dbg] [SDFFeatures.cc:332] [0m[1;36mMesh construction from an SDF has not been implemented yet for [0m[1;36mdartsim. Use AttachMeshShapeFeature to use mesh shapes.[0m
+[gazebo-1] [1;36m[Dbg] [SDFFeatures.cc:864] [0m[1;36mThe geometry element of collision [[0m[1;36mcollision[0m[1;36m] [0m[1;36mcouldn't be created[0m
+[gazebo-1] [1;36m[Dbg] [SDFFeatures.cc:332] [0m[1;36mMesh construction from an SDF has not been implemented yet for [0m[1;36mdartsim. Use AttachMeshShapeFeature to use mesh shapes.[0m
+[gazebo-1] [1;36m[Dbg] [SDFFeatures.cc:864] [0m[1;36mThe geometry element of collision [[0m[1;36mcollision[0m[1;36m] [0m[1;36mcouldn't be created[0m
+[gazebo-1] [1;36m[Dbg] [SDFFeatures.cc:332] [0m[1;36mMesh construction from an SDF has not been implemented yet for [0m[1;36mdartsim. Use AttachMeshShapeFeature to use mesh shapes.[0m
+[gazebo-1] [1;33m[Wrn] [OBJLoader.cc:91] [0m[1;33mBoth `d` and `Tr` parameters defined for "Chair". Use the value of `d` for dissolve (line 8 in .mtl.)[0m
+[gazebo-1] [1;33m[0m
+[gazebo-1] [1;33m[Wrn] [OBJLoader.cc:91] [0m[1;33mBoth `d` and `Tr` parameters defined for "CoffeeTable". Use the value of `d` for dissolve (line 8 in .mtl.)[0m
+[gazebo-1] [1;33m[0m
+[gazebo-1] [1;36m[Dbg] [SDFFeatures.cc:864] [0m[1;36mThe geometry element of collision [[0m[1;36mcollision[0m[1;36m] [0m[1;36mcouldn't be created[0m
+[gazebo-1] [1;36m[Dbg] [SDFFeatures.cc:332] [0m[1;36mMesh construction from an SDF has not been implemented yet for [0m[1;36mdartsim. Use AttachMeshShapeFeature to use mesh shapes.[0m
+[gazebo-1] [1;36m[Dbg] [SDFFeatures.cc:864] [0m[1;36mThe geometry element of collision [[0m[1;36mcollision[0m[1;36m] [0m[1;36mcouldn't be created[0m
+[gazebo-1] [1;36m[Dbg] [SDFFeatures.cc:332] [0m[1;36mMesh construction from an SDF has not been implemented yet for [0m[1;36mdartsim. Use AttachMeshShapeFeature to use mesh shapes.[0m
+[gazebo-1] [1;36m[Dbg] [SDFFeatures.cc:864] [0m[1;36mThe geometry element of collision [[0m[1;36mbase_link_fixed_joint_lump__shell_collision_collision_1[0m[1;36m] [0m[1;36mcouldn't be created[0m
+[gazebo-1] [1;36m[Dbg] [SDFFeatures.cc:332] [0m[1;36mMesh construction from an SDF has not been implemented yet for [0m[1;36mdartsim. Use AttachMeshShapeFeature to use mesh shapes.[0m
+[gazebo-1] [1;36m[Dbg] [SDFFeatures.cc:864] [0m[1;36mThe geometry element of collision [[0m[1;36mbase_link_fixed_joint_lump__arm_link_base_collision_2[0m[1;36m] [0m[1;36mcouldn't be created[0m
+[gazebo-1] [1;36m[Dbg] [SDFFeatures.cc:332] [0m[1;36mMesh construction from an SDF has not been implemented yet for [0m[1;36mdartsim. Use AttachMeshShapeFeature to use mesh shapes.[0m
+[gazebo-1] [1;36m[Dbg] [SDFFeatures.cc:864] [0m[1;36mThe geometry element of collision [[0m[1;36mbumper_collision[0m[1;36m] [0m[1;36mcouldn't be created[0m
+[gazebo-1] [1;36m[Dbg] [SDFFeatures.cc:332] [0m[1;36mMesh construction from an SDF has not been implemented yet for [0m[1;36mdartsim. Use AttachMeshShapeFeature to use mesh shapes.[0m
+[gazebo-1] [1;36m[Dbg] [SDFFeatures.cc:864] [0m[1;36mThe geometry element of collision [[0m[1;36marm_link1_collision[0m[1;36m] [0m[1;36mcouldn't be created[0m
+[gazebo-1] [1;36m[Dbg] [SDFFeatures.cc:332] [0m[1;36mMesh construction from an SDF has not been implemented yet for [0m[1;36mdartsim. Use AttachMeshShapeFeature to use mesh shapes.[0m
+[gazebo-1] [1;36m[Dbg] [SDFFeatures.cc:864] [0m[1;36mThe geometry element of collision [[0m[1;36marm_link2_collision[0m[1;36m] [0m[1;36mcouldn't be created[0m
+[gazebo-1] [1;36m[Dbg] [SDFFeatures.cc:332] [0m[1;36mMesh construction from an SDF has not been implemented yet for [0m[1;36mdartsim. Use AttachMeshShapeFeature to use mesh shapes.[0m
+[gazebo-1] [1;36m[Dbg] [SDFFeatures.cc:864] [0m[1;36mThe geometry element of collision [[0m[1;36marm_link3_collision[0m[1;36m] [0m[1;36mcouldn't be created[0m
+[gazebo-1] [1;36m[Dbg] [SDFFeatures.cc:332] [0m[1;36mMesh construction from an SDF has not been implemented yet for [0m[1;36mdartsim. Use AttachMeshShapeFeature to use mesh shapes.[0m
+[gazebo-1] [1;36m[Dbg] [SDFFeatures.cc:864] [0m[1;36mThe geometry element of collision [[0m[1;36marm_link4_collision[0m[1;36m] [0m[1;36mcouldn't be created[0m
+[gazebo-1] [1;36m[Dbg] [SDFFeatures.cc:332] [0m[1;36mMesh construction from an SDF has not been implemented yet for [0m[1;36mdartsim. Use AttachMeshShapeFeature to use mesh shapes.[0m
+[gazebo-1] [1;36m[Dbg] [SDFFeatures.cc:864] [0m[1;36mThe geometry element of collision [[0m[1;36marm_link5_collision[0m[1;36m] [0m[1;36mcouldn't be created[0m
+[gazebo-1] [1;36m[Dbg] [SDFFeatures.cc:332] [0m[1;36mMesh construction from an SDF has not been implemented yet for [0m[1;36mdartsim. Use AttachMeshShapeFeature to use mesh shapes.[0m
+[gazebo-1] [1;36m[Dbg] [SDFFeatures.cc:864] [0m[1;36mThe geometry element of collision [[0m[1;36marm_link6_collision[0m[1;36m] [0m[1;36mcouldn't be created[0m
+[gazebo-1] [1;36m[Dbg] [SDFFeatures.cc:332] [0m[1;36mMesh construction from an SDF has not been implemented yet for [0m[1;36mdartsim. Use AttachMeshShapeFeature to use mesh shapes.[0m
+[gazebo-1] [1;36m[Dbg] [SDFFeatures.cc:864] [0m[1;36mThe geometry element of collision [[0m[1;36marm_uflite_vacuum_gripper_link_collision[0m[1;36m] [0m[1;36mcouldn't be created[0m
+[gazebo-1] [1;36m[Dbg] [SimulationFeatures.cc:90] [0m[1;36mSimulation timestep set to: [0m[1;36m0.003[0m[1;36m[0m
+[gazebo-1] [1;33m[Wrn] [Component.hh:127] [0m[1;33mTrying to serialize component with data type [[0m[1;33mSt10shared_ptrIN3sdf3v147ElementEE[0m[1;33m], which doesn't have [0m[1;33m`operator<<`. Component will not be serialized.[0m[1;33m[0m
+[gazebo-1] [ERROR] [1791301808.200247572] [gz_ros_control]: Desired controller update period (0.001 s) is faster than the gazebo simulation period (0.003 s).
+[gazebo-1] [INFO] [1791301808.201971446] [controller_manager]: Successfully switched controllers!
+[wait_for_ready-47] [INFO] [1791301808.202258259] [wait_for_rviz]: ready: topic /clock (message received)
+[spawner-31] [INFO] [1791301808.206140423] [spawner_joint_state_broadcaster]: Configured and activated joint_state_broadcaster
+[wait_for_ready-48] [INFO] [1791301808.208102489] [wait_for_sim]: ready: service /controller_manager/list_controllers (answered a call)
+[controller_server-49] [INFO] [1791301808.348620308] [local_costmap.local_costmap]: Timed out waiting for transform from base_link to odom to become available, tf error: Could not find a connection between 'odom' and 'base_link' because they are not part of the same tree.Tf has two or more unconnected trees.
+[INFO] [spawner-31]: process has finished cleanly [pid 16589]
+[INFO] [spawner-62]: process started with pid [17960]
+[spawner-62] [INFO] [1791301808.659643713] [spawner_diffdrive_controller]: waiting for service /controller_manager/list_controllers to become available...
+[controller_server-49] [INFO] [1791301808.848624099] [local_costmap.local_costmap]: Timed out waiting for transform from base_link to odom to become available, tf error: Could not find a connection between 'odom' and 'base_link' because they are not part of the same tree.Tf has two or more unconnected trees.
+[gazebo-1] [1;32m[Msg] [0m[1;32mServing scene information on [[0m[1;32m/world/warehouse[0m[1;32m/[0m[1;32mscene/info[0m[1;32m][0m[1;32m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mServing graph information on [[0m[1;32m/world/warehouse[0m[1;32m/[0m[1;32mscene/graph[0m[1;32m][0m[1;32m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mServing full state on [[0m[1;32m/world/warehouse[0m[1;32m/[0m[1;32mstate[0m[1;32m][0m[1;32m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mServing full state (async) on [[0m[1;32m/world/warehouse[0m[1;32m/[0m[1;32mstate_async[0m[1;32m][0m[1;32m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mPublishing scene information on [[0m[1;32m/world/warehouse/scene/info[0m[1;32m][0m[1;32m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mPublishing entity deletions on [[0m[1;32m/world/warehouse/scene/deletion[0m[1;32m][0m[1;32m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mPublishing state changes on [[0m[1;32m/world/warehouse/state[0m[1;32m][0m[1;32m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mPublishing pose messages on [[0m[1;32m/world/warehouse[0m[1;32m/[0m[1;32mpose/info[0m[1;32m][0m[1;32m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mPublishing dynamic pose messages on [[0m[1;32m/world/warehouse[0m[1;32m/[0m[1;32mdynamic_pose/info[0m[1;32m][0m[1;32m[0m
+[gazebo-1] [1;36m[Dbg] [EntityComponentManager.cc:1656] [0m[1;36mUpdated state thread iterators: [0m[1;36m16[0m[1;36m threads processing around [0m[1;36m20[0m[1;36m entities each.[0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [SimulationRunner.cc:560] [0m[1;36mExiting postupdate worker thread ([0m[1;36m0[0m[1;36m)[0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [SimulationRunner.cc:560] [0m[1;36mExiting postupdate worker thread ([0m[1;36m1[0m[1;36m)[0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [SimulationRunner.cc:533] [0m[1;36mCreating PostUpdate worker threads: [0m[1;36m9[0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [SimulationRunner.cc:544] [0m[1;36mCreating postupdate worker thread ([0m[1;36m0[0m[1;36m)[0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [SimulationRunner.cc:544] [0m[1;36mCreating postupdate worker thread ([0m[1;36m1[0m[1;36m)[0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [SimulationRunner.cc:544] [0m[1;36mCreating postupdate worker thread ([0m[1;36m2[0m[1;36m)[0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [SimulationRunner.cc:544] [0m[1;36mCreating postupdate worker thread ([0m[1;36m3[0m[1;36m)[0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [SimulationRunner.cc:544] [0m[1;36mCreating postupdate worker thread ([0m[1;36m4[0m[1;36m)[0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [SimulationRunner.cc:544] [0m[1;36mCreating postupdate worker thread ([0m[1;36m5[0m[1;36m)[0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [SimulationRunner.cc:544] [0m[1;36mCreating postupdate worker thread ([0m[1;36m6[0m[1;36m)[0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [SimulationRunner.cc:544] [0m[1;36mCreating postupdate worker thread ([0m[1;36m7[0m[1;36m)[0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [DetachableJoint.cc:343] [0m[1;36mAttaching entity: [0m[1;36m312[0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [Physics.cc:1939] [0m[1;36mCreating detachable joint [[0m[1;36m312[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [Sensors.cc:953] [0m[1;36mInitialization needed[0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [Sensors.cc:349] [0m[1;36mInitializing render context[0m[1;36m[0m
+[gazebo-1] [1;32m[Msg] [0m[1;32mLoading plugin [[0m[1;32mgz-rendering-ogre2[0m[1;32m][0m[1;32m[0m
+[gazebo-1] [1;36m[Dbg] [RenderUtil.cc:2646] [0m[1;36mCreate scene [[0m[1;36mscene[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [Sensors.cc:953] [0m[1;36mInitialization needed[0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [Sensors.cc:391] [0m[1;36mRendering Thread initialized[0m[1;36m[0m
+[gazebo-1] plugin is using camera [[0m[1;36mscene::Camera(65527)[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;36m[GUI] [Dbg] [InteractiveViewControl.cc:176] [0m[1;36mInteractiveViewControl plugin is moving camera [[0m[1;36mscene::Camera(65527)[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;33mWarning [Utils.cc:132][0m [/sdf/model[@name="tb4_lite6"]/joint[@name="wheel_drop_left_joint"]/physics/ode/provide_feedback:<data-string>:L2544]: XML Element[provide_feedback], child of element[ode], not defined in SDF. Copying[provide_feedback] as children of [ode].
+[gazebo-1] [1;33mWarning [Utils.cc:132][0m [/sdf/model[@name="tb4_lite6"]/joint[@name="wheel_drop_right_joint"]/physics/ode/provide_feedback:<data-string>:L2665]: XML Element[provide_feedback], child of element[ode], not defined in SDF. Copying[provide_feedback] as children of [ode].
+[gazebo-1] [1;33m[GUI] [Wrn] [Component.hh:172] [0m[1;33mTrying to deserialize component with data type [[0m[1;33mSt10shared_ptrIN3sdf3v147ElementEE[0m[1;33m], which doesn't have [0m[1;33m`operator>>`. Component will not be deserialized.[0m[1;33m[0m
+[controller_server-49] [INFO] [1791301809.348621299] [local_costmap.local_costmap]: Timed out waiting for transform from base_link to odom to become available, tf error: Could not find a connection between 'odom' and 'base_link' because they are not part of the same tree.Tf has two or more unconnected trees.
+[gazebo-1] [1;33m[Wrn] [ColladaLoader.cc:2395] [0m[1;33mTriangle input semantic: '[0m[1;33mCOLOR[0m[1;33m' is currently[0m[1;33m not supported[0m[1;33m[0m
+[spawner-62] [INFO] [1791301809.427498858] [spawner_diffdrive_controller]: Setting controller param "params_file" to "['/home/y/u/yunqiao/IROB_Mobile_Robot_Project/install/irobot_create_control/share/irobot_create_control/config/control.yaml']" for diffdrive_controller
+[gazebo-1] [INFO] [1791301809.434535597] [controller_manager]: Loading controller : 'diffdrive_controller' of type 'diff_drive_controller/DiffDriveController'
+[gazebo-1] [INFO] [1791301809.434591452] [controller_manager]: Loading controller 'diffdrive_controller'
+[gazebo-1] [WARN] [1791301809.440061753] [controller_manager]: The use of remapping arguments to the controller_manager node is deprecated. Please use the '--controller-ros-args' argument of the spawner to pass remapping arguments to the controller node.
+[gazebo-1] [INFO] [1791301809.440108006] [controller_manager]: Controller 'diffdrive_controller' node arguments: --ros-args --params-file /home/y/u/yunqiao/IROB_Mobile_Robot_Project/install/irobot_create_control/share/irobot_create_control/config/control.yaml --params-file /home/y/u/yunqiao/IROB_Mobile_Robot_Project/install/warehouse_inventory_robot/share/warehouse_inventory_robot/config/arm_controller_types.yaml --ros-args --remap ~/odom:=odom --remap /tf:=tf --remap /tf_static:=tf_static --remap /diagnostics:=diagnostics -p use_sim_time:=true --params-file /home/y/u/yunqiao/IROB_Mobile_Robot_Project/install/irobot_create_control/share/irobot_create_control/config/control.yaml --param use_sim_time:=true 
+[gazebo-1] [1;33m[Wrn] [ColladaLoader.cc:2395] [0m[1;33mTriangle input semantic: '[0m[1;33mCOLOR[0m[1;33m' is currently[0m[1;33m not supported[0m[1;33m[0m
+[gazebo-1] [1;33m[GUI] [Wrn] [OBJLoader.cc:91] [0m[1;33mBoth `d` and `Tr` parameters defined for "Chair". Use the value of `d` for dissolve (line 8 in .mtl.)[0m
+[gazebo-1] [1;33m[0m
+[gazebo-1] [1;33m[GUI] [Wrn] [OBJLoader.cc:91] [0m[1;33mBoth `d` and `Tr` parameters defined for "CoffeeTable". Use the value of `d` for dissolve (line 8 in .mtl.)[0m
+[gazebo-1] [1;33m[0m
+[controller_server-49] [INFO] [1791301809.848623266] [local_costmap.local_costmap]: Timed out waiting for transform from base_link to odom to become available, tf error: Could not find a connection between 'odom' and 'base_link' because they are not part of the same tree.Tf has two or more unconnected trees.
+[gazebo-1] [1;33m[GUI] [Wrn] [ColladaLoader.cc:2395] [0m[1;33mTriangle input semantic: '[0m[1;33mCOLOR[0m[1;33m' is currently[0m[1;33m not supported[0m[1;33m[0m
+[gazebo-1] [1;33m[GUI] [Wrn] [ColladaLoader.cc:2395] [0m[1;33mTriangle input semantic: '[0m[1;33mCOLOR[0m[1;33m' is currently[0m[1;33m not supported[0m[1;33m[0m
+[gazebo-1] [1;36m[Dbg] [RgbdCameraSensor.cc:210] [0m[1;36mRGB images for [[0m[1;36mturtlebot4::oakd_rgb_camera_frame::rgbd_camera[0m[1;36m] advertised on [[0m[1;36mworld/warehouse/model/turtlebot4/link/oakd_rgb_camera_frame/sensor/rgbd_camera[0m[1;36m/image][0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [RgbdCameraSensor.cc:224] [0m[1;36mDepth images for [[0m[1;36mturtlebot4::oakd_rgb_camera_frame::rgbd_camera[0m[1;36m] advertised on [[0m[1;36mworld/warehouse/model/turtlebot4/link/oakd_rgb_camera_frame/sensor/rgbd_camera[0m[1;36m/depth_image][0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [RgbdCameraSensor.cc:238] [0m[1;36mPoints for [[0m[1;36mturtlebot4::oakd_rgb_camera_frame::rgbd_camera[0m[1;36m] advertised on [[0m[1;36mworld/warehouse/model/turtlebot4/link/oakd_rgb_camera_frame/sensor/rgbd_camera[0m[1;36m/points][0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [CameraSensor.cc:695] [0m[1;36mCamera info for [[0m[1;36mturtlebot4::oakd_rgb_camera_frame::rgbd_camera[0m[1;36m] advertised on [[0m[1;36mworld/warehouse/model/turtlebot4/link/oakd_rgb_camera_frame/sensor/rgbd_camera/camera_info[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [Lidar.cc:139] [0m[1;36mLaser scans for [[0m[1;36mstandard_dock::green_buoy_link::green_buoy[0m[1;36m] advertised on [[0m[1;36mworld/warehouse/model/standard_dock/link/green_buoy_link/sensor/green_buoy/scan[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [GpuLidarSensor.cc:164] [0m[1;36mLidar points for [[0m[1;36mstandard_dock::green_buoy_link::green_buoy[0m[1;36m] advertised on [[0m[1;36mworld/warehouse/model/standard_dock/link/green_buoy_link/sensor/green_buoy/scan/points[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [Lidar.cc:139] [0m[1;36mLaser scans for [[0m[1;36mstandard_dock::halo_link::halo[0m[1;36m] advertised on [[0m[1;36mworld/warehouse/model/standard_dock/link/halo_link/sensor/halo/scan[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [GpuLidarSensor.cc:164] [0m[1;36mLidar points for [[0m[1;36mstandard_dock::halo_link::halo[0m[1;36m] advertised on [[0m[1;36mworld/warehouse/model/standard_dock/link/halo_link/sensor/halo/scan/points[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [Lidar.cc:139] [0m[1;36mLaser scans for [[0m[1;36mstandard_dock::red_buoy_link::red_buoy[0m[1;36m] advertised on [[0m[1;36mworld/warehouse/model/standard_dock/link/red_buoy_link/sensor/red_buoy/scan[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [GpuLidarSensor.cc:164] [0m[1;36mLidar points for [[0m[1;36mstandard_dock::red_buoy_link::red_buoy[0m[1;36m] advertised on [[0m[1;36mworld/warehouse/model/standard_dock/link/red_buoy_link/sensor/red_buoy/scan/points[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [Lidar.cc:139] [0m[1;36mLaser scans for [[0m[1;36mstandard_dock::yellow_buoy_link::yellow_buoy[0m[1;36m] advertised on [[0m[1;36mworld/warehouse/model/standard_dock/link/yellow_buoy_link/sensor/yellow_buoy/scan[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [GpuLidarSensor.cc:164] [0m[1;36mLidar points for [[0m[1;36mstandard_dock::yellow_buoy_link::yellow_buoy[0m[1;36m] advertised on [[0m[1;36mworld/warehouse/model/standard_dock/link/yellow_buoy_link/sensor/yellow_buoy/scan/points[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [Lidar.cc:139] [0m[1;36mLaser scans for [[0m[1;36mturtlebot4::base_link::cliff_front_left[0m[1;36m] advertised on [[0m[1;36mworld/warehouse/model/turtlebot4/link/base_link/sensor/cliff_front_left/scan[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [GpuLidarSensor.cc:164] [0m[1;36mLidar points for [[0m[1;36mturtlebot4::base_link::cliff_front_left[0m[1;36m] advertised on [[0m[1;36mworld/warehouse/model/turtlebot4/link/base_link/sensor/cliff_front_left/scan/points[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [Lidar.cc:139] [0m[1;36mLaser scans for [[0m[1;36mturtlebot4::base_link::cliff_front_right[0m[1;36m] advertised on [[0m[1;36mworld/warehouse/model/turtlebot4/link/base_link/sensor/cliff_front_right/scan[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [GpuLidarSensor.cc:164] [0m[1;36mLidar points for [[0m[1;36mturtlebot4::base_link::cliff_front_right[0m[1;36m] advertised on [[0m[1;36mworld/warehouse/model/turtlebot4/link/base_link/sensor/cliff_front_right/scan/points[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [Lidar.cc:139] [0m[1;36mLaser scans for [[0m[1;36mturtlebot4::base_link::cliff_side_left[0m[1;36m] advertised on [[0m[1;36mworld/warehouse/model/turtlebot4/link/base_link/sensor/cliff_side_left/scan[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [GpuLidarSensor.cc:164] [0m[1;36mLidar points for [[0m[1;36mturtlebot4::base_link::cliff_side_left[0m[1;36m] advertised on [[0m[1;36mworld/warehouse/model/turtlebot4/link/base_link/sensor/cliff_side_left/scan/points[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [Lidar.cc:139] [0m[1;36mLaser scans for [[0m[1;36mturtlebot4::base_link::cliff_side_right[0m[1;36m] advertised on [[0m[1;36mworld/warehouse/model/turtlebot4/link/base_link/sensor/cliff_side_right/scan[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [GpuLidarSensor.cc:164] [0m[1;36mLidar points for [[0m[1;36mturtlebot4::base_link::cliff_side_right[0m[1;36m] advertised on [[0m[1;36mworld/warehouse/model/turtlebot4/link/base_link/sensor/cliff_side_right/scan/points[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [Lidar.cc:139] [0m[1;36mLaser scans for [[0m[1;36mturtlebot4::ir_intensity_front_center_left::ir_intensity_front_center_left[0m[1;36m] advertised on [[0m[1;36mworld/warehouse/model/turtlebot4/link/ir_intensity_front_center_left/sensor/ir_intensity_front_center_left/scan[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [GpuLidarSensor.cc:164] [0m[1;36mLidar points for [[0m[1;36mturtlebot4::ir_intensity_front_center_left::ir_intensity_front_center_left[0m[1;36m] advertised on [[0m[1;36mworld/warehouse/model/turtlebot4/link/ir_intensity_front_center_left/sensor/ir_intensity_front_center_left/scan/points[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [Lidar.cc:139] [0m[1;36mLaser scans for [[0m[1;36mturtlebot4::ir_intensity_front_center_right::ir_intensity_front_center_right[0m[1;36m] advertised on [[0m[1;36mworld/warehouse/model/turtlebot4/link/ir_intensity_front_center_right/sensor/ir_intensity_front_center_right/scan[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [GpuLidarSensor.cc:164] [0m[1;36mLidar points for [[0m[1;36mturtlebot4::ir_intensity_front_center_right::ir_intensity_front_center_right[0m[1;36m] advertised on [[0m[1;36mworld/warehouse/model/turtlebot4/link/ir_intensity_front_center_right/sensor/ir_intensity_front_center_right/scan/points[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [Lidar.cc:139] [0m[1;36mLaser scans for [[0m[1;36mturtlebot4::ir_intensity_front_left::ir_intensity_front_left[0m[1;36m] advertised on [[0m[1;36mworld/warehouse/model/turtlebot4/link/ir_intensity_front_left/sensor/ir_intensity_front_left/scan[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [GpuLidarSensor.cc:164] [0m[1;36mLidar points for [[0m[1;36mturtlebot4::ir_intensity_front_left::ir_intensity_front_left[0m[1;36m] advertised on [[0m[1;36mworld/warehouse/model/turtlebot4/link/ir_intensity_front_left/sensor/ir_intensity_front_left/scan/points[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [Lidar.cc:139] [0m[1;36mLaser scans for [[0m[1;36mturtlebot4::ir_intensity_front_right::ir_intensity_front_right[0m[1;36m] advertised on [[0m[1;36mworld/warehouse/model/turtlebot4/link/ir_intensity_front_right/sensor/ir_intensity_front_right/scan[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [GpuLidarSensor.cc:164] [0m[1;36mLidar points for [[0m[1;36mturtlebot4::ir_intensity_front_right::ir_intensity_front_right[0m[1;36m] advertised on [[0m[1;36mworld/warehouse/model/turtlebot4/link/ir_intensity_front_right/sensor/ir_intensity_front_right/scan/points[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [Lidar.cc:139] [0m[1;36mLaser scans for [[0m[1;36mturtlebot4::ir_intensity_left::ir_intensity_left[0m[1;36m] advertised on [[0m[1;36mworld/warehouse/model/turtlebot4/link/ir_intensity_left/sensor/ir_intensity_left/scan[0m[1;36m][0m[1;36m[0m
+[controller_server-49] [INFO] [1791301810.348626462] [local_costmap.local_costmap]: Timed out waiting for transform from base_link to odom to become available, tf error: Could not find a connection between 'odom' and 'base_link' because they are not part of the same tree.Tf has two or more unconnected trees.
+[wait_for_ready-48] [INFO] [1791301810.435111401] [wait_for_sim]: ready: topic /scan (message received)
+[wait_for_ready-47] [INFO] [1791301810.435307771] [wait_for_rviz]: ready: topic /scan (message received)
+[spawner-62] [INFO] [1791301810.440324567] [spawner_diffdrive_controller]: Loaded diffdrive_controller
+[motion_control-34] [INFO] [1791301810.476593493] [motion_control]: Robot max speed is now 0.460000 m/s
+[parameter_bridge-8] [INFO] [1791301810.476796827] [cmd_vel_bridge]: Passing message from ROS geometry_msgs/msg/TwistStamped to Gazebo gz.msgs.Twist (showing msg only once per type)
+[wait_for_ready-48] [sim] ready after 8.0s
+[wait_for_ready-47] [rviz] ready after 8.0s
+[turtlebot4_node-29] [INFO] [1791301810.502509507] [turtlebot4_node]: OAKD stopped
+[turtlebot4_node-29] [INFO] [1791301810.502574555] [turtlebot4_node]: RPLIDAR stopped
+[gazebo-1] [INFO] [1791301810.528536219] [controller_manager]: Configuring controller: 'diffdrive_controller'
+[gazebo-1] [WARN] [1791301810.528639102] [diffdrive_controller]: [deprecated] has_jerk_limits parameter is deprecated, instead set the respective limits to NAN
+[gazebo-1] [WARN] [1791301810.528655929] [diffdrive_controller]: [deprecated] has_jerk_limits parameter is deprecated, instead set the respective limits to NAN
+[gazebo-1] [WARN] [1791301810.535981201] [diffdrive_controller]: Can't accept new commands. subscriber is inactive
+[gazebo-1] [INFO] [1791301810.562152693] [controller_manager]: Activating controllers: [ diffdrive_controller ]
+[gazebo-1] [INFO] [1791301810.564872612] [controller_manager]: Successfully switched controllers!
+[spawner-62] [INFO] [1791301810.569860226] [spawner_diffdrive_controller]: Configured and activated diffdrive_controller
+[gazebo-1] [WARN] [1791301810.594675829] [diffdrive_controller]: Received TwistStamped with zero timestamp, setting it to current time, this message will only be shown once
+[INFO] [wait_for_ready-47]: process has finished cleanly [pid 16621]
+[INFO] [wait_for_ready-48]: process has finished cleanly [pid 16623]
+[INFO] [rviz2-63]: process started with pid [18055]
+[INFO] [spawner-64]: process started with pid [18057]
+[INFO] [static_transform_publisher-65]: process started with pid [18059]
+[static_transform_publisher-65] [WARN] [1791301810.673077596] []: Old-style arguments are deprecated; see --help for new-style arguments
+[rviz2-63] Warning: Ignoring XDG_SESSION_TYPE=wayland on Gnome. Use QT_QPA_PLATFORM=wayland to run on Wayland anyway.
+[static_transform_publisher-65] [INFO] [1791301810.706015143] [map_to_odom_static_tf]: Spinning until stopped - publishing transform
+[static_transform_publisher-65] translation: ('0.000000', '0.000000', '0.000000')
+[static_transform_publisher-65] rotation: ('0.000000', '0.000000', '0.000000', '1.000000')
+[static_transform_publisher-65] from 'map' to 'odom'
+[INFO] [spawner-62]: process has finished cleanly [pid 17960]
+[controller_server-49] [INFO] [1791301810.848693679] [local_costmap.local_costmap]: start
+[rviz2-63] [INFO] [1791301811.084355911] [rviz2]: Stereo is NOT SUPPORTED
+[rviz2-63] [INFO] [1791301811.084418521] [rviz2]: OpenGl version: 4.6 (GLSL 4.6)
+[rviz2-63] [INFO] [1791301811.139292475] [rviz2]: Stereo is NOT SUPPORTED
+[controller_server-49] [WARN] [1791301811.454446970] [controller_server]: Parameter controller_server.verbose not found
+[controller_server-49] [INFO] [1791301811.456104126] [controller_server]: Optimizer reset
+[controller_server-49] [INFO] [1791301811.460628176] [MPPIController]: Activated MPPI Controller: FollowPath
+[controller_server-49] [INFO] [1791301811.460659842] [controller_server]: Creating bond (controller_server) to lifecycle manager.
+[lifecycle_manager-59] [INFO] [1791301811.574475275] [lifecycle_manager_navigation]: Server controller_server connected with bond.
+[lifecycle_manager-59] [INFO] [1791301811.574520248] [lifecycle_manager_navigation]: [34m[1mActivating smoother_server[0m[0m
+[smoother_server-50] [INFO] [1791301811.577811950] [smoother_server]: Activating
+[smoother_server-50] [INFO] [1791301811.577845153] [smoother_server]: Creating bond (smoother_server) to lifecycle manager.
+[spawner-64] [INFO] [1791301811.588938424] [spawner_lite6_traj_controller]: waiting for service /controller_manager/list_controllers to become available...
+[spawner-64] [INFO] [1791301811.615835107] [spawner_lite6_traj_controller]: Setting controller param "params_file" to "['/home/y/u/yunqiao/IROB_Mobile_Robot_Project/install/warehouse_inventory_robot/share/warehouse_inventory_robot/config/arm_controllers.yaml']" for lite6_traj_controller
+[gazebo-1] [INFO] [1791301811.623928140] [controller_manager]: Loading controller : 'lite6_traj_controller' of type 'joint_trajectory_controller/JointTrajectoryController'
+[gazebo-1] [INFO] [1791301811.623965744] [controller_manager]: Loading controller 'lite6_traj_controller'
+[gazebo-1] [WARN] [1791301811.633683834] [controller_manager]: The use of remapping arguments to the controller_manager node is deprecated. Please use the '--controller-ros-args' argument of the spawner to pass remapping arguments to the controller node.
+[gazebo-1] [INFO] [1791301811.633746027] [controller_manager]: Controller 'lite6_traj_controller' node arguments: --ros-args --params-file /home/y/u/yunqiao/IROB_Mobile_Robot_Project/install/irobot_create_control/share/irobot_create_control/config/control.yaml --params-file /home/y/u/yunqiao/IROB_Mobile_Robot_Project/install/warehouse_inventory_robot/share/warehouse_inventory_robot/config/arm_controller_types.yaml --ros-args --remap ~/odom:=odom --remap /tf:=tf --remap /tf_static:=tf_static --remap /diagnostics:=diagnostics -p use_sim_time:=true --params-file /home/y/u/yunqiao/IROB_Mobile_Robot_Project/install/warehouse_inventory_robot/share/warehouse_inventory_robot/config/arm_controllers.yaml --param use_sim_time:=true 
+[lifecycle_manager-59] [INFO] [1791301811.714665030] [lifecycle_manager_navigation]: Server smoother_server connected with bond.
+[lifecycle_manager-59] [INFO] [1791301811.714709075] [lifecycle_manager_navigation]: [34m[1mActivating planner_server[0m[0m
+[planner_server-51] [INFO] [1791301811.715257561] [planner_server]: Activating
+[planner_server-51] [INFO] [1791301811.715290465] [global_costmap.global_costmap]: Activating
+[planner_server-51] [INFO] [1791301811.715299005] [global_costmap.global_costmap]: Checking transform
+[planner_server-51] [INFO] [1791301811.715312901] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Invalid frame ID "map" passed to canTransform argument target_frame - frame does not exist
+[spawner-64] [INFO] [1791301811.747816548] [spawner_lite6_traj_controller]: Loaded lite6_traj_controller
+[gazebo-1] [INFO] [1791301811.751147414] [controller_manager]: Configuring controller: 'lite6_traj_controller'
+[gazebo-1] [INFO] [1791301811.751380752] [lite6_traj_controller]: No specific joint names are used for command interfaces. Using 'joints' parameter.
+[gazebo-1] [INFO] [1791301811.751409197] [lite6_traj_controller]: Command interfaces are [position velocity] and state interfaces are [position velocity].
+[gazebo-1] [INFO] [1791301811.751425405] [lite6_traj_controller]: Using 'splines' interpolation method.
+[gazebo-1] [INFO] [1791301811.756410407] [lite6_traj_controller]: Action status changes will be monitored at 10.00 Hz.
+[gazebo-1] [INFO] [1791301811.770565139] [lite6_traj_controller]: No scaling interface set. This controller will not read speed scaling from the hardware.
+[rviz2-63] [INFO] [1791301812.080902069] [rviz2]: Stereo is NOT SUPPORTED
+[planner_server-51] [INFO] [1791301812.215489619] [global_costmap.global_costmap]: start
+[gazebo-1] [INFO] [1791301812.263458629] [controller_manager]: Activating controllers: [ lite6_traj_controller ]
+[gazebo-1] [INFO] [1791301812.340906732] [controller_manager]: Successfully switched controllers!
+[spawner-64] [INFO] [1791301812.440050552] [spawner_lite6_traj_controller]: Configured and activated lite6_traj_controller
+[INFO] [spawner-64]: process has finished cleanly [pid 18057]
+[rviz2-63] [INFO] [1791301813.137975392] [rviz2]: Trying to create a map of size 1006 x 1674 using 1 swatches
+[rviz2-63] [ERROR] [1791301813.150451817] [rviz2]: rviz/glsl120/indexed_8bit_image.vert
+[rviz2-63] rviz/glsl120/indexed_8bit_image.frag
+[rviz2-63]  GLSL link result : 
+[rviz2-63] active samplers with a different type refer to the same texture image unit
+[planner_server-51] [INFO] [1791301813.267320334] [planner_server]: Activating plugin GridBased of type NavfnPlanner
+[planner_server-51] [INFO] [1791301813.269768341] [planner_server]: Creating bond (planner_server) to lifecycle manager.
+[lifecycle_manager-59] [INFO] [1791301813.376276350] [lifecycle_manager_navigation]: Server planner_server connected with bond.
+[lifecycle_manager-59] [INFO] [1791301813.376324910] [lifecycle_manager_navigation]: [34m[1mActivating route_server[0m[0m
+[route_server-52] [INFO] [1791301813.376806438] [route_server]: Activating
+[route_server-52] [INFO] [1791301813.376841512] [route_server]: Creating bond (route_server) to lifecycle manager.
+[lifecycle_manager-59] [INFO] [1791301813.483654848] [lifecycle_manager_navigation]: Server route_server connected with bond.
+[lifecycle_manager-59] [INFO] [1791301813.483685148] [lifecycle_manager_navigation]: [34m[1mActivating behavior_server[0m[0m
+[behavior_server-53] [INFO] [1791301813.484174466] [behavior_server]: Activating
+[behavior_server-53] [INFO] [1791301813.484190328] [behavior_server]: Activating spin
+[behavior_server-53] [INFO] [1791301813.484195088] [behavior_server]: Activating backup
+[behavior_server-53] [INFO] [1791301813.484198632] [behavior_server]: Activating drive_on_heading
+[behavior_server-53] [INFO] [1791301813.484201833] [behavior_server]: Activating assisted_teleop
+[behavior_server-53] [INFO] [1791301813.484204912] [behavior_server]: Activating wait
+[behavior_server-53] [INFO] [1791301813.484208355] [behavior_server]: Creating bond (behavior_server) to lifecycle manager.
+[lifecycle_manager-59] [INFO] [1791301813.592241239] [lifecycle_manager_navigation]: Server behavior_server connected with bond.
+[lifecycle_manager-59] [INFO] [1791301813.592272705] [lifecycle_manager_navigation]: [34m[1mActivating velocity_smoother[0m[0m
+[velocity_smoother-56] [INFO] [1791301813.592724862] [velocity_smoother]: Activating
+[velocity_smoother-56] [INFO] [1791301813.592752945] [velocity_smoother]: Creating bond (velocity_smoother) to lifecycle manager.
+[lifecycle_manager-59] [INFO] [1791301813.700363097] [lifecycle_manager_navigation]: Server velocity_smoother connected with bond.
+[lifecycle_manager-59] [INFO] [1791301813.700405768] [lifecycle_manager_navigation]: [34m[1mActivating collision_monitor[0m[0m
+[collision_monitor-57] [INFO] [1791301813.700992208] [collision_monitor]: Activating
+[collision_monitor-57] [INFO] [1791301813.701014227] [collision_monitor]: Creating bond (collision_monitor) to lifecycle manager.
+[lifecycle_manager-59] [INFO] [1791301813.809018653] [lifecycle_manager_navigation]: Server collision_monitor connected with bond.
+[lifecycle_manager-59] [INFO] [1791301813.809052440] [lifecycle_manager_navigation]: [34m[1mActivating bt_navigator[0m[0m
+[bt_navigator-54] [INFO] [1791301813.809721212] [bt_navigator]: Activating
+[gazebo-1] [1;36m[Dbg] [GpuLidarSensor.cc:164] [0m[1;36mLidar points for [[0m[1;36mturtlebot4::ir_intensity_left::ir_intensity_left[0m[1;36m] advertised on [[0m[1;36mworld/warehouse/model/turtlebot4/link/ir_intensity_left/sensor/ir_intensity_left/scan/points[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [Lidar.cc:139] [0m[1;36mLaser scans for [[0m[1;36mturtlebot4::ir_intensity_right::ir_intensity_right[0m[1;36m] advertised on [[0m[1;36mworld/warehouse/model/turtlebot4/link/ir_intensity_right/sensor/ir_intensity_right/scan[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [GpuLidarSensor.cc:164] [0m[1;36mLidar points for [[0m[1;36mturtlebot4::ir_intensity_right::ir_intensity_right[0m[1;36m] advertised on [[0m[1;36mworld/warehouse/model/turtlebot4/link/ir_intensity_right/sensor/ir_intensity_right/scan/points[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [Lidar.cc:139] [0m[1;36mLaser scans for [[0m[1;36mturtlebot4::ir_intensity_side_left::ir_intensity_side_left[0m[1;36m] advertised on [[0m[1;36mworld/warehouse/model/turtlebot4/link/ir_intensity_side_left/sensor/ir_intensity_side_left/scan[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [GpuLidarSensor.cc:164] [0m[1;36mLidar points for [[0m[1;36mturtlebot4::ir_intensity_side_left::ir_intensity_side_left[0m[1;36m] advertised on [[0m[1;36mworld/warehouse/model/turtlebot4/link/ir_intensity_side_left/sensor/ir_intensity_side_left/scan/points[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [Lidar.cc:139] [0m[1;36mLaser scans for [[0m[1;36mturtlebot4::rplidar_link::rplidar[0m[1;36m] advertised on [[0m[1;36mworld/warehouse/model/turtlebot4/link/rplidar_link/sensor/rplidar/scan[0m[1;36m][0m[1;36m[0m
+[gazebo-1] [1;36m[Dbg] [GpuLidarSensor.cc:164] [0m[1;36mLidar points for [[0m[1;36mturtlebot4::rplidar_link::rplidar[0m[1;36m] advertised on [[0m[1;36mworld/warehouse/model/turtlebot4/link/rplidar_link/sensor/rplidar/scan/points[0m[1;36m][0m[1;36m[0m
+[bt_navigator-54] [INFO] [1791301813.938380409] [bt_navigator]: Creating bond (bt_navigator) to lifecycle manager.
+[lifecycle_manager-59] [INFO] [1791301814.046975525] [lifecycle_manager_navigation]: Server bt_navigator connected with bond.
+[lifecycle_manager-59] [INFO] [1791301814.047018044] [lifecycle_manager_navigation]: [34m[1mActivating waypoint_follower[0m[0m
+[waypoint_follower-55] [INFO] [1791301814.047661199] [waypoint_follower]: Activating
+[waypoint_follower-55] [INFO] [1791301814.047678674] [waypoint_follower]: Creating bond (waypoint_follower) to lifecycle manager.
+[lifecycle_manager-59] [INFO] [1791301814.156069151] [lifecycle_manager_navigation]: Server waypoint_follower connected with bond.
+[lifecycle_manager-59] [INFO] [1791301814.156108261] [lifecycle_manager_navigation]: [34m[1mActivating docking_server[0m[0m
+[opennav_docking-58] [INFO] [1791301814.156613603] [docking_server]: Activating docking_server
+[opennav_docking-58] [INFO] [1791301814.173077964] [docking_server]: Creating bond (docking_server) to lifecycle manager.
+[lifecycle_manager-59] [INFO] [1791301814.284586041] [lifecycle_manager_navigation]: Server docking_server connected with bond.
+[lifecycle_manager-59] [INFO] [1791301814.284621967] [lifecycle_manager_navigation]: [34m[1mManaged nodes are active[0m[0m
+[lifecycle_manager-59] [INFO] [1791301814.284628003] [lifecycle_manager_navigation]: [34m[1mCreating bond timer...[0m[0m
+[rviz2-63] [INFO] [1791301815.384231118] [rviz2]: Trying to create a map of size 50 x 50 using 1 swatches
+[rviz2-63] [INFO] [1791301815.384905979] [rviz2]: Trying to create a map of size 1006 x 1674 using 1 swatches
+[motion_control-34] [INFO] [1791301829.011267426] [motion_control]: Received new undock goal
+[turtlebot4_node-29] [INFO] [1791301831.312417797] [turtlebot4_node]: OAKD started
+[turtlebot4_node-29] [INFO] [1791301831.312459606] [turtlebot4_node]: RPLIDAR started
+[turtlebot4_node-29] [ERROR] [1791301840.512827786] [turtlebot4_node]: Service oakd/stop_camera unavailable.
+[turtlebot4_node-29] [ERROR] [1791301840.523041704] [turtlebot4_node]: Service stop_motor unavailable.
+[turtlebot4_node-29] [ERROR] [1791301861.322722724] [turtlebot4_node]: Service start_motor unavailable.
+[turtlebot4_node-29] [ERROR] [1791301861.332987214] [turtlebot4_node]: Service oakd/start_camera unavailable.

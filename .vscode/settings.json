@@ -1,0 +1,8 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "/^git status --short --branch && printf '\\\\nRemotes:\\\\n' && git remote -v && printf '\\\\nTop-level:\\\\n' && find \\. -maxdepth 2 -type f \\| sort \\| sed -n '1,80p'$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
+}

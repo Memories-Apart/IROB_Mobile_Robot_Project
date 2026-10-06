@@ -1,0 +1,127 @@
+# GRADE E - LAB PC COMMAND CHECKLIST
+# Run these commands on the lab PC desktop, not on student-shell.
+# Copy one section at a time. This is a checklist, not a script to run all at once.
+# All explanations are comments, so command blocks can be copied into Bash.
+# Project: ~/IROB_Mobile_Robot_Project
+
+# 0. BEFORE RUNNING
+# Save mission_node.py and mission.launch.py in your editor.
+# BehaviourTree uses self.tree.tick(), not self.tree.tick_once().
+# The launch file must reference an existing Nav2 configuration.
+# The supplied turtlebot4_navigation/launch/nav2.launch.py loads config/nav2.yaml.
+# Catch TransformException in at_pose() and return False while TF is unavailable.
+# Pick/lift/place joint angles still need simulation validation.
+# A successful action or mission log alone does not prove that the cube was moved.
+
+# 1. TERMINAL 1 - ENVIRONMENT AND BUILD
+# Open a new terminal on the lab PC.
+cd ~/IROB_Mobile_Robot_Project
+source /etc/profile.d/modules.sh
+module add dd2410
+pixi shell
+
+# Wait for pixi shell to open before pasting the next commands.
+source scripts/env_vars.sh
+python3 -c "import py_trees; print('py_trees import OK')"
+
+# Check Python syntax without executing the mission or generating bytecode.
+python3 -c "import ast; from pathlib import Path; files = ['src/Warehouse_robot/warehouse_inventory_robot/warehouse_inventory_robot/mission_node.py', 'src/Warehouse_robot/warehouse_inventory_robot/launch/mission.launch.py']; [ast.parse(Path(p).read_text(), filename=p) for p in files]; print('Python syntax OK')"
+
+# Incremental build: use this after editing the mission package.
+# Continue only if the build succeeds.
+colcon build --base-paths src/Warehouse_robot --packages-select warehouse_inventory_robot
+source install/setup.bash
+
+# Check that the required installed packages can be found.
+ros2 pkg prefix warehouse_inventory_robot
+ros2 pkg prefix turtlebot4_navigation
+ros2 pkg prefix nav2_bringup
+
+# 2. TERMINAL 1 - START THE SIMULATION AND NAVIGATION
+# Keep this terminal running. Wait for the world, controllers and Nav2 to start.
+mkdir -p study_notes/logs
+GRADE=e ros2 launch warehouse_inventory_robot mission.launch.py 2>&1 | tee "study_notes/logs/e_launch_$(date +%Y%m%d_%H%M%S).log"
+
+# Alternative: use this INSTEAD of the command above for headless Gazebo.
+# Do not launch both versions. Headless mode hides the Gazebo GUI.
+# GRADE=e HEADLESS=true ros2 launch warehouse_inventory_robot mission.launch.py
+
+# 3. TERMINAL 2 - ENVIRONMENT AND READINESS CHECKS
+# Open a second terminal on the SAME lab PC.
+cd ~/IROB_Mobile_Robot_Project
+source /etc/profile.d/modules.sh
+module add dd2410
+pixi shell
+
+# Wait for pixi shell to open, then paste the following.
+source install/setup.bash
+source scripts/env_vars.sh
+
+# The arm trajectory controller should be active.
+ros2 control list_controllers
+
+# These navigation/map nodes should report active.
+ros2 lifecycle get /map_server
+ros2 lifecycle get /planner_server
+ros2 lifecycle get /controller_server
+ros2 lifecycle get /bt_navigator
+
+# Expect /undock, /navigate_to_pose and the arm trajectory action.
+ros2 action list -t
+
+# Check that scan and ground-truth odometry messages arrive.
+# If a command keeps waiting, use Ctrl-C and inspect Terminal 1.
+ros2 topic echo /scan --once
+ros2 topic echo /odom_gt --once
+
+# Check the map -> base_link transform. This command runs continuously.
+# Use Ctrl-C here before continuing; this stops only the TF diagnostic.
+ros2 run tf2_ros tf2_echo map base_link
+
+# 4. TERMINAL 2 - RUN THE GRADE E MISSION
+# Run only after the readiness checks succeed.
+# Keep use_sim_time enabled so mission timing agrees with Gazebo and TF.
+mkdir -p study_notes/logs
+GRADE=e ros2 run warehouse_inventory_robot mission_node --ros-args -p use_sim_time:=true 2>&1 | tee "study_notes/logs/e_mission_$(date +%Y%m%d_%H%M%S).log"
+
+# Observe the actual sequence in Gazebo:
+# undock -> source -> attach and lift cube -> retract arm
+# -> target-1 -> release cube -> withdraw arm.
+# Verify that the base stops before manipulation and the cube actually moves.
+
+# 5. STOP AND RESTART A TEST
+# First press Ctrl-C in Terminal 2, then Ctrl-C in Terminal 1.
+# Stopping the mission process is not confirmation that ROS action goals stopped.
+# Stop the simulation too before resetting the scene for another complete test.
+# Run cleanup only after stopping your test and closing other ROS experiments.
+# The supplied cleanup script can stop other ROS/Gazebo processes owned by you
+# on this lab PC; it is not restricted to this one launch.
+cd ~/IROB_Mobile_Robot_Project
+bash scripts/cleanup.sh
+
+# For a fresh complete test, restart section 2, then run section 4 after checks.
+# After code edits, rebuild and source install/setup.bash in BOTH terminals.
+# Restart the simulation for a known initial cube, arm and dock state.
+
+# 6. OPTIONAL DIAGNOSTICS - RUN INDIVIDUALLY WHEN NEEDED
+# Use another terminal with the same environment setup as Terminal 2.
+ros2 node list
+ros2 topic list -t
+ros2 action info /navigate_to_pose
+ros2 topic info /cmd_vel -v
+ros2 topic echo /joint_states --once
+ros2 param get /mission_node use_sim_time
+
+# The mission_node parameter query works only while that node is running.
+# If map_server remains INACTIVE after a startup timeout, inspect Terminal 1.
+# Only if its state is inactive, the provided project's recovery is:
+# ros2 lifecycle set /map_server activate
+# If it is unconfigured or reports a map error, fix that error first.
+
+# Locate saved logs to share for debugging.
+ls -lt ~/IROB_Mobile_Robot_Project/study_notes/logs
+
+# 7. OPTIONAL FULL BUILD - ONLY IF DEPENDENCY PACKAGES ARE NOT BUILT
+# Stop the simulation first. Run inside the project pixi shell.
+# MAKEFLAGS=-j2 CMAKE_BUILD_PARALLEL_LEVEL=2 colcon build --base-paths src/Warehouse_robot --parallel-workers 4
+# source install/setup.bash

@@ -1,0 +1,17 @@
+# Run in a diagnostic terminal on the same lab PC.
+# Load the project environment first. Keep the current Undock task running.
+# This collects diagnostics only; it does not send robot motion commands.
+# The output file wheel_check.txt is overwritten on each run.
+
+cd ~/IROB_Mobile_Robot_Project
+
+{
+  echo "=== Wheel command ==="
+  timeout 15s ros2 topic echo /diffdrive_controller/cmd_vel --once
+
+  echo "=== Wheel enabled state ==="
+  timeout 15s ros2 topic echo /wheel_status --once --qos-reliability best_effort
+} > study_notes/wheel_check.txt 2>&1
+
+# Display the saved results.
+cat study_notes/wheel_check.txt

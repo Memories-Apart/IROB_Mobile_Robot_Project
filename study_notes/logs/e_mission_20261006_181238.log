@@ -1,0 +1,76 @@
+[INFO] [1791303158.720371062] [mission_node]: Mission node started for grade 'e'. Collect from shelf_7_ID11, place on shelf_7_ID10.
+[INFO] [1791303160.869869550] [mission_node]: 
+[o] Make sure cube delivered
+    --> Cube delivered and arm withdrawn?
+    {-} Deliver cube
+        [o] Make sure holding cube
+            --> Holding cube?
+            [-] Acquire cube
+                [o] Make sure at source
+                    --> At source?
+                    [-] Move safely to source
+                        [o] Make sure undocked (source)
+                            --> Undocked?
+                            --> Undock
+                        [o] Make sure arm safe (source)
+                            --> Arm safe?
+                            --> Move arm safe
+                        --> Navigate
+                {-} Pick cube
+                    --> Move Arm
+                    --> Attach
+                    --> Move Arm
+                    --> Record holding cube
+        [o] Make sure at destination
+            --> At destination?
+            [-] Move safely to destination
+                [o] Make sure undocked (destination)
+                    --> Undocked?
+                    --> Undock
+                [o] Make sure arm safe (destination)
+                    --> Arm safe?
+                    --> Move arm safe
+                --> Holding cube while transporting?
+                --> Navigate
+        {-} Place cube
+            --> Move Arm
+            --> Detach
+            --> Record cube released
+            --> Move Arm
+            --> Record arm safe
+
+[WARN] [1791303160.972259099] [mission_node]: Transform lookup failed: "map" passed to lookupTransform argument target_frame does not exist. 
+[WARN] [1791303160.973306223] [mission_node]: Undock action server not ready yet.
+[WARN] [1791303161.107379872] [mission_node]: Transform lookup failed: "map" passed to lookupTransform argument target_frame does not exist. 
+[WARN] [1791303161.140994878] [mission_node]: Undock action server not ready yet.
+[WARN] [1791303161.296018891] [mission_node]: Transform lookup failed: "map" passed to lookupTransform argument target_frame does not exist. 
+[WARN] [1791303161.362625287] [mission_node]: Undock action server not ready yet.
+[WARN] [1791303161.522364597] [mission_node]: Transform lookup failed: "map" passed to lookupTransform argument target_frame does not exist. 
+[WARN] [1791303161.583742034] [mission_node]: Undock action server not ready yet.
+[WARN] [1791303161.739730702] [mission_node]: Transform lookup failed: "map" passed to lookupTransform argument target_frame does not exist. 
+[WARN] [1791303161.795650041] [mission_node]: Undock action server not ready yet.
+[WARN] [1791303161.923169040] [mission_node]: Transform lookup failed: "map" passed to lookupTransform argument target_frame does not exist. 
+[WARN] [1791303161.948741488] [mission_node]: Undock action server not ready yet.
+[WARN] [1791303162.113097696] [mission_node]: Transform lookup failed: "map" passed to lookupTransform argument target_frame does not exist. 
+[WARN] [1791303162.166837290] [mission_node]: Undock action server not ready yet.
+[WARN] [1791303162.361698217] [mission_node]: Transform lookup failed: "map" passed to lookupTransform argument target_frame does not exist. 
+[WARN] [1791303162.389864166] [mission_node]: Undock action server not ready yet.
+[WARN] [1791303162.422934971] [mission_node]: Transform lookup failed: "map" passed to lookupTransform argument target_frame does not exist. 
+[WARN] [1791303162.433605747] [mission_node]: Undock action server not ready yet.
+[WARN] [1791303162.557054918] [mission_node]: Transform lookup failed: "map" passed to lookupTransform argument target_frame does not exist. 
+[WARN] [1791303162.573851875] [mission_node]: Undock action server not ready yet.
+[WARN] [1791303162.599547858] [mission_node]: Transform lookup failed: "map" passed to lookupTransform argument target_frame does not exist. 
+[WARN] [1791303162.608509066] [mission_node]: Undock action server not ready yet.
+[WARN] [1791303162.624741187] [mission_node]: Transform lookup failed: "map" passed to lookupTransform argument target_frame does not exist. 
+[WARN] [1791303162.641626526] [mission_node]: Undock action server not ready yet.
+[WARN] [1791303162.661462379] [mission_node]: Transform lookup failed: "map" passed to lookupTransform argument target_frame does not exist. 
+[WARN] [1791303162.669013540] [mission_node]: Undock action server not ready yet.
+[WARN] [1791303162.682535432] [mission_node]: Transform lookup failed: "map" passed to lookupTransform argument target_frame does not exist. 
+[WARN] [1791303162.694769919] [mission_node]: Undock action server not ready yet.
+[WARN] [1791303162.730344664] [mission_node]: Transform lookup failed: "map" passed to lookupTransform argument target_frame does not exist. 
+[WARN] [1791303162.737459821] [mission_node]: Undock action server not ready yet.
+[WARN] [1791303162.747449573] [mission_node]: Transform lookup failed: "map" passed to lookupTransform argument target_frame does not exist. 
+[WARN] [1791303162.769651266] [mission_node]: Transform lookup failed: "map" passed to lookupTransform argument target_frame does not exist. 
+[WARN] [1791303162.779769515] [mission_node]: Transform lookup failed: Could not find a connection between 'map' and 'base_link' because they are not part of the same tree.Tf has two or more unconnected trees.
+[WARN] [1791303162.788434356] [mission_node]: Transform lookup failed: Could not find a connection between 'map' and 'base_link' because they are not part of the same tree.Tf has two or more unconnected trees.
+[WARN] [1791303162.792949139] [mission_node]: Transform lookup failed: Could not find a connection between 'map' and 'base_link' because they are not part of the same tree.Tf has two or more unconnected trees.

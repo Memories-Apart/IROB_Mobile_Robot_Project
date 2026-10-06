@@ -1,0 +1,106 @@
+[INFO] [1791304307.980621941] [mission_node]: Mission node started for grade 'e'. Collect from shelf_7_ID11, place on shelf_7_ID10.
+[INFO] [1791304308.134981224] [mission_node]: 
+[o] Make sure cube delivered
+    --> Cube delivered and arm withdrawn?
+    {-} Deliver cube
+        [o] Make sure holding cube
+            --> Holding cube?
+            [-] Acquire cube
+                [o] Make sure at source
+                    --> At source?
+                    [-] Move safely to source
+                        [o] Make sure undocked (source)
+                            --> Undocked?
+                            --> Undock
+                        [o] Make sure arm safe (source)
+                            --> Arm safe?
+                            --> Move arm safe
+                        --> Navigate
+                {-} Pick cube
+                    --> Move Arm
+                    --> Attach
+                    --> Move Arm
+                    --> Record holding cube
+        [o] Make sure at destination
+            --> At destination?
+            [-] Move safely to destination
+                [o] Make sure undocked (destination)
+                    --> Undocked?
+                    --> Undock
+                [o] Make sure arm safe (destination)
+                    --> Arm safe?
+                    --> Move arm safe
+                --> Holding cube while transporting?
+                --> Navigate
+        {-} Place cube
+            --> Move Arm
+            --> Detach
+            --> Record cube released
+            --> Move Arm
+            --> Record arm safe
+
+[WARN] [1791304308.211370730] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304308.212236184] [mission_node]: Undock action server not ready yet.
+[WARN] [1791304308.239385581] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304308.240467619] [mission_node]: Undock action server not ready yet.
+[WARN] [1791304308.263958437] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304308.265135788] [mission_node]: Undock action server not ready yet.
+[WARN] [1791304308.268099616] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304308.269675882] [mission_node]: Undock action server not ready yet.
+[WARN] [1791304308.320530385] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304308.322854348] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304308.324194782] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304308.325537507] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304308.326833433] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304308.329573634] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304308.332833566] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304308.335740085] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304308.341230914] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304308.434363379] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304308.438107861] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304308.507462246] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304308.509851989] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304308.512897885] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304308.565290024] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304308.567456210] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304308.570472309] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304308.573475693] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304308.576583619] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304308.579904351] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304308.675727527] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304308.678636618] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304308.681667299] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304308.783014119] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304308.789193690] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304308.792170297] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304308.801221171] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304308.804201395] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304308.807507863] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304308.810423454] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304308.813523655] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304308.911500341] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304308.913150970] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304308.916174782] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304308.919761477] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304308.922351027] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304308.925350915] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304308.985443506] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304308.988485241] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304308.996499620] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304309.005701716] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304309.007750143] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304309.009135297] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304309.010956938] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304309.012159456] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304309.013170876] [mission_node]: Transform lookup failed: "base_link" passed to lookupTransform argument source_frame does not exist. 
+[WARN] [1791304309.015156243] [mission_node]: Transform lookup failed: Could not find a connection between 'map' and 'base_link' because they are not part of the same tree.Tf has two or more unconnected trees.
+[WARN] [1791304309.090835807] [mission_node]: Transform lookup failed: Could not find a connection between 'map' and 'base_link' because they are not part of the same tree.Tf has two or more unconnected trees.
+[WARN] [1791304309.093752503] [mission_node]: Transform lookup failed: Could not find a connection between 'map' and 'base_link' because they are not part of the same tree.Tf has two or more unconnected trees.
+[WARN] [1791304309.096959791] [mission_node]: Transform lookup failed: Could not find a connection between 'map' and 'base_link' because they are not part of the same tree.Tf has two or more unconnected trees.
+[WARN] [1791304309.100841638] [mission_node]: Transform lookup failed: Could not find a connection between 'map' and 'base_link' because they are not part of the same tree.Tf has two or more unconnected trees.
+[WARN] [1791304309.103158288] [mission_node]: Transform lookup failed: Could not find a connection between 'map' and 'base_link' because they are not part of the same tree.Tf has two or more unconnected trees.
+[WARN] [1791304309.201163714] [mission_node]: Transform lookup failed: Could not find a connection between 'map' and 'base_link' because they are not part of the same tree.Tf has two or more unconnected trees.
+[INFO] [1791304539.839471227] [mission_node]: Undock succeeded.
+[INFO] [1791304539.840699780] [mission_node]: Navigating to x: 1.98, y: 7.15
+[ERROR] [1791304719.089589178] [mission_node]: Navigation failed with status: 6
+[ERROR] [1791304719.092209608] [mission_node]: Mission failed.

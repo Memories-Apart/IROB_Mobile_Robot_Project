@@ -1,0 +1,18 @@
+Terminal 1:
+[turtlebot4_node-29] [INFO] [1791304712.207941113] [turtlebot4_node]: OAKD started
+[turtlebot4_node-29] [INFO] [1791304712.207989867] [turtlebot4_node]: RPLIDAR started
+[controller_server-54] [INFO] [1791304712.831977959] [controller_server]: Passing new path to controller.
+[controller_server-54] [INFO] [1791304713.831979630] [controller_server]: Passing new path to controller.
+[controller_server-54] [INFO] [1791304714.882003267] [controller_server]: Passing new path to controller.
+[controller_server-54] [INFO] [1791304715.882010454] [controller_server]: Passing new path to controller.
+[controller_server-54] [INFO] [1791304716.932026323] [controller_server]: Passing new path to controller.
+[controller_server-54] [INFO] [1791304717.931983276] [controller_server]: Passing new path to controller.
+[controller_server-54] [INFO] [1791304718.982007410] [controller_server]: Passing new path to controller.
+
+Terminal 2:
+[WARN] [1791304309.100841638] [mission_node]: Transform lookup failed: Could not find a connection between 'map' and 'base_link' because they are not part of the same tree.Tf has two or more unconnected trees.
+[WARN] [1791304309.103158288] [mission_node]: Transform lookup failed: Could not find a connection between 'map' and 'base_link' because they are not part of the same tree.Tf has two or more unconnected trees.
+[WARN] [1791304309.201163714] [mission_node]: Transform lookup failed: Could not find a connection between 'map' and 'base_link' because they are not part of the same tree.Tf has two or more unconnected trees.
+[INFO] [1791304539.839471227] [mission_node]: Undock succeeded.
+[INFO] [1791304539.840699780] [mission_node]: Navigating to x: 1.98, y: 7.15
+

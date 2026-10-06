@@ -444,7 +444,12 @@ class MissionNode(Node):
     def at_pose(self, pose):
         # TODO E2/E4: Compare current map-frame pose with position/yaw tolerance.
         # Unknown/stale pose is not success. Use AMCL/TF for A, not ground truth.
-        transform = self.tf_buffer.lookup_transform('map', 'base_link', Time())
+        try:
+            transform = self.tf_buffer.lookup_transform(
+                'map', 'base_link', Time())
+        except TransformException as e:
+            self.get_logger().warn(f"Transform lookup failed: {e}")
+            return False
         stamp = Time.from_msg(transform.header.stamp)
         age = (self.get_clock().now() - stamp).nanoseconds * 1e-9
 

@@ -1,0 +1,161 @@
+[INFO] [launch]: All log files can be found below /home/y/u/yunqiao/.ros/log/2026-10-06-17-29-53-171787-white-05.eecs.kth.se-11125
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [gazebo-1]: process started with pid [11155]
+[INFO] [parameter_bridge-2]: process started with pid [11157]
+[INFO] [robot_state_publisher-3]: process started with pid [11159]
+[INFO] [robot_state_publisher-4]: process started with pid [11162]
+[INFO] [static_transform_publisher-5]: process started with pid [11164]
+[INFO] [create-6]: process started with pid [11166]
+[INFO] [create-7]: process started with pid [11168]
+[INFO] [parameter_bridge-8]: process started with pid [11170]
+[INFO] [parameter_bridge-9]: process started with pid [11172]
+[INFO] [parameter_bridge-10]: process started with pid [11174]
+[INFO] [parameter_bridge-11]: process started with pid [11176]
+[INFO] [parameter_bridge-12]: process started with pid [11178]
+[INFO] [parameter_bridge-13]: process started with pid [11180]
+[INFO] [parameter_bridge-14]: process started with pid [11182]
+[INFO] [parameter_bridge-15]: process started with pid [11184]
+[INFO] [parameter_bridge-16]: process started with pid [11186]
+[INFO] [parameter_bridge-17]: process started with pid [11188]
+[INFO] [parameter_bridge-18]: process started with pid [11190]
+[INFO] [parameter_bridge-19]: process started with pid [11192]
+[INFO] [parameter_bridge-20]: process started with pid [11194]
+[INFO] [parameter_bridge-21]: process started with pid [11196]
+[INFO] [parameter_bridge-22]: process started with pid [11198]
+[INFO] [parameter_bridge-23]: process started with pid [11200]
+[INFO] [parameter_bridge-24]: process started with pid [11202]
+[INFO] [parameter_bridge-25]: process started with pid [11205]
+[INFO] [parameter_bridge-26]: process started with pid [11207]
+[INFO] [parameter_bridge-27]: process started with pid [11209]
+[INFO] [parameter_bridge-28]: process started with pid [11211]
+[INFO] [turtlebot4_node-29]: process started with pid [11213]
+[INFO] [turtlebot4_gz_hmi_node-30]: process started with pid [11215]
+[INFO] [spawner-31]: process started with pid [11217]
+[INFO] [hazards_vector_publisher-32]: process started with pid [11219]
+[INFO] [ir_intensity_vector_publisher-33]: process started with pid [11221]
+[INFO] [motion_control-34]: process started with pid [11223]
+[INFO] [wheel_status_publisher-35]: process started with pid [11225]
+[INFO] [mock_publisher-36]: process started with pid [11227]
+[INFO] [robot_state-37]: process started with pid [11229]
+[INFO] [kidnap_estimator_publisher-38]: process started with pid [11231]
+[INFO] [ui_mgr-39]: process started with pid [11233]
+[INFO] [pose_republisher_node-40]: process started with pid [11235]
+[INFO] [sensors_node-41]: process started with pid [11237]
+[INFO] [interface_buttons_node-42]: process started with pid [11239]
+[INFO] [static_transform_publisher-43]: process started with pid [11241]
+[INFO] [static_transform_publisher-44]: process started with pid [11243]
+[INFO] [parameter_bridge-45]: process started with pid [11245]
+[INFO] [parameter_bridge-46]: process started with pid [11247]
+[INFO] [wait_for_ready-47]: process started with pid [11249]
+[INFO] [wait_for_ready-48]: process started with pid [11251]
+[INFO] [controller_server-49]: process started with pid [11253]
+[INFO] [smoother_server-50]: process started with pid [11255]
+[INFO] [planner_server-51]: process started with pid [11257]
+[INFO] [route_server-52]: process started with pid [11259]
+[INFO] [behavior_server-53]: process started with pid [11261]
+[INFO] [bt_navigator-54]: process started with pid [11263]
+[INFO] [waypoint_follower-55]: process started with pid [11265]
+[INFO] [velocity_smoother-56]: process started with pid [11267]
+[INFO] [collision_monitor-57]: process started with pid [11269]
+[INFO] [opennav_docking-58]: process started with pid [11271]
+[INFO] [lifecycle_manager-59]: process started with pid [11273]
+[INFO] [map_server-60]: process started with pid [11275]
+[INFO] [lifecycle_manager-61]: process started with pid [11277]
+[static_transform_publisher-5] [WARN] [1791300596.949550452] []: Old-style arguments are deprecated; see --help for new-style arguments
+[static_transform_publisher-5] [INFO] [1791300597.189767749] [tf_odom_std_dock_link_publisher]: Spinning until stopped - publishing transform
+[static_transform_publisher-5] translation: ('0.157000', '0.000000', '0.000000')
+[static_transform_publisher-5] rotation: ('0.000000', '0.000000', '1.000000', '0.000000')
+[static_transform_publisher-5] from 'odom' to 'std_dock_link'
+[kidnap_estimator_publisher-38] [INFO] [1791300597.282697014] [kidnap_estimator_publisher]: Advertised topic: kidnap_status
+[kidnap_estimator_publisher-38] [INFO] [1791300597.283048098] [kidnap_estimator_publisher]: Subscription to topic: hazard_detection
+[hazards_vector_publisher-32] [INFO] [1791300597.527003026] [hazards_vector_publisher]: Advertised topic: hazard_detection
+[mock_publisher-36] [INFO] [1791300597.528572991] [mock_publisher]: Advertised mocked topic: slip_status
+[hazards_vector_publisher-32] [INFO] [1791300597.531854458] [hazards_vector_publisher]: Subscription to topic: _internal/bumper/event
+[hazards_vector_publisher-32] [INFO] [1791300597.532728234] [hazards_vector_publisher]: Subscription to topic: _internal/cliff_front_left/event
+[hazards_vector_publisher-32] [INFO] [1791300597.533249791] [hazards_vector_publisher]: Subscription to topic: _internal/cliff_front_right/event
+[hazards_vector_publisher-32] [INFO] [1791300597.533561372] [hazards_vector_publisher]: Subscription to topic: _internal/cliff_side_left/event
+[hazards_vector_publisher-32] [INFO] [1791300597.533869231] [hazards_vector_publisher]: Subscription to topic: _internal/cliff_side_right/event
+[hazards_vector_publisher-32] [INFO] [1791300597.534158610] [hazards_vector_publisher]: Subscription to topic: _internal/wheel_drop/left_wheel/event
+[hazards_vector_publisher-32] [INFO] [1791300597.534437800] [hazards_vector_publisher]: Subscription to topic: _internal/wheel_drop/right_wheel/event
+[hazards_vector_publisher-32] [INFO] [1791300597.534843522] [hazards_vector_publisher]: Subscription to topic: _internal/backup_limit
+[robot_state-37] [INFO] [1791300597.552835468] [robot_state]: Advertised topic: battery_state
+[robot_state-37] [INFO] [1791300597.570673209] [robot_state]: Subscription to topic: dock_status
+[robot_state-37] [INFO] [1791300597.571009235] [robot_state]: Advertised topic: stop_status
+[robot_state-37] [INFO] [1791300597.581383375] [robot_state]: Subscription to topic: odom
+[robot_state_publisher-3] [WARN] [1791300597.622103822] [kdl_parser]: The root link base_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia.  As a workaround, you can add an extra dummy link to your URDF.
+[robot_state_publisher-3] [INFO] [1791300597.622248229] [robot_state_publisher]: Robot initialized
+[motion_control-34] [INFO] [1791300597.623596955] [motion_control]: Enabling REFLEX_BUMP
+[motion_control-34] [INFO] [1791300597.623776435] [motion_control]: Enabling REFLEX_CLIFF
+[motion_control-34] [INFO] [1791300597.623833970] [motion_control]: Enabling REFLEX_STUCK
+[motion_control-34] [INFO] [1791300597.623868608] [motion_control]: Enabling REFLEX_WHEEL_DROP
+[static_transform_publisher-43] [WARN] [1791300597.772406435] []: Old-style arguments are deprecated; see --help for new-style arguments
+[robot_state_publisher-4] [WARN] [1791300597.919567552] [kdl_parser]: The root link std_dock_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia.  As a workaround, you can add an extra dummy link to your URDF.
+[robot_state_publisher-4] [INFO] [1791300597.919622880] [dock_state_publisher]: Robot initialized
+[turtlebot4_node-29] [INFO] [1791300597.922284760] [turtlebot4_node]: Init Turtlebot4 Node Main
+[ui_mgr-39] [INFO] [1791300597.941555109] [ui_mgr]: Subscription to topic: cmd_lightring
+[ui_mgr-39] [INFO] [1791300597.942029395] [ui_mgr]: Subscription to topic: cmd_audio
+[wheel_status_publisher-35] [INFO] [1791300597.957366628] [wheel_status_publisher]: Advertised topic: wheel_vels
+[wheel_status_publisher-35] [INFO] [1791300597.957744559] [wheel_status_publisher]: Advertised topic: wheel_ticks
+[static_transform_publisher-43] [INFO] [1791300597.968415362] [rplidar_stf]: Spinning until stopped - publishing transform
+[static_transform_publisher-43] translation: ('0.000000', '0.000000', '0.000000')
+[static_transform_publisher-43] rotation: ('0.000000', '0.000000', '0.000000', '1.000000')
+[static_transform_publisher-43] from 'rplidar_link' to 'turtlebot4/rplidar_link/rplidar'
+[ir_intensity_vector_publisher-33] [INFO] [1791300597.993868190] [ir_intensity_vector_publisher]: Advertised topic: ir_intensity
+[ir_intensity_vector_publisher-33] [INFO] [1791300597.994384806] [ir_intensity_vector_publisher]: Subscription to topic: _internal/ir_intensity_front_center_left
+[ir_intensity_vector_publisher-33] [INFO] [1791300597.994741871] [ir_intensity_vector_publisher]: Subscription to topic: _internal/ir_intensity_front_center_right
+[ir_intensity_vector_publisher-33] [INFO] [1791300597.995007489] [ir_intensity_vector_publisher]: Subscription to topic: _internal/ir_intensity_front_left
+[ir_intensity_vector_publisher-33] [INFO] [1791300597.997982549] [ir_intensity_vector_publisher]: Subscription to topic: _internal/ir_intensity_front_right
+[ir_intensity_vector_publisher-33] [INFO] [1791300597.998365035] [ir_intensity_vector_publisher]: Subscription to topic: _internal/ir_intensity_left
+[ir_intensity_vector_publisher-33] [INFO] [1791300597.998844371] [ir_intensity_vector_publisher]: Subscription to topic: _internal/ir_intensity_right
+[ir_intensity_vector_publisher-33] [INFO] [1791300597.999179280] [ir_intensity_vector_publisher]: Subscription to topic: _internal/ir_intensity_side_left
+[static_transform_publisher-44] [WARN] [1791300598.007316709] []: Old-style arguments are deprecated; see --help for new-style arguments
+[turtlebot4_node-29] [INFO] [1791300598.038720933] [turtlebot4_node]: Buttons Init
+[turtlebot4_node-29] [INFO] [1791300598.093786651] [turtlebot4_node]: Init Display
+[turtlebot4_node-29] [INFO] [1791300598.096768725] [turtlebot4_node]: Leds Init
+[turtlebot4_node-29] [INFO] [1791300598.100572804] [turtlebot4_node]: Turtlebot4 standard running.
+[static_transform_publisher-44] [INFO] [1791300598.141512204] [camera_stf]: Spinning until stopped - publishing transform
+[static_transform_publisher-44] translation: ('0.000000', '0.000000', '0.000000')
+[static_transform_publisher-44] rotation: ('0.499952', '-0.500000', '0.500000', '0.500048')
+[static_transform_publisher-44] from 'oakd_rgb_camera_optical_frame' to 'turtlebot4/oakd_rgb_camera_frame/rgbd_camera'
+[velocity_smoother-56] [INFO] [1791300598.166516968] [velocity_smoother]: 
+[velocity_smoother-56] 	velocity_smoother lifecycle node launched. 
+[velocity_smoother-56] 	Waiting on external lifecycle transitions to activate
+[velocity_smoother-56] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[collision_monitor-57] [INFO] [1791300598.677430687] [collision_monitor]: 
+[collision_monitor-57] 	collision_monitor lifecycle node launched. 
+[collision_monitor-57] 	Waiting on external lifecycle transitions to activate
+[collision_monitor-57] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[lifecycle_manager-61] [INFO] [1791300598.689675023] [lifecycle_manager_map]: Creating
+[waypoint_follower-55] [INFO] [1791300598.696740109] [waypoint_follower]: 
+[waypoint_follower-55] 	waypoint_follower lifecycle node launched. 
+[waypoint_follower-55] 	Waiting on external lifecycle transitions to activate
+[waypoint_follower-55] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[controller_server-49] [INFO] [1791300598.698347744] [controller_server]: 
+[controller_server-49] 	controller_server lifecycle node launched. 
+[controller_server-49] 	Waiting on external lifecycle transitions to activate
+[controller_server-49] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[create-6] [INFO] [1791300598.702482554] [ros_gz_sim]: Requesting list of world names.
+[lifecycle_manager-61] [INFO] [1791300598.711169334] [lifecycle_manager_map]: [34m[1mCreating and initializing lifecycle service clients[0m[0m
+[lifecycle_manager-61] [INFO] [1791300598.725428292] [lifecycle_manager_map]: [34m[1mStarting managed nodes bringup...[0m[0m
+[lifecycle_manager-61] [INFO] [1791300598.725463368] [lifecycle_manager_map]: [34m[1mConfiguring map_server[0m[0m
+[map_server-60] [INFO] [1791300598.733942891] [map_server]: 
+[map_server-60] 	map_server lifecycle node launched. 
+[map_server-60] 	Waiting on external lifecycle transitions to activate
+[map_server-60] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[map_server-60] [INFO] [1791300598.734420424] [map_server]: Creating
+[map_server-60] [INFO] [1791300598.735107986] [map_server]: Configuring
+[map_server-60] [INFO] [1791300598.735134038] [map_io]: Loading yaml file: /home/y/u/yunqiao/IROB_Mobile_Robot_Project/install/warehouse_inventory_robot/share/warehouse_inventory_robot/maps/warehouse.yaml
+[map_server-60] [INFO] [1791300598.736835509] [map_io]: resolution: 0.03
+[map_server-60] [INFO] [1791300598.736850324] [map_io]: origin[0]: -15.1
+[map_server-60] [INFO] [1791300598.736853458] [map_io]: origin[1]: -25
+[map_server-60] [INFO] [1791300598.736856305] [map_io]: origin[2]: 0
+[map_server-60] [INFO] [1791300598.736859281] [map_io]: free_thresh: 0.1
+[map_server-60] [INFO] [1791300598.736861871] [map_io]: occupied_thresh: 0.65
+[map_server-60] [INFO] [1791300598.736864319] [map_io]: mode: trinary
+[map_server-60] [INFO] [1791300598.736866762] [map_io]: negate: 0
+[map_server-60] [INFO] [1791300598.739632556] [map_io]: Loading image_file: /home/y/u/yunqiao/IROB_Mobile_Robot_Project/install/warehouse_inventory_robot/share/warehouse_inventory_robot/maps/warehouse.pgm
+[map_server-60] [INFO] [1791300598.757236783] [map_io]: Read map /home/y/u/yunqiao/IROB_Mobile_Robot_Project/install/warehouse_inventory_robot/share/warehouse_inventory_robot/maps/warehouse.pgm: 1006 X 1674 map @ 0.03 m/cell
+[lifecycle_manager-61] [INFO] [1791300598.778420849] [lifecycle_manager_map]: [34m[1mActivating map_server[0m[0m
+[map_server-60] [INFO] [1791300598.778570271] [map_server]: Activating
+[map_server-60] [INFO] [1791300598.779956983] [map_server]: Creating bond (map_server) to lifecycle manager.
+[waypoint_follower-55] [INFO] [1791300598.811554204] [waypoint_follower]: Creating

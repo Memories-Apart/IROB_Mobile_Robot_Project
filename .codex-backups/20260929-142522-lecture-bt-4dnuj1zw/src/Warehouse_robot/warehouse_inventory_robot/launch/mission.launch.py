@@ -111,58 +111,15 @@ def generate_launch_description():
                    '--timeout', '300'],
     )
 
-    # TODO L1 [E/C/A]: Launch and configure the existing Nav2 navigation stack.
-    # The student mission uses a behavior tree already in E; Nav2's internal BT
-    # does not replace that mission tree. Keep the two-terminal workflow unless
-    # intentionally changing it, so mission_node is not launched twice.
-    nav2_launch = IncludeLaunchDescription(
-    PythonLaunchDescriptionSource(
-        os.path.join(
-            get_package_share_directory('turtlebot4_navigation'),
-            'launch',
-            'nav2.launch.py',
-        )
-    ),
-    launch_arguments={
-        'use_sim_time': 'true',
-    }.items(),
-)
+    # TODO: Navigation Layer
 
-    # TODO L2 [A only]: Launch and configure AMCL. The other grades get map -> odom from the static publisher
+    # TODO: AMCL. For A grade only. The other grades get map -> odom from the static publisher
     # above, which is exact. Remember to launch amcl only for A grade.
 
-    # TODO L3 [E/C/A]: Launch the map server with the provided warehouse map.
+    # TODO: Map server.
     # NOTE: We provide a map at src/Warehouse_robot/warehouse_inventory_robot/maps
-    map_server = Node(
-    package='nav2_map_server',
-    executable='map_server',
-    name='map_server',
-    output='screen',
-    parameters=[{
-        'use_sim_time': True,
-        'yaml_filename': os.path.join(
-            pkg_share, 'maps', 'warehouse.yaml'
-        ),
-    }],
-)
 
-    # TODO L4 [E/C/A]: Activate lifecycle nodes and check readiness before motion.
-    # Add the new launch actions to LaunchDescription or the appropriate event
-    # handler, pass configuration/use_sim_time, and avoid duplicate map/TF nodes.
-    # For A, additionally check AMCL readiness; no localization rewrite is needed.
-    lifecycle_manager = Node(
-        package='nav2_lifecycle_manager',
-        executable='lifecycle_manager',
-        name='lifecycle_manager_map',
-        output='screen',
-        parameters=[{
-            'use_sim_time': True,
-            'autostart': True,
-            'node_names': ['map_server']
-        }],
-    )
-
-
+    # TODO: You might also want to wait for map server and/or amcl to be ready.
     #
     # A fixed delay is fine for ordering things. It cannot fix one failure you
     # may hit if you use nav2_lifecycle_manager, though, so it is worth knowing
@@ -193,9 +150,6 @@ def generate_launch_description():
                 on_exit=[
                     arm_traj_spawner,
                     static_map_to_odom,
-                    map_server,
-                    lifecycle_manager,
-                    nav2_launch,
                 ],
             )
         ),

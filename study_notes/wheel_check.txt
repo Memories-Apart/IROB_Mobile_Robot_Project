@@ -1,0 +1,28 @@
+=== Wheel command ===
+header:
+  stamp:
+    sec: 0
+    nanosec: 0
+  frame_id: ''
+twist:
+  linear:
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  angular:
+    x: 0.0
+    y: 0.0
+    z: 0.1
+---
+=== Wheel enabled state ===
+header:
+  stamp:
+    sec: 18
+    nanosec: 75000000
+  frame_id: base_link
+current_ma_left: 0
+current_ma_right: 0
+pwm_left: 0
+pwm_right: 0
+wheels_enabled: true
+---
