@@ -632,9 +632,9 @@ class MissionNode(Node):
         # E8: Readiness checks before ticking the mission tree.
         # Wait for action servers to avoid race condition on launch.
         self.get_logger().info("Waiting for action servers (/undock, /navigate_to_pose) to be ready...")
-        while rclpy.ok() and not self._undock_client.wait_for_action_server(timeout_sec=1.0):
+        while rclpy.ok() and not self._undock_client.wait_for_server(timeout_sec=1.0):
             rclpy.spin_once(self, timeout_sec=0.1)
-        while rclpy.ok() and not self._nav_client.wait_for_action_server(timeout_sec=1.0):
+        while rclpy.ok() and not self._nav_client.wait_for_server(timeout_sec=1.0):
             rclpy.spin_once(self, timeout_sec=0.1)
 
         # Wait for TF tree (map -> base_link) connection
