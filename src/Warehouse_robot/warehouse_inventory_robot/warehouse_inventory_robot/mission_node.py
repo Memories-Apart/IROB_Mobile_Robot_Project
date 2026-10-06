@@ -18,6 +18,7 @@ from geometry_msgs.msg import PoseStamped
 
 from geometry_msgs.msg import Twist, TwistStamped
 from ament_index_python.packages import get_package_share_directory
+from rclpy.qos import qos_profile_sensor_data
 from irobot_create_msgs.action import Undock
 from irobot_create_msgs.msg import DockStatus
 from std_msgs.msg import Empty
@@ -241,7 +242,7 @@ class MissionNode(Node):
         # Subscribe to /dock_status to detect when Create 3 is off the dock
         self._is_docked = True
         self._dock_status_sub = self.create_subscription(
-            DockStatus, '/dock_status', self._dock_status_cb, 10)
+            DockStatus, '/dock_status', self._dock_status_cb, qos_profile_sensor_data)
 
         # TODO E2: Add the NavigateToPose client and the state needed by BT leaves.
         #          Track pending requests, accepted goals, results, and timeouts.
@@ -345,10 +346,21 @@ class MissionNode(Node):
             # If succeeded normally OR cancelled after confirming undocked
             if (result.status == GoalStatus.STATUS_SUCCEEDED and not result.result.is_docked) or \
                (self._undock_cancelling and not self._is_docked):
-                self.get_logger().info("Undock succeeded. Waiting 1.0s for motion controller to settle...")
+                self.get_logger().info("Undock confirmed. Waiting 1.0s for motion controller to settle...")
                 settle_start = self.get_clock().now()
                 while (self.get_clock().now() - settle_start).nanoseconds < 1e9:
                     rclpy.spin_once(self, timeout_sec=0.1)
+
+                # Nudge forward smoothly to clear dock footprint completely
+                self.get_logger().info("Nudging forward away from dock into open corridor...")
+                nudge_cmd = Twist()
+                nudge_cmd.linear.x = 0.2
+                nudge_start = self.get_clock().now()
+                while (self.get_clock().now() - nudge_start).nanoseconds < 1.5e9:
+                    self._cmd_vel_pub.publish(nudge_cmd)
+                    rclpy.spin_once(self, timeout_sec=0.05)
+                # Stop robot
+                self._cmd_vel_pub.publish(Twist())
                 
                 # Clear costmaps to wipe residual dock obstacles
                 self.clear_all_costmaps()
