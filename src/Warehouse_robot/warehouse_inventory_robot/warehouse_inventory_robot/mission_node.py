@@ -8,6 +8,9 @@ import time
 from rclpy.node import Node
 from rclpy.action import ActionClient
 
+from tf2_ros import Buffer, TransformListener, TransformException
+from rclpy.time import Time
+
 import yaml
 import math
 from pathlib import Path
@@ -22,7 +25,14 @@ from control_msgs.action import FollowJointTrajectory
 from trajectory_msgs.msg import JointTrajectoryPoint
 from builtin_interfaces.msg import Duration
 
-# TODO: Add any other necessary imports (e.g., for Nav2 actions, or behavior tree libraries).
+from nav2_msgs.action import NavigateToPose
+from action_msgs.msg import GoalStatus
+import py_trees
+
+# Selected implementation route: use a behavior tree from grade E onward.
+# E/C: lecture-style "Make sure..." subtrees; A: complete reactive handling
+# and AMCL readiness. ROS operations and observations remain student TODOs.
+# E1: Nav2 action, action-result status, and behavior-tree imports are present.
 
 # ─────────────────────────────────────────────────────────────────────────────
 # WHERE THE MISSION GOES, PER GRADE
@@ -105,6 +115,79 @@ def load_home_base() -> PoseStamped:
     ps.pose.orientation.w = math.cos(yaw / 2.0)
     return ps
 
+class ConditionBehavior(py_trees.behaviour.Behaviour):
+    """A lecture condition box: read state without sending a command."""
+
+    def __init__(self, name, check):
+        super().__init__(name=name)
+        self.check = check
+
+    def update(self):
+        value = self.check()
+        if not isinstance(value, bool):
+            raise TypeError(f'{self.name}: condition must return bool')
+        return (py_trees.common.Status.SUCCESS if value
+                else py_trees.common.Status.FAILURE)
+
+
+class ActionBehavior(py_trees.behaviour.Behaviour):
+    """A lecture action box: delegate one non-blocking step to MissionNode."""
+
+    def __init__(self, name, step):
+        super().__init__(name=name)
+        self.step = step
+
+    def update(self):
+        status = self.step()
+        if status not in (py_trees.common.Status.RUNNING,
+                          py_trees.common.Status.SUCCESS,
+                          py_trees.common.Status.FAILURE):
+            raise TypeError(f'{self.name}: action must return a BT status')
+        return status
+
+    # TODO E3-E6: Add initialise/terminate handling with each ROS operation.
+    # On interruption, cancel and confirm the old goal has stopped before a
+    # replacement action starts; also handle a late goal-acceptance response.
+    # Do not erase a live future or assume stop(INVALID) cancels a ROS goal.
+
+
+class UndockBehavior(ActionBehavior):
+    def __init__(self, mission):
+        super().__init__(name='Undock', step=mission.undock_robot)
+
+class NavigateBehavior(ActionBehavior):
+    def __init__(self, mission, pose):
+        super().__init__(name='Navigate', step=lambda: mission.go_to_pose(pose))
+        self.pose = pose
+        self.mission = mission
+
+    def initialise(self):
+        mission = self.mission
+        mission._nav_send_future = None
+        mission._nav_goal_handle = None
+        mission._nav_result_future = None
+
+class MoveArmBehavior(ActionBehavior):
+    def __init__(self, mission, angles, duration_sec=4):
+        super().__init__(name='Move Arm', step=lambda: mission.move_arm_to_joint_angles(angles, duration_sec))
+        self.angles = angles
+        self.duration_sec = duration_sec
+        self.mission = mission
+
+    def initialise(self):
+        mission = self.mission
+        mission._arm_send_future = None
+        mission._arm_goal_handle = None
+        mission._arm_result_future = None
+
+class VacuumBehavior(ActionBehavior):
+    def __init__(self, mission, enable):
+        super().__init__(name='Attach' if enable else 'Detach', step=lambda: mission.toggle_vacuum(enable))
+        self.mission = mission
+
+    def initialise(self):
+        self.mission._vacuum_start_time = None
+
 class MissionNode(Node):
 
     def __init__(self):
@@ -133,97 +216,418 @@ class MissionNode(Node):
         self._attach_pub = self.create_publisher(Empty, '/vacuum_gripper/attach', 10)
         self._detach_pub = self.create_publisher(Empty, '/vacuum_gripper/detach', 10)
         self._undock_client = ActionClient(self, Undock, '/undock')
+        self._nav_client = ActionClient(self, NavigateToPose, '/navigate_to_pose')
         self._arm_client = ActionClient(
             self, 
             FollowJointTrajectory, 
             '/lite6_traj_controller/follow_joint_trajectory'
         )
 
-        # TODO: Define other necessary subscribers, publishers, and action clients (e.g., for navigation with Nav2).
+        # TODO E2: Add the NavigateToPose client and the state needed by BT leaves.
+        #          Track pending requests, accepted goals, results, and timeouts.
+        #          Keep current observations separate from task-stage completion.
+        self._undocked = False
+        self._undock_send_future = None
+        self._undock_goal_handle = None
+        self._undock_result_future = None
+
+        self._nav_goal_handle = None
+        self._nav_result_future = None
+        self._nav_send_future = None
+
+        self._vacuum_start_time = None
+        self._vacuum_enable = None
+        self._vacuum_wait_secs = 1.5
+
+        self._arm_safe = True
+        self.safe_arm_angles = [0.0, 0.87, 1.57, 0.0, -1.57, 0.0]
+        self._safe_move_started = False
+        self._arm_send_future = None
+        self._arm_goal_handle = None
+        self._arm_result_future = None
+
+        self.tf_buffer = Buffer(node=self)
+        self.tf_listener = TransformListener(self.tf_buffer, self)
+
+        self.pos_tol = 0.1
+        self.yaw_tol = math.radians(5)
+        self.pose_max_age = 1.0
+
+        self._holding_cube = False
+        self._cube_delivered = False
+
+        self.pick_arm_angles = [0.0, 0.87, 1.57, 0.0, -1.57, 0.0]
+        self.lift_arm_angles = [0.0, 0.87, 1.57, 0.0, -1.57, 0.5]
+        self.place_arm_angles = [0.0, 0.87, 1.57, 0.0, -1.57, 0.0]
+
 
     def undock_robot(self):
-        # TODO: Implement undocking logic using the Undock action client (self._undock_client).
-        #       Return True once the base is undocked, False if it refused.
-        raise NotImplementedError('undock_robot() is yours to write')
+        # TODO E3: Implement a non-blocking undock operation for the BT.
+        #          Send once per activation; keep checking the same request.
+        #          The leaf reports RUNNING while pending, SUCCESS only after
+        #          confirmed success, and FAILURE on rejection/error/timeout.
+        #          Handle cancellation if the leaf is interrupted, including a
+        #          pending goal that gets accepted after cancellation was requested.
+        if self._undock_send_future is None:
+            if not self._undock_client.server_is_ready():
+                self.get_logger().warn("Undock action server not ready yet.")
+                return py_trees.common.Status.RUNNING
+            goal = Undock.Goal()
+            self._undock_send_future = self._undock_client.send_goal_async(goal)
+            return py_trees.common.Status.RUNNING
+
+        if not self._undock_send_future.done():
+            return py_trees.common.Status.RUNNING
+
+        try:
+            if self._undock_goal_handle is None:
+                self._undock_goal_handle = self._undock_send_future.result()
+            if not self._undock_goal_handle.accepted:
+                self.get_logger().error("Undock goal was rejected!")
+                return py_trees.common.Status.FAILURE
+            if self._undock_result_future is None:
+                self._undock_result_future = self._undock_goal_handle.get_result_async()
+                return py_trees.common.Status.RUNNING
+            if not self._undock_result_future.done():
+                return py_trees.common.Status.RUNNING
+
+            result = self._undock_result_future.result()
+            if result.status == GoalStatus.STATUS_SUCCEEDED and not result.result.is_docked:
+                self.get_logger().info("Undock succeeded.")
+                self._undocked = True
+                return py_trees.common.Status.SUCCESS
+            else:
+                self.get_logger().error("Undock failed or robot is still docked.")
+                return py_trees.common.Status.FAILURE
+        except Exception as e:
+            self.get_logger().error(f"Exception during undock operation: {e}")
+            return py_trees.common.Status.FAILURE
+
 
     def go_to_pose(self, pose_stamped):
-        pose_stamped.header.stamp = self.get_clock().now().to_msg()
-        self.get_logger().info(f"Navigating to x: {pose_stamped.pose.position.x}, y: {pose_stamped.pose.position.y}")
-        # TODO: Implement navigation to the given pose using Nav2's NavigateToPose action.
-        #       Return True once the robot has arrived, False if it did not. Callers
-        #       read the return value as "did this work", so falling off the end and
-        #       returning None counts as failure.
+        # TODO E4: Implement NavigateToPose as a non-blocking BT operation.
+        #          Send once per activation, not once per tick; preserve the goal
+        #          handle and check the final status, not just goal acceptance.
+        #          Map progress to RUNNING/SUCCESS/FAILURE in the leaf; manage
+        #          cancellation and ignore stale results from previous goals.
+        #          Reuse this operation for source/target poses in E, C, and A.
+        if self._nav_send_future is None:
+            if not self._nav_client.server_is_ready():
+                return py_trees.common.Status.RUNNING
+            pose_stamped.header.stamp = self.get_clock().now().to_msg()
+            self.get_logger().info(f"Navigating to x: {pose_stamped.pose.position.x}, y: {pose_stamped.pose.position.y}")
+            goal = NavigateToPose.Goal()
+            goal.pose = pose_stamped
+            self._nav_send_future = self._nav_client.send_goal_async(goal)
+            return py_trees.common.Status.RUNNING
+
+        if not self._nav_send_future.done():
+            return py_trees.common.Status.RUNNING
+
+        try:
+            if self._nav_goal_handle is None:
+                self._nav_goal_handle = self._nav_send_future.result()
+            if not self._nav_goal_handle.accepted:
+                self.get_logger().error("Navigation goal was rejected!")
+                return py_trees.common.Status.FAILURE
+            if self._nav_result_future is None:
+                self._nav_result_future = self._nav_goal_handle.get_result_async()
+                return py_trees.common.Status.RUNNING
+            if not self._nav_result_future.done():
+                return py_trees.common.Status.RUNNING
+
+            result = self._nav_result_future.result()
+            if result.status == GoalStatus.STATUS_SUCCEEDED:
+                self.get_logger().info("Navigation succeeded.")
+                return py_trees.common.Status.SUCCESS
+            else:
+                self.get_logger().error(f"Navigation failed with status: {result.status}")
+                return py_trees.common.Status.FAILURE
+        except Exception as e:
+            self.get_logger().error(f"Exception during navigation operation: {e}")
+            return py_trees.common.Status.FAILURE
 
     def toggle_vacuum(self, enable=True):
-        state = "ENGAGING" if enable else "RELEASING"
-        self.get_logger().info(f'{state} vacuum gripper...')
-        (self._attach_pub if enable else self._detach_pub).publish(Empty())
-        time.sleep(1.5)
+        # TODO E5: Adapt this helper for a responsive BT: publish once per phase
+        #          and replace the blocking sleep with a non-blocking wait/check.
+        #          A published Empty message is not proof of successful grasping.
+        #          Track grasp/release phases so later ticks do not repeat them.
+        if self._vacuum_start_time is None or self._vacuum_enable != enable:
+            state = "ENGAGING" if enable else "RELEASING"
+            self.get_logger().info(f'{state} vacuum gripper...')
+            self._vacuum_start_time = self.get_clock().now()
+            self._vacuum_enable = enable
+            (self._attach_pub if enable else self._detach_pub).publish(Empty())
+            return py_trees.common.Status.RUNNING
+
+        elapsed = (self.get_clock().now() - self._vacuum_start_time).nanoseconds * 1e-9
+        if elapsed < self._vacuum_wait_secs:
+            return py_trees.common.Status.RUNNING
+        return py_trees.common.Status.SUCCESS
+
 
     def move_arm_to_joint_angles(self, angles, duration_sec=4):
         """Generic helper function to send the arm to any 6-DOF joint configuration."""
-        if not self._arm_client.wait_for_server(timeout_sec=120.0):
-            self.get_logger().error(
-                'Arm action server /lite6_traj_controller/follow_joint_trajectory '
-                'never appeared. Is lite6_traj_controller active? Check with: '
-                'ros2 control list_controllers')
-            return False
+        # TODO E6: Reuse the trajectory construction, but separate sending from
+        #          result polling before using this helper in a BT tick callback.
+        #          Check final action status AND trajectory result error_code.
+        #          Validate pick/place/safe poses; handle timeout and interruption.
+        #          The synchronous implementation below is still the original
+        #          template, not a completed non-blocking BT leaf.
+        if self._arm_send_future is None:
+            if not self._arm_client.server_is_ready():
+                return py_trees.common.Status.RUNNING
+            goal_msg = FollowJointTrajectory.Goal()
+            goal_msg.trajectory.joint_names = [
+                'arm_joint1', 'arm_joint2', 'arm_joint3', 
+                'arm_joint4', 'arm_joint5', 'arm_joint6'
+            ]
+    
+            point = JointTrajectoryPoint()
+            point.positions = angles 
+            point.time_from_start = Duration(sec=duration_sec, nanosec=0)
+            goal_msg.trajectory.points.append(point)
+    
+            # Every wait below is bounded, so a misbehaving controller will show an
+            # error instead of an indefinite hang with no output.
+            self._arm_safe = False
+            self._arm_send_future = self._arm_client.send_goal_async(goal_msg)
+            return py_trees.common.Status.RUNNING
+
+        if not self._arm_send_future.done():
+            return py_trees.common.Status.RUNNING
+
+        try:
+            if self._arm_goal_handle is None:
+                self._arm_goal_handle = self._arm_send_future.result()
+            if not self._arm_goal_handle.accepted:
+                self.get_logger().error("Arm trajectory goal was rejected!")
+                return py_trees.common.Status.FAILURE
+            if self._arm_result_future is None:
+                self._arm_result_future = self._arm_goal_handle.get_result_async()
+                return py_trees.common.Status.RUNNING
+            if not self._arm_result_future.done():
+                return py_trees.common.Status.RUNNING
+
+            result = self._arm_result_future.result()
+            if result.status == GoalStatus.STATUS_SUCCEEDED and result.result.error_code == 0:
+                self.get_logger().info("Arm trajectory succeeded.")
+                return py_trees.common.Status.SUCCESS
+            else:
+                self.get_logger().error(f"Arm trajectory failed with status: {result.status}, error_code: {result.result.error_code}")
+                return py_trees.common.Status.FAILURE
+        except Exception as e:
+            self.get_logger().error(f"Exception during arm trajectory operation: {e}")
+            return py_trees.common.Status.FAILURE
 
 
-        goal_msg = FollowJointTrajectory.Goal()
-        goal_msg.trajectory.joint_names = [
-            'arm_joint1', 'arm_joint2', 'arm_joint3', 
-            'arm_joint4', 'arm_joint5', 'arm_joint6'
-        ]
-
-        point = JointTrajectoryPoint()
-        point.positions = angles 
-        point.time_from_start = Duration(sec=duration_sec, nanosec=0)
-        goal_msg.trajectory.points.append(point)
-
-        # Every wait below is bounded, so a misbehaving controller will show an
-        # error instead of an indefinite hang with no output.
-        send_goal_future = self._arm_client.send_goal_async(goal_msg)
-        rclpy.spin_until_future_complete(self, send_goal_future, timeout_sec=15.0)
-        if not send_goal_future.done():
-            self.get_logger().error('Arm trajectory goal was never acknowledged!')
-            return False
-
-        goal_handle = send_goal_future.result()
-        if not goal_handle.accepted:
-            self.get_logger().error('Arm trajectory goal was rejected!')
-            return False
-
-        result_future = goal_handle.get_result_async()
-        rclpy.spin_until_future_complete(self, result_future, timeout_sec=180.0)
-        if not result_future.done():
-            self.get_logger().error('Arm trajectory did not finish in time!')
-            return False
-        return True
 
 
     # =========================================================================
-    # THE MAIN MISSION SEQUENCE
+    # LECTURE CONDITIONS AND ACTIONS -- STUDENT IMPLEMENTATION
     # =========================================================================
+
+    def cube_at_destination(self):
+        # TODO E2: Return bool from placement evidence, not the detach command.
+        # For this mission, completion also requires the arm to be withdrawn.
+        return self._cube_delivered
+
+    def mark_cube_released(self):
+        self._holding_cube = False
+        return py_trees.common.Status.SUCCESS
+
+    def mark_cube_delivered(self):
+        self._cube_delivered = True
+        self._arm_safe = True
+        return py_trees.common.Status.SUCCESS
+
+    def at_pose(self, pose):
+        # TODO E2/E4: Compare current map-frame pose with position/yaw tolerance.
+        # Unknown/stale pose is not success. Use AMCL/TF for A, not ground truth.
+        transform = self.tf_buffer.lookup_transform('map', 'base_link', Time())
+        stamp = Time.from_msg(transform.header.stamp)
+        age = (self.get_clock().now() - stamp).nanoseconds * 1e-9
+
+        if age < 0.0 or age > self.pose_max_age:
+            return False
+
+        current_pos = transform.transform.translation
+        current_orient = transform.transform.rotation
+        target_pos = pose.pose.position
+        target_orient = pose.pose.orientation
+
+        pos_diff = math.hypot(
+            current_pos.x - target_pos.x,
+            current_pos.y - target_pos.y
+        )
+
+        current_yaw = math.atan2(
+            2.0 * (current_orient.w * current_orient.z + current_orient.x * current_orient.y),
+            1.0 - 2.0 * (current_orient.y ** 2 + current_orient.z ** 2)
+        )
+        target_yaw = math.atan2(
+            2.0 * (target_orient.w * target_orient.z + target_orient.x * target_orient.y),
+            1.0 - 2.0 * (target_orient.y ** 2 + target_orient.z ** 2)
+        )
+
+        yaw_diff = math.atan2(
+            math.sin(current_yaw - target_yaw),
+            math.cos(current_yaw - target_yaw)
+        )
+
+        return pos_diff < self.pos_tol and abs(yaw_diff) < self.yaw_tol
+
+    def is_undocked(self):
+        return self._undocked
+
+    def arm_safe(self):
+        # TODO E2/E6: Check current joint feedback against a validated safe pose.
+        return self._arm_safe
+
+    def localization_ready(self):
+        # TODO A1: Check freshness/convergence and TF; do not return True blindly.
+        raise NotImplementedError('A1: localization_ready observation')
+
+    def pick_cube(self):
+        # TODO E5/E6: Approach -> attach -> verify -> lift, without blocking.
+        # Keep the base stopped and validate the source work pose while picking.
+        return py_trees.composites.Sequence(
+            name='Pick cube', memory=True, children=[
+                MoveArmBehavior(self, self.pick_arm_angles),
+                VacuumBehavior(self, enable=True),
+                MoveArmBehavior(self, self.lift_arm_angles),
+                ActionBehavior('Record holding cube', self.mark_cube_held)
+            ]
+        )
+
+    def mark_cube_held(self):
+        self._holding_cube = True
+        return py_trees.common.Status.SUCCESS
+
+    def holding_cube(self):
+        return self._holding_cube
+
+    def place_cube(self):
+        # TODO E5/E6: Approach -> release -> verify -> withdraw, without blocking.
+        # Check work pose/base stop throughout. Report SUCCESS only after the
+        # cube is delivered AND the arm is withdrawn; do not repeat detachment.
+        return py_trees.composites.Sequence(
+            name='Place cube', memory=True, children=[
+                MoveArmBehavior(self, self.place_arm_angles),
+                VacuumBehavior(self, enable=False),
+                ActionBehavior('Record cube released', self.mark_cube_released),
+                MoveArmBehavior(self, self.safe_arm_angles),
+                ActionBehavior('Record arm safe', self.mark_cube_delivered)
+            ]
+        )
+
+    def move_arm_safe(self):
+        # TODO E6: Move to validated safe joints while the base is stopped.
+        # Adapt move_arm_to_joint_angles; do not call its blocking body in a tick.
+        if not self._safe_move_started:
+            self._safe_move_started = True
+            self._arm_safe = False
+            self._arm_send_future = None
+            self._arm_goal_handle = None
+            self._arm_result_future = None
+
+        status = self.move_arm_to_joint_angles(self.safe_arm_angles)
+
+        if status == py_trees.common.Status.SUCCESS:
+            self._arm_safe = True
+
+        if status != py_trees.common.Status.RUNNING:
+            self._safe_move_started = False
+
+        return status
+
+    # =========================================================================
+    # LECTURE TREE: ? = SELECTOR, -> = SEQUENCE
+    # =========================================================================
+
+    def make_sure_at(self, label, pose):
+        """Expand 'At location?' using the lecture's PPA pattern."""
+        undocked = py_trees.composites.Selector(
+            name=f'Make sure undocked ({label})', memory=False, children=[
+                ConditionBehavior('Undocked?', self.is_undocked),
+                UndockBehavior(self),
+            ])
+        arm_safe = py_trees.composites.Selector(
+            name=f'Make sure arm safe ({label})', memory=False, children=[
+                ConditionBehavior('Arm safe?', self.arm_safe),
+                ActionBehavior('Move arm safe', self.move_arm_safe),
+            ])
+        requirements = [undocked, arm_safe]
+        if self.grade == 'a':
+            requirements.append(ConditionBehavior(
+                'Localization ready?', self.localization_ready))
+        # Delivery has memory: explicitly recheck grasp during transportation.
+        if label == 'destination':
+            requirements.append(ConditionBehavior(
+                'Holding cube while transporting?', self.holding_cube))
+        requirements.append(NavigateBehavior(self, pose))
+        move = py_trees.composites.Sequence(
+            name=f'Move safely to {label}', memory=False, children=requirements)
+        return py_trees.composites.Selector(
+            name=f'Make sure at {label}', memory=False, children=[
+                ConditionBehavior(f'At {label}?', lambda: self.at_pose(pose)),
+                move,
+            ])
+
+    def build_tree(self, pick_pose, drop_pose):
+        # E7: Lecture L8_BT_2026.pdf, PDF pages 20-21.
+        # Construct fresh node objects for each parent; never share BT nodes.
+        acquire = py_trees.composites.Sequence(
+            name='Acquire cube', memory=False, children=[
+                self.make_sure_at('source', pick_pose),
+                self.pick_cube(),
+            ])
+        holding = py_trees.composites.Selector(
+            name='Make sure holding cube', memory=False, children=[
+                ConditionBehavior('Holding cube?', self.holding_cube),
+                acquire,
+            ])
+        deliver = py_trees.composites.Sequence(
+            name='Deliver cube', memory=True, children=[
+                holding,
+                self.make_sure_at('destination', drop_pose),
+                self.place_cube(),
+            ])
+        # Deliberate difference from the lecture's fully reactive example:
+        # remember delivery progress while Place releases and withdraws the arm.
+        # Otherwise Holding becomes false during Place and pickup starts again.
+        # Navigation guards above remain reactive; Place must guard its own pose.
+        # TODO A1: Explain/refine this phase boundary for reactive recovery and
+        # unknown-start localization. A tree shape alone does not complete A.
+        root = py_trees.composites.Selector(
+            name='Make sure cube delivered', memory=False, children=[
+                ConditionBehavior('Cube delivered and arm withdrawn?',
+                                  self.cube_at_destination),
+                deliver,
+            ])
+        return py_trees.trees.BehaviourTree(root)
 
     def run_mission(self):
-        self.get_logger().info('Starting mission.')
-
-        # Ensure gripper starts in a known-detached state
-        time.sleep(1.0)  # allow ROS->bridge->gz discovery to complete across all hops
-        self._detach_pub.publish(Empty())
-        time.sleep(1.0)
-
-        # Load waypoints. Which box the cube is placed on depends on the grade,
-        # so both boxes are looked up BY NAME through the constants at the top
-        # of this file rather than by their position in shelves.yaml. Indexing
-        # into the list instead would tie the mission to the order of that file
-        # and quietly send the robot to the wrong box when it changed.
-        home_base = load_home_base()
         pick_pose = load_shelf(self.source_box)
         drop_pose = load_shelf(self.drop_box)
-
-        # TODO: Implement the mission logic (either State Machine or Behavior Tree).
+        self.tree = self.build_tree(pick_pose, drop_pose)
+        self.get_logger().info('\n' + py_trees.display.unicode_tree(self.tree.root))
+        # TODO C1: Reuse this tree for target-2 with dynamic-obstacle Nav2 config.
+        # TODO E8: After implementing observations/actions and cancellation, run
+        # spin_once + tree.tick repeatedly; handle root SUCCESS/FAILURE and exit.
+        # Initialise the gripper only when appropriate, not on every tick/restart.
+        # Keep processing cancellation acknowledgements before destroying Node.
+        # This scaffold prints the actual tree, then stops without robot motion.
+        while rclpy.ok():
+            rclpy.spin_once(self, timeout_sec=0.1)
+            self.tree.tick()
+            status = self.tree.root.status
+            if status == py_trees.common.Status.SUCCESS:
+                self.get_logger().info("Mission completed successfully.")
+                break
+            elif status == py_trees.common.Status.FAILURE:
+                self.get_logger().error("Mission failed.")
+                break
 
 def main(args=None):
     rclpy.init(args=args)
