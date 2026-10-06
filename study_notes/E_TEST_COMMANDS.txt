@@ -125,3 +125,32 @@ ls -lt ~/IROB_Mobile_Robot_Project/study_notes/logs
 # Stop the simulation first. Run inside the project pixi shell.
 # MAKEFLAGS=-j2 CMAKE_BUILD_PARALLEL_LEVEL=2 colcon build --base-paths src/Warehouse_robot --parallel-workers 4
 # source install/setup.bash
+
+# 8. SAVE CODE CHANGES TO YOUR GIT BRANCH
+# Run these commands from the project directory after testing or editing.
+# This saves only the two mission files; do not use "git add ." because the
+# repository may contain logs, notes or other unrelated files.
+cd ~/IROB_Mobile_Robot_Project
+git switch zyq
+git status
+git diff
+
+# Stage the files you intentionally changed.
+git add src/Warehouse_robot/warehouse_inventory_robot/warehouse_inventory_robot/mission_node.py
+git add src/Warehouse_robot/warehouse_inventory_robot/launch/mission.launch.py
+
+# Review exactly what will be included, then create a commit.
+git diff --cached
+git commit -m "Update warehouse mission"
+
+# Review your local history and upload the zyq branch to your own fork.
+git log --oneline --decorate -10
+git push
+
+# For the first upload only, use:
+# git push -u origin zyq
+
+# Useful history commands:
+# git log --oneline --decorate --graph --all
+# git show --stat --oneline HEAD
+# git status
