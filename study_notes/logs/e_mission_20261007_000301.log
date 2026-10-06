@@ -1,0 +1,48 @@
+[INFO] [1791324182.047911538] [mission_node]: Mission node started for grade 'e'. Collect from shelf_7_ID11, place on shelf_7_ID10.
+[INFO] [1791324183.481708903] [mission_node]: 
+[o] Make sure cube delivered
+    --> Cube delivered and arm withdrawn?
+    {-} Deliver cube
+        [o] Make sure holding cube
+            --> Holding cube?
+            [-] Acquire cube
+                [o] Make sure at source
+                    --> At source?
+                    [-] Move safely to source
+                        [o] Make sure undocked (source)
+                            --> Undocked?
+                            --> Undock
+                        [o] Make sure arm safe (source)
+                            --> Arm safe?
+                            --> Move arm safe
+                        --> Navigate
+                {-} Pick cube
+                    --> Move Arm
+                    --> Attach
+                    --> Move Arm
+                    --> Record holding cube
+        [o] Make sure at destination
+            --> At destination?
+            [-] Move safely to destination
+                [o] Make sure undocked (destination)
+                    --> Undocked?
+                    --> Undock
+                [o] Make sure arm safe (destination)
+                    --> Arm safe?
+                    --> Move arm safe
+                --> Holding cube while transporting?
+                --> Navigate
+        {-} Place cube
+            --> Move Arm
+            --> Detach
+            --> Record cube released
+            --> Move Arm
+            --> Record arm safe
+
+[INFO] [1791324183.482398771] [mission_node]: Waiting for action servers (/undock, /navigate_to_pose) to be ready...
+[INFO] [1791324186.417026925] [mission_node]: Waiting for TF transform (map -> base_link) to become available...
+[INFO] [1791324186.423597285] [mission_node]: All readiness checks passed. Starting mission tree ticks.
+[INFO] [1791324418.551654757] [mission_node]: Undock succeeded. Waiting 1.0s for motion controller to settle...
+[INFO] [1791324426.184914192] [mission_node]: Navigating to x: 1.98, y: 7.15
+[ERROR] [1791324486.085165460] [mission_node]: Navigation failed with status: 6
+[ERROR] [1791324486.087017826] [mission_node]: Mission failed.
