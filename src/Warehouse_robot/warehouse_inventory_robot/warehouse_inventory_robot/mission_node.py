@@ -154,6 +154,13 @@ class ActionBehavior(py_trees.behaviour.Behaviour):
 class UndockBehavior(ActionBehavior):
     def __init__(self, mission):
         super().__init__(name='Undock', step=mission.undock_robot)
+        self.mission = mission
+
+    def initialise(self):
+        mission = self.mission
+        mission._undock_send_future = None
+        mission._undock_goal_handle = None
+        mission._undock_result_future = None
 
 class NavigateBehavior(ActionBehavior):
     def __init__(self, mission, pose):
@@ -293,7 +300,11 @@ class MissionNode(Node):
 
             result = self._undock_result_future.result()
             if result.status == GoalStatus.STATUS_SUCCEEDED and not result.result.is_docked:
-                self.get_logger().info("Undock succeeded.")
+                self.get_logger().info("Undock succeeded. Waiting 1.0s for motion controller to settle...")
+                # Allow motion_control to finish releasing the behavior lock
+                settle_start = self.get_clock().now()
+                while (self.get_clock().now() - settle_start).nanoseconds < 1e9:
+                    rclpy.spin_once(self, timeout_sec=0.1)
                 self._undocked = True
                 return py_trees.common.Status.SUCCESS
             else:
@@ -617,12 +628,27 @@ class MissionNode(Node):
         drop_pose = load_shelf(self.drop_box)
         self.tree = self.build_tree(pick_pose, drop_pose)
         self.get_logger().info('\n' + py_trees.display.unicode_tree(self.tree.root))
-        # TODO C1: Reuse this tree for target-2 with dynamic-obstacle Nav2 config.
-        # TODO E8: After implementing observations/actions and cancellation, run
-        # spin_once + tree.tick repeatedly; handle root SUCCESS/FAILURE and exit.
-        # Initialise the gripper only when appropriate, not on every tick/restart.
-        # Keep processing cancellation acknowledgements before destroying Node.
-        # This scaffold prints the actual tree, then stops without robot motion.
+
+        # E8: Readiness checks before ticking the mission tree.
+        # Wait for action servers to avoid race condition on launch.
+        self.get_logger().info("Waiting for action servers (/undock, /navigate_to_pose) to be ready...")
+        while rclpy.ok() and not self._undock_client.wait_for_action_server(timeout_sec=1.0):
+            rclpy.spin_once(self, timeout_sec=0.1)
+        while rclpy.ok() and not self._nav_client.wait_for_action_server(timeout_sec=1.0):
+            rclpy.spin_once(self, timeout_sec=0.1)
+
+        # Wait for TF tree (map -> base_link) connection
+        self.get_logger().info("Waiting for TF transform (map -> base_link) to become available...")
+        tf_ready = False
+        while rclpy.ok() and not tf_ready:
+            try:
+                self.tf_buffer.lookup_transform('map', 'base_link', Time())
+                tf_ready = True
+            except TransformException:
+                rclpy.spin_once(self, timeout_sec=0.5)
+
+        self.get_logger().info("All readiness checks passed. Starting mission tree ticks.")
+
         while rclpy.ok():
             rclpy.spin_once(self, timeout_sec=0.1)
             self.tree.tick()
