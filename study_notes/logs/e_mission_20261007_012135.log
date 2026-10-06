@@ -1,0 +1,57 @@
+[INFO] [1791328895.909671409] [mission_node]: Mission node started for grade 'e'. Collect from shelf_7_ID11, place on shelf_7_ID10.
+[INFO] [1791328896.354478409] [mission_node]: 
+[o] Make sure cube delivered
+    --> Cube delivered and arm withdrawn?
+    {-} Deliver cube
+        [o] Make sure holding cube
+            --> Holding cube?
+            [-] Acquire cube
+                [o] Make sure at source
+                    --> At source?
+                    [-] Move safely to source
+                        [o] Make sure undocked (source)
+                            --> Undocked?
+                            --> Undock
+                        [o] Make sure arm safe (source)
+                            --> Arm safe?
+                            --> Move arm safe
+                        --> Navigate
+                {-} Pick cube
+                    --> Move Arm
+                    --> Attach
+                    --> Move Arm
+                    --> Record holding cube
+        [o] Make sure at destination
+            --> At destination?
+            [-] Move safely to destination
+                [o] Make sure undocked (destination)
+                    --> Undocked?
+                    --> Undock
+                [o] Make sure arm safe (destination)
+                    --> Arm safe?
+                    --> Move arm safe
+                --> Holding cube while transporting?
+                --> Navigate
+        {-} Place cube
+            --> Move Arm
+            --> Detach
+            --> Record cube released
+            --> Move Arm
+            --> Record arm safe
+
+[INFO] [1791328896.355029791] [mission_node]: Waiting for action servers (/undock, /navigate_to_pose) to be ready...
+[INFO] [1791328899.110892721] [mission_node]: Waiting for TF transform (map -> base_link) to become available...
+[INFO] [1791328899.446120175] [mission_node]: All readiness checks passed. Starting mission tree ticks.
+[INFO] [1791328929.877495888] [mission_node]: Robot is already off the dock (4.0s elapsed, is_docked=False). Cancelling undock goal to bypass rotation tolerance hang...
+[INFO] [1791328929.881536370] [mission_node]: Undock confirmed. Waiting 1.0s for motion controller to settle...
+[INFO] [1791328937.426045436] [mission_node]: Nudging forward away from dock into open corridor...
+[INFO] [1791328948.533007614] [mission_node]: Clearing local and global costmaps...
+[INFO] [1791328948.534998651] [mission_node]: Clearing local and global costmaps...
+[INFO] [1791328948.536359047] [mission_node]: Navigating to x: 1.98, y: 7.15 (retry: 0)
+[WARN] [1791329008.984003099] [mission_node]: Navigation failed with status: 6
+[INFO] [1791329008.993797718] [mission_node]: Retrying navigation (1/3)...
+[INFO] [1791329008.995019305] [mission_node]: Clearing local and global costmaps...
+[INFO] [1791329009.008912455] [mission_node]: Clearing local and global costmaps...
+[INFO] [1791329009.016106230] [mission_node]: Navigating to x: 1.98, y: 7.15 (retry: 1)
+[ERROR] [1791329009.237401107] [mission_node]: Navigation goal was rejected!
+[ERROR] [1791329009.238758628] [mission_node]: Mission failed.
