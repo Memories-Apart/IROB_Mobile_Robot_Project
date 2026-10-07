@@ -179,7 +179,8 @@ def generate_launch_description():
         parameters=[{
             'use_sim_time': True,
             'autostart': True,
-            'node_names': ['map_server']
+            'node_names': ['map_server'],
+            'bond_timeout': 30.0,
         }],
     )
 

@@ -30,6 +30,8 @@ from builtin_interfaces.msg import Duration
 from nav2_msgs.action import NavigateToPose
 from nav2_msgs.srv import ClearEntireCostmap
 from action_msgs.msg import GoalStatus
+from lifecycle_msgs.srv import GetState, ChangeState
+from lifecycle_msgs.msg import Transition
 import py_trees
 
 # Selected implementation route: use a behavior tree from grade E onward.
@@ -239,6 +241,11 @@ class MissionNode(Node):
         self._clear_global_costmap_client = self.create_client(
             ClearEntireCostmap, '/global_costmap/clear_entirely_global_costmap')
 
+        self._map_get_state_client = self.create_client(
+            GetState, '/map_server/get_state')
+        self._map_change_state_client = self.create_client(
+            ChangeState, '/map_server/change_state')
+
         # Subscribe to /dock_status to detect when Create 3 is off the dock
         self._is_docked = True
         self._dock_status_sub = self.create_subscription(
@@ -301,6 +308,53 @@ class MissionNode(Node):
             self._clear_local_costmap_client.call_async(req)
         if self._clear_global_costmap_client.service_is_ready():
             self._clear_global_costmap_client.call_async(req)
+
+    def ensure_map_server_active(self, timeout_sec=10.0):
+        """Ensure map_server lifecycle node is active.
+        If lifecycle_manager missed the deadline on a cold start, map_server stays
+        unconfigured/inactive and costmaps cannot load the map. This activates it.
+        """
+        self.get_logger().info("Checking map_server lifecycle state...")
+        if not self._map_get_state_client.wait_for_service(timeout_sec=timeout_sec):
+            self.get_logger().warn("map_server /get_state service not available.")
+            return
+
+        future = self._map_get_state_client.call_async(GetState.Request())
+        start = self.get_clock().now()
+        while rclpy.ok() and not future.done():
+            rclpy.spin_once(self, timeout_sec=0.1)
+            if (self.get_clock().now() - start).nanoseconds * 1e-9 > 5.0:
+                self.get_logger().warn("Timed out waiting for map_server get_state response.")
+                return
+
+        state = future.result().current_state.label
+        self.get_logger().info(f"map_server current lifecycle state: {state}")
+
+        if state == 'active':
+            self.get_logger().info("map_server is already active.")
+            return
+
+        if state == 'unconfigured':
+            self.get_logger().info("Configuring map_server...")
+            req = ChangeState.Request()
+            req.transition.id = Transition.TRANSITION_CONFIGURE
+            f = self._map_change_state_client.call_async(req)
+            t0 = self.get_clock().now()
+            while rclpy.ok() and not f.done():
+                rclpy.spin_once(self, timeout_sec=0.1)
+                if (self.get_clock().now() - t0).nanoseconds * 1e-9 > 5.0:
+                    break
+
+        self.get_logger().info("Activating map_server...")
+        req = ChangeState.Request()
+        req.transition.id = Transition.TRANSITION_ACTIVATE
+        f = self._map_change_state_client.call_async(req)
+        t0 = self.get_clock().now()
+        while rclpy.ok() and not f.done():
+            rclpy.spin_once(self, timeout_sec=0.1)
+            if (self.get_clock().now() - t0).nanoseconds * 1e-9 > 5.0:
+                break
+        self.get_logger().info("map_server activation request completed.")
 
     def undock_robot(self):
         # E3: Non-blocking undock operation.
@@ -670,6 +724,11 @@ class MissionNode(Node):
             rclpy.spin_once(self, timeout_sec=0.1)
         while rclpy.ok() and not self._nav_client.wait_for_server(timeout_sec=1.0):
             rclpy.spin_once(self, timeout_sec=0.1)
+
+        # Ensure map_server is active so static costmap receives the map.
+        # This prevents "Can't update static costmap layer, no map received" and
+        # "Robot is out of bounds of the costmap".
+        self.ensure_map_server_active()
 
         # Wait for TF tree (map -> base_link) connection
         self.get_logger().info("Waiting for TF transform (map -> base_link) to become available...")
