@@ -275,8 +275,12 @@ class MissionNode(Node):
         self.tf_buffer = Buffer(node=self)
         self.tf_listener = TransformListener(self.tf_buffer, self)
 
-        self.pos_tol = 0.1
-        self.yaw_tol = math.radians(5)
+        # Tolerances for at_pose(). These must be >= Nav2's goal checker
+        # tolerances (xy_goal_tolerance: 0.25, yaw_goal_tolerance: 0.25 rad)
+        # so that the BT does not loop forever when Nav2 already considers
+        # the goal reached but our check is still failing.
+        self.pos_tol = 0.3
+        self.yaw_tol = math.radians(15)
         self.pose_max_age = 1.0
 
         self._holding_cube = False

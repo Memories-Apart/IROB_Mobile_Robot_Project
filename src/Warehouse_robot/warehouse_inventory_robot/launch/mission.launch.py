@@ -115,6 +115,10 @@ def generate_launch_description():
     # The student mission uses a behavior tree already in E; Nav2's internal BT
     # does not replace that mission tree. Keep the two-terminal workflow unless
     # intentionally changing it, so mission_node is not launched twice.
+    #
+    # Per Q&A 3: the default nav2 config uses MPPIController which fails near
+    # obstacles (e.g. the shelf). We pass our own params_file that uses
+    # RegulatedPurePursuitController instead.
     nav2_launch = IncludeLaunchDescription(
     PythonLaunchDescriptionSource(
         os.path.join(
@@ -125,6 +129,7 @@ def generate_launch_description():
     ),
     launch_arguments={
         'use_sim_time': 'true',
+        'params_file': os.path.join(pkg_share, 'config', 'nav2_custom.yaml'),
     }.items(),
 )
 
