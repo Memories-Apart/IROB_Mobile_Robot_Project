@@ -264,10 +264,9 @@ class MissionNode(Node):
         self._vacuum_enable = None
         self._vacuum_wait_secs = 1.5
 
-        # Official Q&A 7 stow pose: [0, 0, 0, 0, -pi, 0] ensures balanced center of gravity
-        # so wheels do not slip during undock rotation.
-        self.safe_arm_angles = [0.0, 0.0, 0.0, 0.0, -math.pi, 0.0]
-        self._arm_safe = False
+        # Safe pose matching initial simulation position in config/initial_positions.yaml
+        self.safe_arm_angles = [0.0, 0.87, 1.57, 0.0, -1.57, 0.0]
+        self._arm_safe = True
         self._safe_move_started = False
         self._arm_send_future = None
         self._arm_goal_handle = None
