@@ -1,0 +1,50 @@
+[INFO] [1791332060.254378353] [mission_node]: Mission node started for grade 'e'. Collect from shelf_7_ID11, place on shelf_7_ID10.
+[INFO] [1791332060.983546848] [mission_node]: 
+[o] Make sure cube delivered
+    --> Cube delivered and arm withdrawn?
+    {-} Deliver cube
+        [o] Make sure holding cube
+            --> Holding cube?
+            [-] Acquire cube
+                [o] Make sure at source
+                    --> At source?
+                    [-] Move safely to source
+                        [o] Make sure undocked (source)
+                            --> Undocked?
+                            --> Undock
+                        [o] Make sure arm safe (source)
+                            --> Arm safe?
+                            --> Move arm safe
+                        --> Navigate
+                {-} Pick cube
+                    --> Move Arm
+                    --> Attach
+                    --> Move Arm
+                    --> Record holding cube
+        [o] Make sure at destination
+            --> At destination?
+            [-] Move safely to destination
+                [o] Make sure undocked (destination)
+                    --> Undocked?
+                    --> Undock
+                [o] Make sure arm safe (destination)
+                    --> Arm safe?
+                    --> Move arm safe
+                --> Holding cube while transporting?
+                --> Navigate
+        {-} Place cube
+            --> Move Arm
+            --> Detach
+            --> Record cube released
+            --> Move Arm
+            --> Record arm safe
+
+[INFO] [1791332060.984139028] [mission_node]: Waiting for action servers (/undock, /navigate_to_pose) to be ready...
+[INFO] [1791332063.988985678] [mission_node]: Waiting for TF transform (map -> base_link) to become available...
+[INFO] [1791332063.993215826] [mission_node]: All readiness checks passed. Starting mission tree ticks.
+[INFO] [1791332131.992386184] [mission_node]: Undock completed successfully.
+[INFO] [1791332131.993313794] [mission_node]: Clearing local and global costmaps...
+[INFO] [1791332131.995132156] [mission_node]: Clearing local and global costmaps...
+[INFO] [1791332131.996164041] [mission_node]: Navigating to x: 1.98, y: 7.15 (retry: 0)
+[WARN] [1791332262.821134435] [mission_node]: Navigation failed with status: 6
+[INFO] [1791332262.842527071] [mission_node]: Retrying navigation (1/3)...
