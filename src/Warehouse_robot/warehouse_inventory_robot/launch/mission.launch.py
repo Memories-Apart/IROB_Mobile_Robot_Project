@@ -117,8 +117,24 @@ def generate_launch_description():
     # intentionally changing it, so mission_node is not launched twice.
     #
     # Per Q&A 3: the default nav2 config uses MPPIController which fails near
-    # obstacles (e.g. the shelf). We pass our own params_file that uses
-    # RegulatedPurePursuitController instead.
+    # obstacles (e.g. the shelf). We use RewrittenYaml to patch only the
+    # FollowPath plugin on top of the original turtlebot4 nav2.yaml, so all
+    # other parameters (costmap, docking, collision monitor, etc.) remain intact.
+    from nav2_common.launch import RewrittenYaml
+    nav2_params = RewrittenYaml(
+        source_file=get_package_share_directory('turtlebot4_navigation') + '/config/nav2.yaml',
+        param_rewrites={
+            'controller_server.ros__parameters.FollowPath.plugin':
+                'nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController',
+            'controller_server.ros__parameters.FollowPath.desired_linear_vel': '0.26',
+            'controller_server.ros__parameters.FollowPath.lookahead_dist': '0.4',
+            'controller_server.ros__parameters.FollowPath.rotate_to_heading_angular_vel': '1.0',
+            'controller_server.ros__parameters.FollowPath.regulated_linear_scaling_min_speed': '0.1',
+            'controller_server.ros__parameters.FollowPath.cost_scaling_dist': '0.4',
+            'controller_server.ros__parameters.FollowPath.inflation_cost_scaling_factor': '4.0',
+        },
+        convert_types=True,
+    )
     nav2_launch = IncludeLaunchDescription(
     PythonLaunchDescriptionSource(
         os.path.join(
@@ -129,7 +145,7 @@ def generate_launch_description():
     ),
     launch_arguments={
         'use_sim_time': 'true',
-        'params_file': os.path.join(pkg_share, 'config', 'nav2_custom.yaml'),
+        'params_file': nav2_params,
     }.items(),
 )
 

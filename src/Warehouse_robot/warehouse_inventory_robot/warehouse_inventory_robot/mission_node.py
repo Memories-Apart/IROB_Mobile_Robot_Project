@@ -257,15 +257,14 @@ class MissionNode(Node):
         self._nav_goal_handle = None
         self._nav_result_future = None
         self._nav_send_future = None
-        self._nav_retry_count = 0
-        self._max_nav_retries = 3
 
         self._vacuum_start_time = None
         self._vacuum_enable = None
         self._vacuum_wait_secs = 1.5
 
-        # Safe pose matching initial simulation position in config/initial_positions.yaml
-        self.safe_arm_angles = [0.0, 0.87, 1.57, 0.0, -1.57, 0.0]
+        # Safe pose: stow arm in a compact configuration that clears the dock
+        # and doesn't interfere with undocking. Angles from teammate's working solution.
+        self.safe_arm_angles = [0.0, -0.77383, 0.60764, 0.0, 1.38147, 0.0]
         self._arm_safe = True
         self._safe_move_started = False
         self._arm_send_future = None
@@ -286,9 +285,10 @@ class MissionNode(Node):
         self._holding_cube = False
         self._cube_delivered = False
 
-        self.pick_arm_angles = [0.0, 0.87, 1.57, 0.0, -1.57, 0.0]
-        self.lift_arm_angles = [0.0, 0.87, 1.57, 0.0, -1.57, 0.5]
-        self.place_arm_angles = [0.0, 0.87, 1.57, 0.0, -1.57, 0.0]
+        # Arm pick/lift/place angles from teammate's working solution
+        self.pick_arm_angles = [-0.058756, 1.316914, 1.598426, 0.0, 0.281512, 0.0]
+        self.lift_arm_angles = [-0.058756, 0.691309, 1.389453, 0.0, 0.698143, 0.0]
+        self.place_arm_angles = list(self.pick_arm_angles)
 
     def _dock_status_cb(self, msg: DockStatus):
         self._is_docked = msg.is_docked
@@ -356,7 +356,7 @@ class MissionNode(Node):
             pose_stamped.header.stamp = self.get_clock().now().to_msg()
             self.get_logger().info(
                 f"Navigating to x: {pose_stamped.pose.position.x:.2f}, "
-                f"y: {pose_stamped.pose.position.y:.2f} (retry: {self._nav_retry_count})"
+                f"y: {pose_stamped.pose.position.y:.2f}"
             )
             goal = NavigateToPose.Goal()
             goal.pose = pose_stamped
@@ -381,28 +381,13 @@ class MissionNode(Node):
             result = self._nav_result_future.result()
             if result.status == GoalStatus.STATUS_SUCCEEDED:
                 self.get_logger().info("Navigation succeeded.")
-                self._nav_retry_count = 0
                 return py_trees.common.Status.SUCCESS
             else:
+                # Nav failed (e.g. progress checker timeout, controller abort).
+                # Return FAILURE so the BT Selector can retry. The NavigateBehavior
+                # initialise() will reset nav state before the next attempt.
                 self.get_logger().warn(f"Navigation failed with status: {result.status}")
-                if self._nav_retry_count < self._max_nav_retries:
-                    self._nav_retry_count += 1
-                    self.get_logger().info(
-                        f"Retrying navigation ({self._nav_retry_count}/{self._max_nav_retries})..."
-                    )
-                    # Brief settle before retry to allow bt_navigator to clean up
-                    settle_start = self.get_clock().now()
-                    while (self.get_clock().now() - settle_start).nanoseconds < 1e9:
-                        rclpy.spin_once(self, timeout_sec=0.1)
-                    self.clear_all_costmaps()
-                    self._nav_send_future = None
-                    self._nav_goal_handle = None
-                    self._nav_result_future = None
-                    return py_trees.common.Status.RUNNING
-                else:
-                    self.get_logger().error(f"Navigation failed after {self._max_nav_retries} retries.")
-                    self._nav_retry_count = 0
-                    return py_trees.common.Status.FAILURE
+                return py_trees.common.Status.FAILURE
         except Exception as e:
             self.get_logger().error(f"Exception during navigation operation: {e}")
             return py_trees.common.Status.FAILURE
