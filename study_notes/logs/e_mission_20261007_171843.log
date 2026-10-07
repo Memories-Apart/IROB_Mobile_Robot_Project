@@ -1,5 +1,5 @@
-[INFO] [1791334009.754414034] [mission_node]: Mission node started for grade 'e'. Collect from shelf_7_ID11, place on shelf_7_ID10.
-[INFO] [1791334009.849303791] [mission_node]: 
+[INFO] [1791386325.122215366] [mission_node]: Mission node started for grade 'e'. Collect from shelf_7_ID11, place on shelf_7_ID10.
+[INFO] [1791386326.394452973] [mission_node]: 
 [o] Make sure cube delivered
     --> Cube delivered and arm withdrawn?
     {-} Deliver cube
@@ -39,13 +39,12 @@
             --> Move Arm
             --> Record arm safe
 
-[INFO] [1791334009.850071699] [mission_node]: Waiting for action servers (/undock, /navigate_to_pose) to be ready...
-[INFO] [1791334011.855039332] [mission_node]: Waiting for TF transform (map -> base_link) to become available...
-[INFO] [1791334011.861251790] [mission_node]: All readiness checks passed. Starting mission tree ticks.
-[INFO] [1791334228.828855699] [mission_node]: Undock completed successfully.
-[INFO] [1791334228.829374478] [mission_node]: Clearing local and global costmaps...
-[INFO] [1791334228.830499191] [mission_node]: Clearing local and global costmaps...
-[INFO] [1791334228.831193189] [mission_node]: Navigating to x: 1.98, y: 7.15 (retry: 0)
-[WARN] [1791334313.424097311] [mission_node]: Navigation failed with status: 6
-[INFO] [1791334313.443299510] [mission_node]: Retrying navigation (1/3)...
-[WARN] [1791334774.311931890] [tf2_buffer]: Detected jump back in time. Clearing tf buffer.
+[INFO] [1791386326.395046574] [mission_node]: Waiting for action servers (/undock, /navigate_to_pose) to be ready...
+[INFO] [1791386326.646580381] [mission_node]: Waiting for TF transform (map -> base_link) to become available...
+[INFO] [1791386327.483681448] [mission_node]: All readiness checks passed. Starting mission tree ticks.
+[INFO] [1791386395.200407244] [mission_node]: Undock completed successfully.
+[INFO] [1791386395.201105990] [mission_node]: Clearing local and global costmaps...
+[INFO] [1791386395.202900175] [mission_node]: Clearing local and global costmaps...
+[INFO] [1791386395.203913649] [mission_node]: Navigating to x: 1.98, y: 7.15
+[WARN] [1791386521.299162944] [mission_node]: Navigation failed with status: 6
+[ERROR] [1791386521.300424118] [mission_node]: Mission failed.

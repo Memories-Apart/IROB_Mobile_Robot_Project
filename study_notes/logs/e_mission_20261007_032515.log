@@ -1,0 +1,4 @@
+[INFO] [1791336315.637027433] [mission_node]: Mission node started for grade 'e'. Collect from shelf_7_ID11, place on shelf_7_ID10.
+[INFO] [1791336316.034180199] [mission_node]: Starting mission.
+[ERROR] [1791336469.906047252] [mission_node]: Undock timed out.
+[FATAL] [1791336469.955772505] [mission_node]: Mission failed: The mission behaviour tree failed.
